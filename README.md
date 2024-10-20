@@ -22,7 +22,7 @@
  - MongoDB:A NoSQL database used for managing and storing product, user,and order data, chosen for its flexibility and scalability
  - Cloudinary:A cloud-based service for managing and optimizing images,allowing easy upload, transformation, and delivery of high-quality images across the platform
 ## Demo : 
-  [https://abdelrhman1812.github.io/online_shop/](https://abdelrhman1812.github.io/electronic_store/)
+ (https://abdelrhman1812.github.io/electronic_store/)
 
 ![Image](https://drive.google.com/uc?export=view&id=1564DZhp4DCYp4L4fDrJG4eFkw17r2Z2n)
 
