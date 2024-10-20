@@ -7,7 +7,7 @@
  Favorites: Users can save their favorite products for future reference.
  Cash Payment: Supports cash on delivery for purchases.
  Responsive Design: The website is designed to work seamlessly on all screen sizes.
- # Technologies Used :
+ ## Technologies Used :
  - Frontend :
  - React.js:For building an interactive and responsive user interface.
  - CSS3 & Bootstrap:Responsive Design
@@ -21,8 +21,8 @@
  - Express.js:A web framework for Node.js that simplifies handling routes and requests, enabling a smooth API development process
  - MongoDB:A NoSQL database used for managing and storing product, user,and order data, chosen for its flexibility and scalability
  - Cloudinary:A cloud-based service for managing and optimizing images,allowing easy upload, transformation, and delivery of high-quality images across the platform
-
- Demo: [https://abdelrhman1812.github.io/online_shop/](https://abdelrhman1812.github.io/electronic_store/)
+## Demo : 
+  [https://abdelrhman1812.github.io/online_shop/](https://abdelrhman1812.github.io/electronic_store/)
 
 ![Image](https://drive.google.com/uc?export=view&id=1564DZhp4DCYp4L4fDrJG4eFkw17r2Z2n)
 
