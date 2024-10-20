@@ -1,0 +1,65 @@
+.shop-page aside {
+  border-radius: 30px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  transition: all 0.3s ease;
+}
+
+.shop-page aside h5 {
+  color: var(--secondary);
+  font-size: 22px;
+  text-align: center;
+  font-weight: 600;
+  padding: 20px 0;
+}
+
+.shop-page aside h6 {
+  color: #fff;
+  font-size: 18px;
+  background-color: var(--secondary);
+  padding: 7px 14px;
+  border-radius: 6px;
+}
+
+.shop-page aside ul {
+  padding: 10px;
+}
+
+.shop-page aside ul li label {
+  padding: 5px 0;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.shop-page aside ul li label:hover {
+  color: var(--primary);
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 991px) {
+  .shop-page aside {
+    position: fixed;
+    z-index: 1;
+    max-width: 300px;
+    top: 0;
+    border-radius: 0;
+    min-height: 100vh;
+    overflow: scroll;
+  }
+  .show-sidebar {
+    transform: translateX(-100%);
+    transition: all 0.3s ease;
+  }
+}
+
+.shop-page aside button[type="submit"] {
+  background-color: var(--primary);
+  color: #fff;
+}
+
+input[type="checkbox"] {
+  accent-color: var(--primary);
+}

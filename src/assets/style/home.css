@@ -1,0 +1,216 @@
+/* ======================== Hero ======================== */
+.hero {
+  background-image: url("../Images//Hero/bg-1.jpg");
+  /* padding: 60px; */
+  border-radius: 30px;
+}
+.hero .hero-data {
+  padding: 60px 50px 10px 70px;
+}
+.hero .hero-data h2 {
+  font-size: 54px;
+  line-height: 1.2;
+  margin-bottom: 0;
+  color: #fff;
+  max-width: 500px;
+  font-weight: 600;
+  margin-bottom: 30px;
+  line-height: 1.5;
+}
+
+.hero .hero-data h2 span {
+  color: var(--primary);
+}
+
+.hero .hero-data p {
+  color: var(--text-muted-light);
+  line-height: 2;
+}
+
+.hero .hero-data button {
+  background-color: var(--primary);
+  border: none;
+  padding: 13px 15px 13px 15px;
+  color: #fff;
+  border-radius: 26px;
+  font-size: 18px;
+  margin-top: 30px;
+}
+.hero .hero-data button svg {
+  transition: all 0.3s ease;
+}
+.hero .hero-data button:hover svg {
+  margin-left: 2px;
+  transition: all 0.3s ease;
+}
+
+.hero img {
+  width: 75%;
+}
+/* ======================== category-section ======================== */
+
+.category figure img {
+  border-radius: 50%;
+  padding: 10px;
+}
+
+.category a {
+  z-index: 2;
+  font-weight: 700;
+  background-color: var(--background);
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin-top: -25px;
+  width: 80%;
+  border-radius: 100px;
+  transition: all 0.3s ease;
+  box-shadow: 0px 5px 20px 0px rgba(0, 0, 0, 0.1);
+}
+
+.category:hover a {
+  transform: translateY(-10px);
+  color: var(--text-light);
+  transition: all 0.3s ease;
+  background-color: var(--secondary);
+}
+
+/* ======================== Banners ======================== */
+
+.banner-item::before,
+.banner-item::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 1;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+
+.banner-item:hover::before,
+.banner-item:hover::after {
+  transition: all 0.4s ease;
+  -webkit-transition: all 0.4s ease;
+  background-color: #fbfbfb;
+}
+
+.banner-item:hover::before {
+  top: 50%;
+  bottom: 50%;
+}
+.banner-item:hover::after {
+  right: 50%;
+  left: 50%;
+}
+
+/* ======================== main-brand ======================== */
+
+.main-brand {
+  background-color: #000;
+  height: 122px;
+  position: relative;
+  z-index: 2;
+}
+
+/* ======================== Offer ======================== */
+
+#hot-deal .container-xl {
+  padding: 60px 0px;
+  background-image: url("../Images/hotdeal.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 30px;
+  margin: 40px auto;
+}
+
+.hot-deal {
+  text-align: center;
+}
+
+.hot-deal p:first-of-type {
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+  background-color: var(--secondary);
+  width: fit-content;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 5px;
+  border-radius: 6px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.hot-deal .hot-deal-countdown {
+  margin-bottom: 30px;
+}
+
+.hot-deal .hot-deal-countdown > li {
+  position: relative;
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  background: var(--primary);
+  text-align: center;
+  border-radius: 50%;
+  margin: 0px 5px;
+}
+
+.hot-deal .hot-deal-countdown > li > div {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.hot-deal .hot-deal-countdown > li > div h3 {
+  color: #fff;
+  margin-bottom: 0px;
+}
+
+.hot-deal .hot-deal-countdown > li > div span {
+  display: block;
+  font-size: 10px;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.hot-deal p {
+  text-transform: uppercase;
+  font-size: 24px;
+}
+
+.hot-deal a {
+  background-color: var(--primary);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 26px;
+  transition: all 0.3s ease;
+}
+.hot-deal a:hover {
+  opacity: 0.9;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  background-color: var(--secondary);
+}
+
+@media (max-width: 467px) {
+  .hero .hero-data {
+    padding: 30px 10px 10px 10px;
+  }
+
+  .hero .hero-data h2 {
+    font-size: 22px;
+  }
+  .hero .hero-data button {
+    padding: 10px;
+    width: 100%;
+  }
+}

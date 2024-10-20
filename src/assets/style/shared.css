@@ -1,0 +1,106 @@
+/* ================== Newsletter ================ */
+.newsletter-section {
+  background-image: url("../Images/Hero/bg-1.jpg");
+  color: #fff;
+  padding: 60px 30px;
+  text-align: center;
+  transform: translateY(40px);
+  border-radius: 30px;
+}
+
+.newsletter-section h2 {
+  font-size: 42px;
+  font-weight: 700;
+}
+
+.newsletter-section h2 span {
+  color: var(--primary);
+}
+
+.newsletter-section p {
+  color: var(--text-muted-light);
+}
+
+.newsletter-section input,
+.newsletter-section button {
+  padding: 15px 10px;
+  border-radius: 30px;
+  border: none;
+}
+
+.newsletter-section input {
+  background-color: var(--secondary);
+  width: 60%;
+  color: #fff;
+  padding-left: 20px;
+}
+
+.newsletter-section input::placeholder {
+  color: var(--text-muted-light);
+  padding-left: 10px;
+}
+
+.newsletter-section input:focus {
+  border: none;
+  outline: none;
+}
+.newsletter-section button {
+  background-color: var(--primary);
+  color: #fff;
+  width: 20%;
+}
+
+/* ================== page-header ==================  */
+
+.page-header {
+  padding: 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.page-header span {
+  background-color: #fff;
+  padding: 12.5px 25px;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-bottom: -35px;
+  width: fit-content;
+  border-color: rgba(0, 0, 0, 0.15);
+  border-radius: 30px;
+  transition: all 0.3s ease;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.empty a {
+  background-color: var(--secondary);
+  color: #fff;
+  padding: 10px;
+  width: 150px;
+  text-align: center;
+  font-weight: 600;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+}
+
+.empty a:hover {
+  transition: all 0.3s ease;
+  letter-spacing: 1px;
+}
+
+input {
+  caret-color: var(--primary);
+}
+
+.product-not-found figcaption {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--secondary);
+}
+
+@media (max-width: 467px) {
+  .newsletter-section {
+    padding: 10px;
+  }
+  .newsletter-section button {
+    width: 40%;
+  }
+}
