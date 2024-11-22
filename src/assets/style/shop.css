@@ -1,7 +1,7 @@
 .shop-page aside {
   border-radius: 30px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  background-color: #fff;
+  box-shadow: var(--shadow);
+  background-color: var(--background);
   transition: all 0.3s ease;
 }
 
@@ -16,7 +16,8 @@
 .shop-page aside h6 {
   color: #fff;
   font-size: 18px;
-  background-color: var(--secondary);
+  background-color: var(--bg-header);
+  box-shadow: var(--shadow);
   padding: 7px 14px;
   border-radius: 6px;
 }
@@ -31,28 +32,13 @@
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
+  color: var(--text-dark);
 }
 
 .shop-page aside ul li label:hover {
   color: var(--primary);
   letter-spacing: 1px;
   transition: all 0.3s ease;
-}
-
-@media (max-width: 991px) {
-  .shop-page aside {
-    position: fixed;
-    z-index: 1;
-    max-width: 300px;
-    top: 0;
-    border-radius: 0;
-    min-height: 100vh;
-    overflow: scroll;
-  }
-  .show-sidebar {
-    transform: translateX(-100%);
-    transition: all 0.3s ease;
-  }
 }
 
 .shop-page aside button[type="submit"] {
@@ -62,4 +48,36 @@
 
 input[type="checkbox"] {
   accent-color: var(--primary);
+}
+
+.filter-price span {
+  color: var(--text-dark);
+}
+
+.tap-filter .form-select {
+  background-color: var(--background);
+  color: var(--text-dark);
+  border: none;
+  box-shadow: var(--shadow);
+  border-radius: 6px;
+}
+
+.tap-filter svg {
+  color: var(--primary);
+}
+@media (max-width: 992px) {
+  .shop-page aside {
+    position: fixed;
+    z-index: 1;
+    max-width: 300px;
+    top: 0;
+    border-radius: 0;
+    min-height: 100vh;
+    overflow: scroll;
+    z-index: 3;
+  }
+  .show-sidebar {
+    transform: translateX(-100%);
+    transition: all 0.3s ease;
+  }
 }

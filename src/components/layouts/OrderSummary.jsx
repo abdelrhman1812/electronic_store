@@ -15,7 +15,7 @@ const OrderSummary = ({ cart, totalPrice }) => {
             <span className="fw-medium"> ${totalPrice}</span>
           </p>
           <Link to="/checkout-cash">
-            <button className="mt-3">Go to Checkout</button>
+            <button className="mt-3 border-0 text-white">Go to Checkout</button>
           </Link>
         </div>
       </div>

@@ -12,4 +12,25 @@ const getProductsByCategory = async (slug) => {
   return data.products?.filter((product) => product?.category?.slug === slug);
 };
 
-export { getCategories, getProductsByCategory };
+const addCategory = async (values) => {
+  const response = await clientApi.post("/categories", values);
+  return response;
+};
+
+const deleteCategory = async (categoryId) => {
+  const response = await clientApi.delete(`/categories/${categoryId}`);
+  return response;
+};
+
+const updateCategory = async (categoryId, values) => {
+  const response = await clientApi.put(`/categories/${categoryId}`, values);
+  return response;
+};
+
+export {
+  addCategory,
+  deleteCategory,
+  getCategories,
+  getProductsByCategory,
+  updateCategory,
+};

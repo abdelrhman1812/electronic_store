@@ -1,72 +1,54 @@
-import { useState } from "react";
 import { BiCart, BiHeart, BiMenu } from "react-icons/bi";
-import { Link, useNavigate } from "react-router-dom";
-import logo from "../../../assets/Images/logo.png";
+import { Link } from "react-router-dom";
 import { useCartContext } from "../../../context/CartContext";
 import { useWishListContext } from "../../../context/WishlistContext";
+import Logo from "../Logo/Logo";
+import SearchInput from "../SearchInput/SearchInput";
 
 const MainHeader = ({ toggle }) => {
   const { cartLength } = useCartContext();
   const { wishListLength } = useWishListContext();
-  const [searchQuery, setSearchQuery] = useState(""); // حالة للبحث
-  const navigate = useNavigate(); // للتوجيه
-
-  const handleSearch = (e) => {
-    e.preventDefault();
-    if (searchQuery) {
-      navigate(`/shop?search=${searchQuery}`); // التوجيه مع تمرير قيمة البحث
-    }
-  };
 
   return (
-    <section className="main-header overflow-hidden ">
+    <section className="main-header  ">
       <div className="container-xl px-3 py-3">
         <div className="row">
-          <div className="col-md-3 d-flex justify-content-center align-items-center">
-            <div className="header-logo">
-              <Link to={"/"} className="logo">
-                <img src={logo} alt="Electro" />
+          <Logo />
+
+          <SearchInput />
+
+          <div className="col-md-3 header-bottom d-flex justify-content-center align-items-center">
+            <div className="header-icons  d-flex justify-content-center align-items-center gap-3 ">
+              <Link
+                to={"/"}
+                className="d-flex flex-column align-items-center gap-2 text-white home-icon"
+              >
+                <BiCart size={20} />
+                <span>Home</span>
               </Link>
-            </div>
-          </div>
-
-          <div className="col-md-6 d-flex justify-content-center align-items-center">
-            <div className="header-search">
-              <form onSubmit={handleSearch}>
-                <input
-                  className="input"
-                  placeholder="Search here"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                />
-                <button type="submit" className="search-btn">
-                  Search
-                </button>
-              </form>
-            </div>
-          </div>
-
-          <div className="col-md-3 d-flex justify-content-center align-items-center">
-            <div className="header-ctn">
               <div className="position-relative">
                 <Link
                   to={"/wishlist"}
-                  className="d-flex flex-column align-items-center gap-2"
+                  className="d-flex flex-column align-items-center gap-2 text-white"
                 >
                   <BiHeart size={20} />
                   <span>Wishlist</span>
-                  <small className="qty wishlist-qty">{wishListLength}</small>
+                  <small className="qty wishlist-qty position-absolute top-0 end-0 rounded-circle d-flex justify-content-center align-items-center text-white rounded-circle">
+                    {wishListLength}
+                  </small>
                 </Link>
               </div>
 
               <div className="position-relative">
                 <Link
                   to={"/cart"}
-                  className="d-flex flex-column align-items-center gap-2"
+                  className="d-flex flex-column align-items-center gap-2 text-white"
                 >
                   <BiCart size={20} />
                   <span>Cart</span>
-                  <small className="qty cart-qty">{cartLength}</small>
+                  <small className="qty cart-qty position-absolute top-0 end-0  d-flex justify-content-center align-items-center text-white rounded-circle">
+                    {cartLength}
+                  </small>
                 </Link>
               </div>
 

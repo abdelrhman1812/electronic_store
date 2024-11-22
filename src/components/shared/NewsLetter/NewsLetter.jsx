@@ -2,7 +2,7 @@ import "../../../assets/style/shared.css";
 
 const NewsLetter = () => {
   return (
-    <section className="newsletter-section container-xl">
+    <section className="newsletter-section container-xl overflow-hidden">
       <div className="row">
         <div className="col-md-4">
           <h2>

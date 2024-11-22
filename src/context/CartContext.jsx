@@ -47,7 +47,7 @@ export const CartProvider = ({ children }) => {
 
   /* Function to update quantity of product in cart */
   const updateQuantityOfProduct = async (productId, quantity) => {
-    setIsLoading(true);
+    // setIsLoading(true);
     setIsError(null);
     try {
       const data = await updateCart(productId, quantity);
@@ -68,7 +68,7 @@ export const CartProvider = ({ children }) => {
   /* Function to delete item from cart */
 
   const deleteItemFromCart = async (productId) => {
-    setIsLoading(true);
+    // setIsLoading(true);
     setIsError(null);
     try {
       const data = await deleteCartItem(productId);

@@ -1,7 +1,11 @@
 import { createHashRouter, redirect, RouterProvider } from "react-router-dom";
+import BrandManagement from "./components/layouts/Admin/BrandManagement/BrandManagement";
+import CategoryManagement from "./components/layouts/Admin/CategoryManagement/CategoryManagement";
+import MainAdmin from "./components/layouts/Admin/MainAdmin";
+import ProductList from "./components/layouts/Admin/ProductList";
 import AdminLayout from "./pages/Admin/AdminLayout/AdminLayout";
 import BrandPage from "./pages/BrandPage/BrandPage";
-import { Cart } from "./pages/Cart/Cart";
+import CartPage from "./pages/CartPage/CartPage";
 import CategoryPage from "./pages/CategoryPage/CategoryPage";
 import CheckoutCashPage from "./pages/CheckoutCashPage/CheckoutCashPage";
 import Home from "./pages/Home/Home";
@@ -28,7 +32,7 @@ const Routes = () => {
         { path: "home", element: <Home /> },
         { path: "shop", element: <ShopPage /> },
         { path: "brands", element: <BrandPage /> },
-        { path: "cart", element: <Cart /> },
+        { path: "cart", element: <CartPage /> },
         { path: "/:category", element: <CategoryPage /> },
         { path: "wishlist", element: <WishListPage /> },
         { path: "checkout-cash", element: <CheckoutCashPage /> },
@@ -48,7 +52,16 @@ const Routes = () => {
         { path: "*", element: <NotFoundPage /> },
       ],
     },
-    { path: "admin", element: <AdminLayout /> },
+    {
+      path: "admin",
+      element: <AdminLayout />,
+      children: [
+        { index: true, element: <MainAdmin /> },
+        { path: "productList", element: <ProductList /> },
+        { path: "brandList", element: <BrandManagement /> },
+        { path: "categoryList", element: <CategoryManagement /> },
+      ],
+    },
   ]);
 
   return <RouterProvider router={routers} />;

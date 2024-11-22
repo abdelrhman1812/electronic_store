@@ -1,61 +1,3 @@
-.titlePage {
-  font-size: 2.75rem;
-}
-
-.date input {
-  width: 100%;
-  padding: 10px;
-  border-radius: 7px;
-  outline: 0;
-  border: 2px solid rgb(111, 103, 103);
-  margin-top: 3px;
-}
-
-.w_h20 {
-  width: 20px;
-  height: 20px;
-}
-.w_h25 {
-  width: 25px;
-  height: 25px;
-}
-
-.w_h_p25 {
-  width: 25px;
-  height: 25px;
-  cursor: pointer;
-}
-
-.w-box5 {
-  width: 40px;
-}
-
-.payBtn {
-  margin-bottom: -20px;
-}
-
-@media (min-width: 768px) {
-  .orderSum-mt {
-    margin-top: 210px;
-  }
-}
-@media (max-width: 767px) {
-  .orderSum-mt {
-    margin-top: 40px;
-  }
-}
-
-.OrderSum {
-  width: 505px;
-  height: 354px;
-}
-
-.txt {
-  color: #00000099;
-  font-weight: 400;
-  font-size: 20px;
-}
-
 /* checkout-cash */
 .checkout-cash h2 {
   color: var(--primary);
@@ -66,16 +8,17 @@
 .checkout-cash form {
   width: 500px;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--shadow);
   border-radius: 30px;
 }
 .checkout-cash form input {
   padding: 10px;
   border-radius: 7px;
   outline: 0;
-  border: 1px solid #ccc;
+  border: 1px solid var(--border-color);
   margin-top: 3px;
   transition: all 0.3s ease;
+  background-color: var(--background);
 }
 
 .checkout-cash form button {
@@ -92,7 +35,7 @@
 
 .checkout-cash form button:hover {
   transition: all 0.3s ease;
-  background-color: var(--secondary);
+  background-color: #022554;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 

@@ -1,59 +1,55 @@
 .register {
   min-height: 80vh;
-  /* margin: 0 0 60px 0; */
   display: flex;
   align-items: center;
 }
-
 .register .container-xl {
-  /* background: -webkit-linear-gradient(left, #797878, #797878); */
-
   border-radius: 30px;
-  /* background: -webkit-linear-gradient(left, #0b192c, #00c6ff); */
-  background-image: url("../Images/bg4-1.jpg");
-  background-position: center;
-  background-size: cover;
+  box-shadow: var(--shadow);
 }
+.register h2 {
+  color: var(--primary);
+  padding-left: 10px;
+}
+
 .register-left {
   text-align: center;
-  color: #fff;
-  /* background: url("../Images/bg4-1.jpg"); */
-  background-size: cover;
-  background-position: center;
   display: grid;
   place-content: center;
   place-items: center;
-}
-.register-left input {
-  border: none;
-  border-radius: 1.5rem;
-  padding: 2%;
-  width: 60%;
-  background: var(--secondary);
-  font-weight: bold;
-  color: #fff;
-  margin-top: 6px;
-  cursor: pointer;
-  margin-bottom: 10px;
+  color: var(--secondary);
 }
 
-.register-left h3,
-.register-left p {
-  color: var(--muted);
+/* Inputs */
+.register input {
+  background-color: var(--card-foreground);
+  border: 1px solid var(--border-color-light);
+  color: var(--text-dark);
 }
+
+.register-right .item input {
+  border-radius: 50px;
+  padding: 10px 10px 10px 20px;
+}
+
+.register input::placeholder {
+  color: var(--text-muted-light);
+}
+
+.register input:focus {
+  background-color: var(--card-foreground);
+  border-color: var(--primary);
+  color: var(--text-dark);
+}
+
+/* Rounded For Login And Register */
 
 .register-right {
-  /* background: #f8f9fa; */
   border-radius: 30px;
-  box-shadow: 0px 5px 20px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow);
 
   border-top-left-radius: 10% 50%;
   border-bottom-left-radius: 10% 50%;
-}
-.register-left img {
-  margin-top: 15%;
-  margin-bottom: 5%;
-  width: 25%;
 }
 
 .login .register-right {
@@ -73,15 +69,11 @@
   margin-bottom: 20px;
 }
 
-.register-right .item input {
-  border-radius: 50px;
-  padding: 10px 10px 10px 20px;
+.register .item-group .item {
+  width: 48%;
 }
 
-.register-right .item input:focus {
-  box-shadow: none !important;
-  border-color: var(--primary);
-}
+/* Messages */
 
 .register-right .item span.error,
 .register-right .item span.success {
@@ -97,7 +89,7 @@
   top: 15px;
   right: 10px;
   position: absolute;
-  color: var(--muted);
+  color: var(--primary);
 }
 
 .register button {
@@ -107,12 +99,10 @@
   border: none;
   color: #fff;
   border-radius: 50px;
-  display: block;
-  margin: 0 auto;
 }
 
-.register p.already a {
-  color: var(--muted);
+.register p.already {
+  color: var(--text-muted-light);
   transition: all 0.3s;
 }
 
@@ -120,10 +110,6 @@
   color: var(--primary);
   letter-spacing: 1px;
   transition: all 0.3s;
-}
-
-.register .item-group .item {
-  width: 48%;
 }
 
 @media (max-width: 767px) {

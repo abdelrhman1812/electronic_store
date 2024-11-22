@@ -10,9 +10,9 @@ const TapFilter = ({ showSidBarHandler }) => {
           size={30}
         />
         <select className="form-select w-auto">
-          <option value="most-popular">Most Popular</option>
+          {/* <option value="most-popular">Most Popular</option>
           <option value="price-low-high">Price: Low to High</option>
-          <option value="price-high-low">Price: High to Low</option>
+          <option value="price-high-low">Price: High to Low</option> */}
         </select>
       </div>
     </section>

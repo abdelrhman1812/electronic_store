@@ -1,6 +1,6 @@
-// src/pages/Login.jsx
-import notify from "../../lib/notify";
 import {
+  bgImageDark,
+  bgImageLight,
   BiLoaderCircle,
   FaCircleXmark,
   FaEye,
@@ -9,17 +9,20 @@ import {
   login,
   MessageError,
   MessageSuccess,
+  notify,
   useCartContext,
   useFormik,
   useMemo,
   useNavigate,
   useState,
+  useTheme,
   useUserContext,
   useWishListContext,
   Yup,
 } from "./index";
 
 const Login = () => {
+  const { isDark } = useTheme();
   const [show, setShow] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const { getUser } = useUserContext();
@@ -32,7 +35,8 @@ const Login = () => {
   const navigate = useNavigate();
   /* ========== Login Submit ========== */
   const loginSubmit = async (values) => {
-    setIsLoading(true); // Set loading state to true
+    setIsLoading(true);
+
     try {
       const data = await login(values);
       getUser();
@@ -47,7 +51,7 @@ const Login = () => {
     } catch (error) {
       setError(error.response.data.message);
     } finally {
-      setIsLoading(false); // Set loading state to false
+      setIsLoading(false);
     }
   };
 
@@ -86,7 +90,14 @@ const Login = () => {
 
   return (
     <section className="register login">
-      <div className="container-xl">
+      <div
+        className="container-xl"
+        style={{
+          backgroundImage: `url(${isDark ? bgImageDark : bgImageLight})`,
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+        }}
+      >
         <div className="row">
           {/* left */}
           <div className="col-md-9 register-right">
@@ -168,8 +179,8 @@ const Login = () => {
             </form>
             <p className="text-center already mt-3">
               Don’t have an account?
-              <Link to="/register" className="m-0">
-                <span>Register</span>
+              <Link to="/register" className="mx-1 ">
+                Register
               </Link>
             </p>
           </div>
@@ -181,7 +192,6 @@ const Login = () => {
             <p>
               Welcome! Please enter your credentials to access your account.
             </p>
-            <input type="submit" value="Register" />
           </div>
         </div>
       </div>

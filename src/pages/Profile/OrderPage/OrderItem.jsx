@@ -3,7 +3,7 @@ import "./../../../assets/style/order.css";
 const OrderItem = ({ orderItem }) => {
   return (
     <>
-      <div className="order-item">
+      <div className="order-item d-flex align-items-center position-relative p-2 mb-2">
         <figure>
           <img
             src={orderItem?.productId?.imageCover.secure_url}
@@ -14,7 +14,9 @@ const OrderItem = ({ orderItem }) => {
         <div className="order-info">
           <h5>{orderItem?.productId?.title}</h5>
           <h6 className="fw-bold">${orderItem?.price} </h6>
-          <span>{orderItem.quantity} Piece</span>
+          <span className="position-absolute bottom-0 end-0 p-1  text-center text-white">
+            {orderItem.quantity} Piece
+          </span>
         </div>
       </div>
     </>

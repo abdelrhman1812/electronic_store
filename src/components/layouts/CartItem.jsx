@@ -9,7 +9,7 @@ const CartItem = ({
   return (
     <>
       <div
-        className="row  border-bottom px-2 py-3 my-3 rounded-2 cart-item  "
+        className="row px-2 py-3 my-3 rounded-2 cart-item  "
         key={product.productId._id}
       >
         <div className="col-md-8 d-flex  gap-3 ">

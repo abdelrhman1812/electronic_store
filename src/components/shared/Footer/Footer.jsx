@@ -9,12 +9,23 @@ import {
 } from "react-icons/fa";
 import { RiVisaLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
-// import logo from "../../../assets/Images/logo.png";
+import bgImageLight from "../../../assets/Images/bg4-light.jpg";
+import bgImageDark from "../../../assets/Images/Hero/bg-1.jpg";
 import "../../../assets/style/footer.css";
+import { useTheme } from "../../../context/ThemeProvider";
 
 const Footer = () => {
+  const { isDark } = useTheme();
+
   return (
-    <footer className="my-0 mx-auto">
+    <footer
+      className="my-0 mx-auto"
+      style={{
+        backgroundImage: `url(${isDark ? bgImageDark : bgImageLight})`,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+      }}
+    >
       <div className="container-xl">
         <div className="row m-0">
           <div className="col-md-3">

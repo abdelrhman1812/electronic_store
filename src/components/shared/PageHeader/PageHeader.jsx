@@ -7,7 +7,7 @@ const PageHeader = ({ title }) => {
     <section className="page-header">
       <div className="container-xl">
         <div className="row">
-          <span className=" border border-1 position-relative z-1    d-flex justify-content-center gap-2 align-items-center">
+          <span className="  position-relative z-1   d-flex justify-content-center gap-2 align-items-center">
             <GoHome size={23} />
             <BiChevronRight size={23} />
             {title}

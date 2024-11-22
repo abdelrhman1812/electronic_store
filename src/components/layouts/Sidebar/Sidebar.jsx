@@ -1,5 +1,8 @@
 import { useFormik } from "formik";
 import { BiMessageSquareX } from "react-icons/bi";
+import bgImageLight from "../../../assets/Images/bg4-light.jpg";
+import bgImageDark from "../../../assets/Images/Hero/bg-1.jpg";
+import { useTheme } from "../../../context/ThemeProvider";
 import useData from "../../../services/Hooks/useData";
 import CheckboxItem from "./CheckboxItem";
 import PriceFilter from "./PriceFilter";
@@ -10,8 +13,11 @@ const Sidebar = ({
   setIsLoading,
   showSidBarHandler,
 }) => {
+  const { isDark } = useTheme();
+
   const { brands, categories, isLoading: dataLoading } = useData();
 
+  // catch Value
   const getValues = async (values) => {
     setIsLoading(true);
     try {
@@ -28,6 +34,7 @@ const Sidebar = ({
     }
   };
 
+  // Initial Values
   const formik = useFormik({
     initialValues: {
       minPrice: 0,
@@ -64,6 +71,7 @@ const Sidebar = ({
     }
   };
 
+  // clear filters
   const clearFilter = async () => {
     const resetValues = {
       minPrice: 0,
@@ -82,11 +90,17 @@ const Sidebar = ({
   return (
     <aside
       className={`col-lg-3 p-3 h-100 ${!showSidBar ? "show-sidebar" : ""}`}
+      style={{
+        backgroundImage: `url(${isDark ? bgImageDark : bgImageLight})`,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+      }}
     >
+      {/* Icon */}
       <BiMessageSquareX
         size={30}
         onClick={showSidBarHandler}
-        className=" text-danger ms-auto d-block"
+        className=" text-danger ms-auto d-block d-lg-none"
       />
 
       <h5>Filters</h5>
@@ -122,7 +136,7 @@ const Sidebar = ({
         <button
           disabled={!(formik.isValid && formik.dirty)}
           type="submit"
-          className="btn w-100"
+          className="btn w-100 border-0"
         >
           Apply Filter
         </button>
@@ -130,7 +144,7 @@ const Sidebar = ({
           disabled={!(formik.isValid && formik.dirty)}
           onClick={clearFilter}
           type="button"
-          className="btn btn-danger my-2 w-100"
+          className="btn btn-danger my-2 w-100 border-0"
         >
           Clear
         </button>

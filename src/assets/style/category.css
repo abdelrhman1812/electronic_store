@@ -1,0 +1,10 @@
+.category-list .item {
+  box-shadow: var(--shadow);
+  border-radius: 12px;
+  padding: 10px;
+  background-color: var(--card-foreground);
+}
+
+.category-list .item img {
+  border-radius: 50%;
+}

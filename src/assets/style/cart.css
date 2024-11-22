@@ -1,16 +1,23 @@
-.cart .cart-item p {
-  margin: 0;
+.cart .row .items {
+  border-radius: 30px;
+  box-shadow: var(--shadow);
 }
 
-.cart .row .items {
-  border-radius: 30px !important;
+.cart .cart-item {
+  border-bottom: 1px solid var(--border-color-light);
 }
 .cart .cart-item img {
   width: 80px;
   object-fit: cover;
   transition: all 0.3s ease;
-  border-right: 1px solid #e0e0e0;
   padding-right: 3px;
+  border-radius: 6px;
+}
+
+.cart .cart-item p,
+.cart .cart-item h4,
+.cart .cart-item span {
+  color: var(--secondary);
 }
 
 .cart .cart-item:last-of-type {
@@ -19,7 +26,6 @@
 
 .cart .cart-item h4 {
   font-size: 18px;
-  color: var(--secondary);
 }
 
 .cart button.update {
@@ -32,7 +38,7 @@
 }
 
 .cart button.update:hover {
-  background-color: var(--secondary);
+  background-color: #022554;
   transform: scale(1.1);
   transition: all 0.3s ease;
 }
@@ -42,9 +48,13 @@
   color: #fff;
   font-size: 16px;
   border-radius: 30px;
-  transition: all 0.3s ease;
   padding: 7px 14px;
   width: 150px;
+  transition: all 0.3s ease;
+}
+.cart button.clear:hover {
+  transform: scale(1.1);
+  transition: all 0.3s ease;
 }
 
 .cart svg {
@@ -62,7 +72,8 @@
 /* Order Summary */
 
 .cart .order-summary {
-  border: 1px solid #e0e0e0;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow);
   padding: 20px;
   border-radius: 30px;
 }
@@ -72,13 +83,15 @@
   font-weight: 700;
 }
 
+.cart .order-summary p {
+  color: var(--secondary);
+}
+
 .cart .order-summary button {
   font-size: 16px;
   font-weight: 500;
   border-radius: 30px;
-  border: none;
   padding: 7px 14px;
   background-color: var(--primary);
-  color: #fff;
   width: 200px;
 }

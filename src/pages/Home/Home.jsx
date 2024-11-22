@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import "../../assets/style/home.css";
 import Banner from "../../components/layouts/Banner";
 import CategorySection from "../../components/layouts/CategorySection/CategorySection";
@@ -9,6 +10,10 @@ import useData from "../../services/Hooks/useData";
 
 const Home = () => {
   const { products, categories, isLoading } = useData();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <section className="home overflow-hidden">

@@ -2,8 +2,12 @@ import { toast } from "react-toastify";
 
 const notify = (type, msg) => {
   toast[type](msg, {
-    duration: 1000,
     position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
   });
 };
 

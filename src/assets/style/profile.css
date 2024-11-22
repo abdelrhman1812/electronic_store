@@ -1,0 +1,175 @@
+.sideBar-profile {
+  background-color: var(--card-foreground);
+  box-shadow: var(--shadow);
+  border-radius: 12px;
+  padding: 10px;
+  min-height: 250px;
+  transition: all 0.3s ease;
+}
+
+.sideBar-profile h4 {
+  color: var(--primary);
+  text-align: center;
+}
+
+.sideBar-profile ul li a {
+  width: 100%;
+  display: block;
+  padding: 5px 10px;
+  transition: all 0.3s ease;
+  border-bottom: 1px solid var(--border-color);
+
+  color: var(--secondary);
+}
+
+.sideBar-profile ul li a:hover {
+  color: var(--primary);
+  transition: all 0.3s ease;
+}
+
+.sideBar-profile ul li a.active-link-profile {
+  background-color: var(--primary);
+  color: #fff;
+  box-shadow: var(--shadow);
+  border-radius: 6px;
+}
+
+.sideBar-profile img {
+  max-width: 200px !important;
+  height: 200px;
+  object-fit: cover;
+  object-position: top;
+}
+
+/* update image */
+
+.icon-update-image {
+  transform: translateX(-50%);
+  font-size: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-color: var(--primary);
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+}
+
+.icon-update-image:hover {
+  padding: 15px;
+}
+
+/* =========== Profile user =========== */
+.account-info .user-information,
+.account-info .change-password {
+  background-color: var(--card-foreground);
+  padding: 20px;
+  border-radius: 30px;
+  box-shadow: var(--shadow);
+}
+.account-info {
+  color: var(--primary);
+}
+
+.account-info h2 {
+  font-weight: 400;
+  font-size: 22px;
+}
+
+.account-info .user-information .item p,
+.account-info .change-password label {
+  color: var(--secondary);
+  font-weight: 600;
+}
+
+.account-info .user-information .item span,
+.account-info .user-information label {
+  font-weight: 300;
+}
+
+.account-info .form-group.update {
+  gap: 30px;
+}
+
+.account-info .form-group.update label {
+  min-width: 80px;
+  color: var(--text-dark);
+}
+
+.account-info .change-password label {
+  color: var(--secondary);
+  width: 150px;
+}
+
+.account-info .form-group.update input,
+.account-info .change-password input {
+  padding: 10px;
+  border: none;
+  background-color: var(--background);
+  color: var(--text-dark);
+}
+
+.account-info .form-group.update input {
+  border-bottom: 1px solid var(--border-color-light);
+  margin: 15px 0;
+  background-color: var(--card-foreground);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.account-info .form-group.update input:focus,
+.account-info .change-password input:focus {
+  outline: none;
+  box-shadow: var(--shadow);
+  background-color: var(--card-foreground);
+}
+
+.account-info .form-group.update input:focus {
+  border-bottom-color: var(--primary);
+}
+
+.account-info .form-group.update .error-msg {
+  bottom: -20px;
+  left: 165px;
+}
+
+.account-info .change-password input {
+  box-shadow: var(--shadow);
+  padding: 7px 14px;
+  border-radius: 30px;
+}
+
+.account-info button {
+  width: 200px;
+  background-color: var(--primary);
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 30px;
+  box-shadow: var(--shadow);
+}
+
+/* Responsive Styles */
+@media (max-width: 767px) {
+  .change-password input {
+    width: 100%;
+  }
+  .change-password .item {
+    flex-direction: column;
+    align-items: flex-start !important;
+  }
+
+  .sideBar-profile {
+    position: fixed !important;
+    left: 0;
+    z-index: 3;
+    width: 250px;
+    top: 0;
+    bottom: 0;
+  }
+  .visible-sidebar-profile {
+    transform: translateX(-100%);
+  }
+}
+
+button:disabled {
+  opacity: 0.5;
+}

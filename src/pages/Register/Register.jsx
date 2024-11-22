@@ -1,25 +1,29 @@
-import { BiLoaderCircle } from "react-icons/bi";
-import notify from "../../lib/notify";
 import {
+  bgImageDark,
+  bgImageLight,
+  BiLoaderCircle,
   FaCircleXmark,
   FaEye,
   Link,
   MessageError,
   MessageSuccess,
+  notify,
   register,
   useFormik,
   useMemo,
   useNavigate,
   useState,
+  useTheme,
   Yup,
 } from "./index";
-
 const Register = () => {
   const [show, setShow] = useState(false);
   const [success, setSuccess] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const [error, setError] = useState(null);
+  const { isDark } = useTheme();
+
   // const eye = useRef(null);
 
   const registerSubmit = async (values) => {
@@ -90,12 +94,18 @@ const Register = () => {
 
   return (
     <section className="register">
-      <div className="container-xl">
+      <div
+        className="container-xl"
+        style={{
+          backgroundImage: `url(${isDark ? bgImageDark : bgImageLight})`,
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+        }}
+      >
         <div className="row">
           <div className="col-md-3 register-left">
             <h3>Welcome</h3>
             <p>Start Your Journey Now!</p>
-            <input type="submit" value="Login" />
           </div>
 
           <div className="col-md-9 register-right">
@@ -124,14 +134,6 @@ const Register = () => {
                 ) : (
                   ""
                 )}
-                {/* {!formik.errors.name && formik.touched.name ? (
-                  <span className="is-valid text-success success ">
-                    <IoIosCheckmarkCircleOutline />
-                    Your name has been approved
-                  </span>
-                ) : (
-                  ""
-                )} */}
               </div>
 
               <div className="d-flex gap-3 item-group justify-content-between">
@@ -284,12 +286,13 @@ const Register = () => {
 
               {/* Submit Button */}
               <button
+                className="d-block mx-auto"
                 disabled={!(formik.isValid && formik.dirty) || isLoading}
                 type="submit"
               >
                 {isLoading ? <BiLoaderCircle /> : "Register"}
               </button>
-              <p className="mt-3 text-center">
+              <p className="mt-3 already text-center">
                 Already have an account? <Link to="/login">Login</Link>
               </p>
             </form>

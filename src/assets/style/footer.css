@@ -1,8 +1,8 @@
 footer {
-  background-image: url("../Images/bg4-1.jpg");
   padding: 100px 0 20px 0;
   width: 95%;
   border-radius: 30px;
+  box-shadow: var(--shadow);
 }
 
 footer h2 {
@@ -46,7 +46,7 @@ footer ul li a:hover {
 }
 footer li a {
   transition: all 0.3s ease;
-  color: #00000099;
+  color: var(--text-dark);
 }
 
 .copyRight-desc {
@@ -57,6 +57,7 @@ footer li a {
 footer p {
   font-weight: 400;
   font-size: 14px;
+  color: var(--text-dark);
 }
 
 @media (max-width: 1200px) {

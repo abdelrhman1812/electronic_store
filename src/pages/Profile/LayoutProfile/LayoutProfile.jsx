@@ -1,20 +1,34 @@
+import { useState } from "react";
+import { BiAlignRight } from "react-icons/bi";
 import { Outlet } from "react-router-dom";
 import Sidebar from "../OrderPage/Sidebar";
 
 const LayoutProfile = () => {
+  const [showSidBar, setShowSidBar] = useState(false);
+  const toggleSidebar = () => {
+    setShowSidBar(!showSidBar);
+  };
   return (
-    <div className=" py-3 min-vh-100">
+    <section className="py-3 min-vh-100 position-relative overflow-hidden">
+      <BiAlignRight
+        size={30}
+        className="d-block d-md-none ms-auto me-3 text-primary"
+        onClick={toggleSidebar}
+      />
+
       <div className="container-xl">
-        <div className="row">
-          <div className="col-md-4">
-            <Sidebar />
+        <div className="row g-3">
+          {/* SideBer */}
+          <div className="col-md-3">
+            <Sidebar showSidBar={showSidBar} toggleSidebar={toggleSidebar} />
           </div>
-          <div className="col-md-8">
+          {/* Main content */}
+          <div className="col-md-9">
             <Outlet />
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

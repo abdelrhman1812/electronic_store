@@ -1,9 +1,11 @@
 /* ======================== Hero ======================== */
 .hero {
   background-image: url("../Images//Hero/bg-1.jpg");
-  /* padding: 60px; */
+  padding: 60px 0;
   border-radius: 30px;
+  box-shadow: var(--shadow);
 }
+
 .hero .hero-data {
   padding: 60px 50px 10px 70px;
 }
@@ -23,7 +25,7 @@
 }
 
 .hero .hero-data p {
-  color: var(--text-muted-light);
+  color: #f5f5f5;
   line-height: 2;
 }
 
@@ -64,14 +66,15 @@
   width: 80%;
   border-radius: 100px;
   transition: all 0.3s ease;
-  box-shadow: 0px 5px 20px 0px rgba(0, 0, 0, 0.1);
+  color: var(--text-dark);
+  box-shadow: var(--shadow);
 }
 
 .category:hover a {
   transform: translateY(-10px);
-  color: var(--text-light);
+  color: #fff;
   transition: all 0.3s ease;
-  background-color: var(--secondary);
+  background-color: #022554;
 }
 
 /* ======================== Banners ======================== */
@@ -105,93 +108,43 @@
   left: 50%;
 }
 
-/* ======================== main-brand ======================== */
-
-.main-brand {
-  background-color: #000;
-  height: 122px;
-  position: relative;
-  z-index: 2;
-}
-
 /* ======================== Offer ======================== */
 
 #hot-deal .container-xl {
   padding: 60px 0px;
-  background-image: url("../Images/hotdeal.png");
-  background-position: center;
-  background-repeat: no-repeat;
+  box-shadow: var(--shadow);
   border-radius: 30px;
   margin: 40px auto;
 }
 
-.hot-deal {
-  text-align: center;
-}
-
 .hot-deal p:first-of-type {
-  color: #fff;
-  font-weight: 600;
-  font-size: 14px;
-  background-color: var(--secondary);
-  width: fit-content;
-  margin-right: auto;
-  margin-left: auto;
-  padding: 5px;
-  border-radius: 6px;
-  position: absolute;
-  top: 0;
+  background-color: #022554;
+  box-shadow: var(--shadow);
+  font-size: 16px !important;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -100%);
 }
 
-.hot-deal .hot-deal-countdown {
-  margin-bottom: 30px;
+.hot-deal h2,
+.hot-deal p:last-of-type {
+  color: var(--secondary);
 }
 
 .hot-deal .hot-deal-countdown > li {
-  position: relative;
-  display: inline-block;
   width: 100px;
   height: 100px;
   background: var(--primary);
-  text-align: center;
-  border-radius: 50%;
-  margin: 0px 5px;
 }
 
 .hot-deal .hot-deal-countdown > li > div {
-  position: absolute;
-  left: 0;
-  right: 0;
   top: 50%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }
 
-.hot-deal .hot-deal-countdown > li > div h3 {
-  color: #fff;
-  margin-bottom: 0px;
-}
-
-.hot-deal .hot-deal-countdown > li > div span {
-  display: block;
-  font-size: 10px;
-  text-transform: uppercase;
-  color: #fff;
-}
-
-.hot-deal p {
-  text-transform: uppercase;
-  font-size: 24px;
-}
-
 .hot-deal a {
   background-color: var(--primary);
-  color: #fff;
-  padding: 10px 20px;
-  border-radius: 26px;
   transition: all 0.3s ease;
 }
 .hot-deal a:hover {

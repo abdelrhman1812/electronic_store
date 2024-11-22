@@ -1,4 +1,8 @@
-/* ================== Newsletter ================ */
+svg {
+  cursor: pointer;
+}
+
+/* ================= Newsletter ================ */
 .newsletter-section {
   background-image: url("../Images/Hero/bg-1.jpg");
   color: #fff;
@@ -6,6 +10,7 @@
   text-align: center;
   transform: translateY(40px);
   border-radius: 30px;
+  box-shadow: var(--shadow);
 }
 
 .newsletter-section h2 {
@@ -18,7 +23,7 @@
 }
 
 .newsletter-section p {
-  color: var(--text-muted-light);
+  color: #ffffff8a;
 }
 
 .newsletter-section input,
@@ -29,14 +34,15 @@
 }
 
 .newsletter-section input {
-  background-color: var(--secondary);
+  background-color: var(--bg-header);
+  box-shadow: var(--shadow);
   width: 60%;
-  color: #fff;
+  color: var(--text-muted);
   padding-left: 20px;
 }
 
 .newsletter-section input::placeholder {
-  color: var(--text-muted-light);
+  color: #ffffff8a;
   padding-left: 10px;
 }
 
@@ -50,35 +56,38 @@
   width: 20%;
 }
 
-/* ================== page-header ==================  */
+/* ================= page-header =================  */
 
 .page-header {
   padding: 10px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .page-header span {
-  background-color: #fff;
+  background-color: var(--background);
   padding: 12.5px 25px;
   margin-top: 10px;
   margin-left: 10px;
   margin-bottom: -35px;
   width: fit-content;
-  border-color: rgba(0, 0, 0, 0.15);
   border-radius: 30px;
   transition: all 0.3s ease;
-  color: rgba(0, 0, 0, 0.5);
+  color: var(--secondary);
+  border: 1px solid var(--border-color);
 }
 
+/* ================= empty ================= */
+
 .empty a {
-  background-color: var(--secondary);
-  color: #fff;
   padding: 10px;
   width: 150px;
-  text-align: center;
-  font-weight: 600;
   border-radius: 30px;
   transition: all 0.3s ease;
+  background-color: var(--primary);
+}
+
+.empty h2 {
+  color: var(--secondary);
 }
 
 .empty a:hover {
@@ -96,6 +105,47 @@ input {
   color: var(--secondary);
 }
 
+/*  ================= error-msg ================= */
+
+.error-msg {
+  color: var(--destructive);
+}
+
+/* ================= section-title ================= */
+
+.section-title::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  height: 1px;
+  width: 80%;
+  margin-right: auto;
+  background-color: rgba(0, 136, 255, 0.15);
+  transform: translateX(-60px);
+}
+
+.section-title a {
+  z-index: 1;
+  background-color: var(--background);
+  border: 1px solid rgba(0, 136, 255, 0.15);
+  border-radius: 30px;
+  width: 150px;
+  color: var(--text-dark);
+  transition: all 0.3s ease;
+}
+
+.section-title a:hover {
+  background-color: var(--primary);
+  color: #fff;
+}
+
+.section-title h2 {
+  padding: 0 10px;
+  z-index: 1;
+  color: var(--secondary);
+  background-color: var(--background);
+}
+
 @media (max-width: 467px) {
   .newsletter-section {
     padding: 10px;
@@ -103,4 +153,178 @@ input {
   .newsletter-section button {
     width: 40%;
   }
+}
+
+/* ============ scroll-bar ============ */
+/* background Container */
+::-webkit-scrollbar-track {
+  background-color: #eee;
+}
+
+/* width container */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* width item */
+::-webkit-scrollbar-thumb {
+  border-radius: 50px;
+  background-color: var(--primary);
+  /* box-shadow: 0 0 20px 50px var(--bg-header); */
+}
+
+/* Dark Mode */
+
+.box-toggle {
+  position: fixed;
+  right: 0;
+  top: 30%;
+  z-index: 2;
+  background-color: var(--border-color-light);
+  border-radius: 6px;
+  padding: 5px;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease;
+}
+
+.box-toggle .icon-toggle-box {
+  left: -35px;
+  top: 16%;
+  transform: translateY(-50%);
+  filter: drop-shadow(0 0 3px rgba(3, 102, 214, 0.3));
+  border-radius: 6px;
+  animation: rotate 3s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.switch {
+  font-size: 17px;
+  position: relative;
+  display: inline-block;
+  width: 64px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #73c0fc;
+  transition: 0.4s;
+  border-radius: 30px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 30px;
+  width: 30px;
+  border-radius: 20px;
+  left: 2px;
+  bottom: 2px;
+  z-index: 2;
+  background-color: #e8e8e8;
+  transition: 0.4s;
+}
+
+.sun svg {
+  position: absolute;
+  top: 6px;
+  left: 36px;
+  z-index: 1;
+  width: 24px;
+  height: 24px;
+}
+
+.moon svg {
+  fill: #73c0fc;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  z-index: 1;
+  width: 24px;
+  height: 24px;
+}
+
+/* .switch:hover */
+.sun svg {
+  animation: rotate 15s linear infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* .switch:hover */
+.moon svg {
+  animation: tilt 5s linear infinite;
+}
+
+@keyframes tilt {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  25% {
+    transform: rotate(-10deg);
+  }
+
+  75% {
+    transform: rotate(10deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.input:checked + .slider {
+  background-color: #183153;
+}
+
+.input:focus + .slider {
+  box-shadow: 0 0 1px #183153;
+}
+
+.input:checked + .slider:before {
+  transform: translateX(30px);
+}
+
+/* Toastify */
+.Toastify__progress-bar {
+  background-color: var(--primary);
+}
+.Toastify__toast-icon--success {
+  color: var(--primary);
+}
+
+.Toastify svg {
+  fill: var(--primary);
+}
+
+.Toastify__progress-bar--success {
+  background-color: var(--primary);
 }

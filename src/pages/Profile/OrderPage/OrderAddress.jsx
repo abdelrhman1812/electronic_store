@@ -1,6 +1,4 @@
 const OrderAddress = ({ order }) => {
-  3;
-  console.log(order);
   return (
     <>
       <div className="col-sm-6">

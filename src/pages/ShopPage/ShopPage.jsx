@@ -12,7 +12,7 @@ const ShopPage = () => {
   const [showSidBar, setSidBar] = useState(false);
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [allProducts, setAllProducts] = useState([]); // Store all products to filter locally
+  const [allProducts, setAllProducts] = useState([]);
   const [filters, setFilters] = useState({
     minPrice: 0,
     maxPrice: 2000,
@@ -20,6 +20,7 @@ const ShopPage = () => {
     brand: [],
   });
 
+  // Store all products to filter
   const fetchProducts = useCallback(async () => {
     try {
       setIsLoading(true);
@@ -33,6 +34,7 @@ const ShopPage = () => {
     }
   }, []);
 
+  // Filter products
   const filterProducts = useCallback(
     (values) => {
       const filteredProducts = allProducts.filter((product) => {
@@ -52,25 +54,32 @@ const ShopPage = () => {
     [allProducts]
   );
 
+  // Filter products when filters change
   useEffect(() => {
+    window.scrollTo(0, 0);
+
     if (allProducts.length > 0) {
       filterProducts(filters);
     }
   }, [filters, allProducts, filterProducts]);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     fetchProducts();
   }, [fetchProducts]);
 
+  // Toggle sidebar visibility
   const showSidBarHandler = () => {
     setSidBar(!showSidBar);
   };
 
   return (
     <section className="shop-page">
+      {/* Page Header */}
       <PageHeader title="Shop" />
       <div className="container-xl py-4">
         <div className="row mt-4">
+          {/* Sidebar */}
           <Sidebar
             getAllProducts={setFilters}
             setIsLoading={setIsLoading}
@@ -79,8 +88,10 @@ const ShopPage = () => {
           />
 
           <div className="col-lg-9">
+            {/* Some Of Filter  */}
             <TapFilter showSidBarHandler={showSidBarHandler} />
             <div className="row g-3">
+              {/* Products */}
               {isLoading && <IsLoading columns={3} count={12} />}
               {!isLoading && products.length === 0 ? (
                 <ProductNotFound />
