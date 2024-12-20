@@ -9,7 +9,7 @@ const AdminTopNav = ({ toggleMenu }) => {
   return (
     <section className="admin-top-nav d-flex justify-content-between align-items-center">
       <div className="icons d-flex align-items-center gap-3">
-        <BiMenu size={22} onClick={toggleMenu} />
+        <BiMenu className="d-block d-lg-none" size={22} onClick={toggleMenu} />
 
         {isDark ? (
           <BiMoon size={22} onClick={() => setIsDark(!isDark)} />

@@ -14,11 +14,10 @@ const RecentOrders = () => {
     setError(null);
     try {
       const data = await getUserOrders();
-      console.log(data);
       setOrders(data?.orders || []);
-    } catch (error) {
-      setError("Failed to fetch orders. Please try again later.");
-      console.error("Error fetching orders:", error);
+    } catch (err) {
+      setError("Failed to fetch orders. Please try again.");
+      console.error("Error fetching orders:", err);
     } finally {
       setLoading(false);
     }
@@ -41,6 +40,10 @@ const RecentOrders = () => {
         <IsLoading height={100} width={100} count={4} />
       ) : error ? (
         <ErrorMsg error={error} />
+      ) : orders.length === 0 ? (
+        <span className=" h-25 d-block text-center ">
+          No recent orders found
+        </span>
       ) : (
         <table>
           <thead>
@@ -51,21 +54,22 @@ const RecentOrders = () => {
               <td>Status</td>
             </tr>
           </thead>
-
           <tbody>
             {orders.map((order) =>
               order.orderItems.map((item) => (
                 <tr key={item._id}>
-                  <td>{item?.productId?.title || "Star Refrigerator"}</td>
-                  <td>{item?.price ? `$${item.price}` : "$1200"}</td>
-                  <td>{order.paymentStatus || "Paid"}</td>
+                  <td>{item?.productId?.title || "Unnamed Product"}</td>
+                  <td>
+                    {item?.price ? `$${item.price}` : "Price Unavailable"}
+                  </td>
+                  <td>{order.paymentStatus || "Payment Info Missing"}</td>
                   <td>
                     <span
                       className={`status ${
-                        !order?.isDelivered ? "delivered" : "delivered"
+                        order.isDelivered ? "delivered" : "pending"
                       } p-1 text-white rounded`}
                     >
-                      {order.status || "Delivered"}
+                      {order.isDelivered ? "Delivered" : "Pending"}
                     </span>
                   </td>
                 </tr>

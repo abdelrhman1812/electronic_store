@@ -3,8 +3,6 @@ import IsLoading from "../../../shared/IsLoading/IsLoading";
 import PageHeader from "../../../shared/PageHeader/PageHeader";
 
 const CategoryList = ({ entities, handleUpdate, handleDelete, isLoading }) => {
-  console.log(entities);
-
   return (
     <>
       <section className="category-list ">

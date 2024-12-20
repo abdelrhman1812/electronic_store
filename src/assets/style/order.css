@@ -74,3 +74,19 @@
   font-weight: 400;
   font-size: 17px !important;
 }
+
+/* =============== ordersList =============== */
+
+.order-list .table {
+  --bs-table-bg: var(--card-foreground);
+  box-shadow: var(--shadow);
+  border-radius: 12px;
+  padding: 10px;
+  transition: all 0.3s ease;
+  --bs-table-color-type: var(--text-dark);
+}
+
+.order-list .order-item-info img {
+  width: 50px !important;
+  height: 50px !important;
+}

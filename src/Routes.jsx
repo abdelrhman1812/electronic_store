@@ -1,25 +1,32 @@
-import { createHashRouter, redirect, RouterProvider } from "react-router-dom";
-import BrandManagement from "./components/layouts/Admin/BrandManagement/BrandManagement";
-import CategoryManagement from "./components/layouts/Admin/CategoryManagement/CategoryManagement";
-import MainAdmin from "./components/layouts/Admin/MainAdmin";
-import ProductList from "./components/layouts/Admin/ProductList";
-import AdminLayout from "./pages/Admin/AdminLayout/AdminLayout";
-import BrandPage from "./pages/BrandPage/BrandPage";
-import CartPage from "./pages/CartPage/CartPage";
-import CategoryPage from "./pages/CategoryPage/CategoryPage";
-import CheckoutCashPage from "./pages/CheckoutCashPage/CheckoutCashPage";
-import Home from "./pages/Home/Home";
-import Layout from "./pages/Layout/Layout";
-import Login from "./pages/Login/Login";
-import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
-import ProductDetails from "./pages/ProductDetails/ProductDetails";
-import AccountPage from "./pages/Profile/AccountPage/AccountPage";
-import AddressPage from "./pages/Profile/AddressPage/AddressPage";
-import LayoutProfile from "./pages/Profile/LayoutProfile/LayoutProfile";
-import OrderPage from "./pages/Profile/OrderPage/OrderPage";
-import Register from "./pages/Register/Register";
-import ShopPage from "./pages/ShopPage/ShopPage";
-import WishListPage from "./pages/WishListPage/WishListPage";
+import {
+  AccountPage,
+  AddressPage,
+  AdminLayout,
+  BrandManagement,
+  BrandPage,
+  CartPage,
+  CategoryManagement,
+  CategoryPage,
+  CheckoutCashPage,
+  createHashRouter,
+  Home,
+  Layout,
+  LayoutProfile,
+  Login,
+  MainAdmin,
+  NotFoundPage,
+  OrderPage,
+  OrdersManagement,
+  ProductDetails,
+  ProductManagement,
+  ProtectectedAdmin,
+  ProtectedRoute,
+  redirect,
+  Register,
+  RouterProvider,
+  ShopPage,
+  WishListPage,
+} from "./index.js";
 
 const Routes = () => {
   const routers = createHashRouter([
@@ -37,8 +44,23 @@ const Routes = () => {
         { path: "wishlist", element: <WishListPage /> },
         { path: "checkout-cash", element: <CheckoutCashPage /> },
         { path: "product/:id", element: <ProductDetails /> },
-        { path: "register", element: <Register /> },
-        { path: "login", element: <Login /> },
+        {
+          path: "register",
+          element: (
+            <ProtectedRoute>
+              <Register />
+            </ProtectedRoute>
+          ),
+        },
+
+        {
+          path: "login",
+          element: (
+            <ProtectedRoute>
+              <Login />
+            </ProtectedRoute>
+          ),
+        },
         {
           path: "profile",
           element: <LayoutProfile />,
@@ -54,12 +76,17 @@ const Routes = () => {
     },
     {
       path: "admin",
-      element: <AdminLayout />,
+      element: (
+        <ProtectectedAdmin>
+          <AdminLayout />
+        </ProtectectedAdmin>
+      ),
       children: [
         { index: true, element: <MainAdmin /> },
-        { path: "productList", element: <ProductList /> },
+        { path: "productList", element: <ProductManagement /> },
         { path: "brandList", element: <BrandManagement /> },
         { path: "categoryList", element: <CategoryManagement /> },
+        { path: "ordersList", element: <OrdersManagement /> },
       ],
     },
   ]);

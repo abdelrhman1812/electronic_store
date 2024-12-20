@@ -1,3 +1,24 @@
+a {
+  text-decoration: none;
+  color: var(--text-dark);
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.p-section {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.brand img {
+  border-radius: 50%;
+  padding: 10px;
+}
+
 svg {
   cursor: pointer;
 }

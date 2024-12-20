@@ -130,28 +130,32 @@ svg.close {
   transition: opacity 0.3s ease;
 }
 
+/* Search Input */
+
 .css-13cymwt-control {
   background-color: var(--background) !important;
   border: none !important;
   padding: 0 !important;
   box-shadow: var(--shadow) !important;
-  border-radius: 12px;
+  border-radius: 30px !important;
   min-height: 40px !important;
 }
 
 .css-13cymwt-control input {
   border-radius: 12px !important;
+  padding: 10px 10px 10px 50px !important;
 }
 
-/* .css-hlgwow {
-  background-color: var(--background);
-  border-radius: 12px;
-} */
 .css-1xc3v61-indicatorContainer {
   background-color: var(--primary);
-  width: 60px;
-  min-height: 40px !important;
-  border-radius: 2px;
+  width: 80px;
+  min-height: 56px !important;
+  display: flex;
+  align-items: center;
+}
+
+.css-1jqq78o-placeholder {
+  padding-left: 20px;
 }
 
 .product-option span {

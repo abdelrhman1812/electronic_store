@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { BiChevronDown, BiChevronRight, BiX } from "react-icons/bi";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Logo from "../../../assets/Images/logo.png";
 
 const AdminSidBar = ({ menuActive, toggleMenu }) => {
@@ -13,10 +13,12 @@ const AdminSidBar = ({ menuActive, toggleMenu }) => {
   return (
     <aside className={`navigation-admin ${menuActive ? "open" : ""}`}>
       <figure className="py-3 ps-2 d-flex justify-content-between align-items-center">
-        <img src={Logo} className="w-100" alt="Electro" />
+        <Link to={"/"}>
+          <img src={Logo} className="w-100 d-block mx-auto" alt="Electro" />
+        </Link>
         <BiX
           size={35}
-          className="text-white cursor-pointer mt-3 d-block d-md-none"
+          className="text-white cursor-pointer m d-block d-md-none"
           onClick={() => menuActive && toggleMenu(toggleMenu)}
         />
       </figure>
@@ -55,18 +57,10 @@ const AdminSidBar = ({ menuActive, toggleMenu }) => {
           <ul className={`submenu ${openSection === "products" ? "open" : ""}`}>
             <li>
               <NavLink
-                to="/"
+                to="productList"
                 className={({ isActive }) => (isActive ? "active" : "")}
               >
                 Product List
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/"
-                className={({ isActive }) => (isActive ? "active" : "")}
-              >
-                Add Product
               </NavLink>
             </li>
           </ul>
@@ -98,14 +92,6 @@ const AdminSidBar = ({ menuActive, toggleMenu }) => {
                 Category List
               </NavLink>
             </li>
-            <li>
-              <NavLink
-                to="/"
-                className={({ isActive }) => (isActive ? "active" : "")}
-              >
-                Add Category
-              </NavLink>
-            </li>
           </ul>
         </div>
 
@@ -133,14 +119,6 @@ const AdminSidBar = ({ menuActive, toggleMenu }) => {
                 Brands List
               </NavLink>
             </li>
-            <li>
-              <NavLink
-                to="/"
-                className={({ isActive }) => (isActive ? "active" : "")}
-              >
-                Add Brand
-              </NavLink>
-            </li>
           </ul>
         </div>
 
@@ -158,25 +136,17 @@ const AdminSidBar = ({ menuActive, toggleMenu }) => {
           <ul className={`submenu ${openSection === "order" ? "open" : ""}`}>
             <li>
               <NavLink
-                to="/"
+                to="ordersList"
                 className={({ isActive }) => (isActive ? "active" : "")}
               >
                 Order List
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/"
-                className={({ isActive }) => (isActive ? "active" : "")}
-              >
-                Order Details
               </NavLink>
             </li>
           </ul>
         </div>
 
         {/* Customer Section */}
-        <div className="section-toggle">
+        {/* <div className="section-toggle">
           <button
             onClick={() => toggleSection("customer")}
             className=" w-100 mb-2 border-0 position-relative bg-transparent text-white  d-flex justify-content-between"
@@ -199,19 +169,11 @@ const AdminSidBar = ({ menuActive, toggleMenu }) => {
                 All Customers
               </NavLink>
             </li>
-            <li>
-              <NavLink
-                to="/"
-                className={({ isActive }) => (isActive ? "active" : "")}
-              >
-                Customer Details
-              </NavLink>
-            </li>
           </ul>
-        </div>
+        </div> */}
 
         {/* Review Section */}
-        <div className="section-toggle">
+        {/* <div className="section-toggle">
           <button
             onClick={() => toggleSection("review")}
             className=" w-100 mb-2 border-0 position-relative bg-transparent text-white  d-flex justify-content-between"
@@ -225,17 +187,10 @@ const AdminSidBar = ({ menuActive, toggleMenu }) => {
               )}
             </span>
           </button>
-          <ul className={`submenu ${openSection === "review" ? "open" : ""}`}>
-            <li>
-              <NavLink
-                to="/"
-                className={({ isActive }) => (isActive ? "active" : "")}
-              >
-                All Reviews
-              </NavLink>
-            </li>
-          </ul>
-        </div>
+          <ul
+            className={`submenu ${openSection === "review" ? "open" : ""}`}
+          ></ul>
+        </div> */}
       </ul>
     </aside>
   );

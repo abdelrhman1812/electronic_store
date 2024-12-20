@@ -39,14 +39,21 @@ const Login = () => {
 
     try {
       const data = await login(values);
+      console.log(data.user.role);
+
       getUser();
       getUserCart();
       getUserWishlist();
       setSuccess(data.message);
       setError(null);
       if (data.success) {
-        navigate("/");
-        notify("success", "Success");
+        if (data.user.role === "admin") {
+          navigate("/admin");
+          notify("success", "Success");
+        } else {
+          navigate("/");
+          notify("success", "Success");
+        }
       }
     } catch (error) {
       setError(error.response.data.message);

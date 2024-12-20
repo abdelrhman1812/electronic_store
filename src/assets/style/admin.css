@@ -1,7 +1,7 @@
 /* Side Nav */
 .admin aside {
   background-color: var(--bg-header);
-  min-width: 250px;
+  min-width: 290px;
   box-shadow: var(--shadow);
   min-height: 100%;
   position: fixed;
@@ -230,7 +230,7 @@
   transition: all 0.3s ease;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 991px) {
   .admin aside {
     position: fixed;
     transform: translateX(-100%) !important;
@@ -249,7 +249,7 @@ aside.open {
   transition: transform 0.3s ease;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 991px) {
   .details-orders-customers {
     grid-template-columns: 1fr;
   }

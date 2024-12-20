@@ -6,6 +6,7 @@ import HeroSection from "../../components/layouts/HeroSection";
 import OfferSection from "../../components/layouts/OfferSection";
 import BestSellerProducts from "../../components/layouts/Products/BestSellerProducts";
 import FeaturedProducts from "../../components/layouts/Products/FeaturedProducts";
+import ReviewsSection from "../../components/layouts/ReviewsSection";
 import useData from "../../services/Hooks/useData";
 
 const Home = () => {
@@ -23,6 +24,8 @@ const Home = () => {
       <FeaturedProducts products={products} isLoading={isLoading} />
       <OfferSection />
       <BestSellerProducts products={products} isLoading={isLoading} />
+
+      <ReviewsSection />
     </section>
   );
 };

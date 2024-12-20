@@ -47,4 +47,21 @@ const searchProducts = async (title) => {
   }
 };
 
-export { getProductSpecific, getProducts, getRelatedProducts, searchProducts };
+const addProduct = async (values) => {
+  const response = await clientApi.post("/products", values);
+  return response;
+};
+
+const deleteProduct = async (productId) => {
+  const response = await clientApi.delete(`/products/${productId}`);
+  return response;
+};
+
+export {
+  addProduct,
+  deleteProduct,
+  getProducts,
+  getProductSpecific,
+  getRelatedProducts,
+  searchProducts,
+};

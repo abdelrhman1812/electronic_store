@@ -1,0 +1,28 @@
+.review-card {
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+  background-color: var(--card-foreground);
+  box-shadow: var(--shadow);
+}
+
+.review-card:hover {
+  transform: scale(1.05);
+}
+
+.review-avatar {
+  width: 80px !important;
+  height: 80px;
+  border: 3px solid #007bff;
+}
+
+.review-name {
+  color: #333;
+}
+
+.review-comment {
+  font-style: italic;
+}
+
+.review-rating {
+  margin-top: 10px;
+}

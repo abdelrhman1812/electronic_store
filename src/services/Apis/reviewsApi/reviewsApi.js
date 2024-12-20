@@ -9,4 +9,9 @@ const addReviews = async (values, productId) => {
   return response?.data;
 };
 
-export { addReviews };
+const getReviews = async () => {
+  const response = await clientApi.get(`/reviews`);
+  return response;
+};
+
+export { addReviews, getReviews };
