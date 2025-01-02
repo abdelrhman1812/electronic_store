@@ -16,10 +16,12 @@ const TopNav = () => {
   const { getUserCart } = useCartContext();
   const { getUserWishlist } = useWishListContext();
 
+  //  handle menu toggle
   const handleMenuToggle = () => {
     setIsMenuVisible((prevState) => !prevState);
   };
 
+  // handle logout (rm token and navigate to login )
   const handleLogout = () => {
     removeAuthToken();
     setUserProfile(null);
