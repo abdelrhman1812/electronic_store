@@ -4,11 +4,11 @@ import { BiShowAlt } from "react-icons/bi";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { HiOutlineShoppingCart } from "react-icons/hi2";
 import { Link } from "react-router-dom";
-import { useCartContext } from "../../../context/CartContext";
-import { useWishListContext } from "../../../context/WishlistContext";
-import { checkAuthToken } from "../../../lib/cookies";
-import notify from "../../../lib/notify";
-import StarRating from "./StarRating";
+import { useCartContext } from "../../../../../context/CartContext";
+import { useWishListContext } from "../../../../../context/WishlistContext";
+import { checkAuthToken } from "../../../../../lib/cookies";
+import notify from "../../../../../lib/notify";
+import StarRating from "../../../../common/StarRating";
 
 const SingleProduct = ({ product }) => {
   const { addProductToCart } = useCartContext();

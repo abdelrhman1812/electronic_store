@@ -28,7 +28,7 @@ const Header = () => {
   }, []);
 
   return (
-    <header className={` ${!fixedHeader ? "" : ""}`}>
+    <header className={` ${!fixedHeader ? " " : ""}`}>
       <TopNav />
       <MainHeader setShowNav={setShowNav} toggle={toggle} />
       <NavBar showNav={showNav} toggle={toggle} />

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../../../assets/style/product.css";
+import "../../../../../assets/style/product.css";
 import TabContent from "./TabContent";
 import Tabs from "./Taps";
 

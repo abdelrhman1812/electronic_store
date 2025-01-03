@@ -40,7 +40,7 @@ const Routes = () => {
         { path: "shop", element: <ShopPage /> },
         { path: "brands", element: <BrandPage /> },
         { path: "cart", element: <CartPage /> },
-        { path: "/:category", element: <CategoryPage /> },
+        { path: "category/:category", element: <CategoryPage /> },
         { path: "wishlist", element: <WishListPage /> },
         { path: "checkout-cash", element: <CheckoutCashPage /> },
         { path: "product/:id", element: <ProductDetails /> },

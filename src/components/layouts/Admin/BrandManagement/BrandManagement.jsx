@@ -4,7 +4,7 @@ import {
   getBrands,
   updateBrand,
 } from "../../../../services/Apis/brandApi/brandApi";
-import EntityManagement from "../../../EntityManagement";
+import EntityManagement from "../../../../services/Hooks/EntityManagement";
 import BrandList from "./BrandList";
 
 const BrandManagement = () => {

@@ -1,5 +1,5 @@
-import AddReviews from "./AddReviews";
-import SingleReview from "./SingleReview";
+import SingleReview from "../../Products/ProductDetails/ProductReview//SingleReview";
+import AddReviews from "../../Products/ProductDetails/ProductReview/AddReviews";
 
 const TabContent = ({ activeTab, product, refreshProduct }) => {
   return (

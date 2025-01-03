@@ -1,5 +1,5 @@
-import IsLoading from "../../shared/IsLoading/IsLoading";
-import SectionTitle from "../../shared/SectionTitle/SectionTitle";
+import IsLoading from "../../../../shared/IsLoading/IsLoading";
+import SectionTitle from "../../../../shared/SectionTitle/SectionTitle";
 import SingleProduct from "./SingleProduct";
 
 const RelatedProduct = ({ relatedProduct, loading }) => {

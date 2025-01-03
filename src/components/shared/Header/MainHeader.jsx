@@ -2,15 +2,15 @@ import { BiCart, BiHeart, BiMenu } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import { useCartContext } from "../../../context/CartContext";
 import { useWishListContext } from "../../../context/WishlistContext";
+import SearchInput from "../../layouts/ShopPage/Products/ProductSearch/SearchInput/SearchInput";
 import Logo from "../Logo/Logo";
-import SearchInput from "../SearchInput/SearchInput";
 
 const MainHeader = ({ toggle }) => {
   const { cartLength } = useCartContext();
   const { wishListLength } = useWishListContext();
 
   return (
-    <section className="main-header  ">
+    <section className="main-header">
       <div className="container-xl px-3 py-3">
         <div className="row">
           <Logo />

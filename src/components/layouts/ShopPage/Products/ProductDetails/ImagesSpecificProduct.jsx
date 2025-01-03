@@ -1,4 +1,4 @@
-import IsLoading from "../../shared/IsLoading/IsLoading";
+import IsLoading from "../../../../shared/IsLoading/IsLoading";
 
 const ImagesSpecificProduct = ({ product, loading }) => {
   return (

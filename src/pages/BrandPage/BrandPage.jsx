@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import "../../assets/style/brand.css";
-import SingleBrand from "../../components/layouts/SingleBrand";
+import SingleBrand from "../../components/layouts/BrandPage/SingleBrand";
 import IsLoading from "../../components/shared/IsLoading/IsLoading";
 import PageHeader from "../../components/shared/PageHeader/PageHeader";
 import useData from "../../services/Hooks/useData";

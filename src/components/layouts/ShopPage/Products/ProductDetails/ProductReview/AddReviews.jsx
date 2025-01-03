@@ -1,9 +1,9 @@
 import { useFormik } from "formik";
 import { useMemo } from "react";
 import * as Yup from "yup";
-import notify from "../../../lib/notify";
-import { addReviews } from "../../../services/Apis/reviewsApi/reviewsApi";
-import StarRating from "./StarRating";
+import notify from "../../../../../../lib/notify";
+import { addReviews } from "../../../../../../services/Apis/reviewsApi/reviewsApi";
+import StarRating from "../../../../../common/StarRating";
 
 const AddReviews = ({ productId, refreshProduct }) => {
   const handelAddReviews = async (values) => {

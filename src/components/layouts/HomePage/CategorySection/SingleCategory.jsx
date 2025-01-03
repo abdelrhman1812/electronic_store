@@ -16,7 +16,7 @@ const SingleCategory = ({ category }) => {
           alt={category.name}
         />
         <Link
-          to={`/${category.slug}`}
+          to={`/category/${category.slug}`}
           className="mx-auto d-block text-center position-relative"
         >
           {category.name}

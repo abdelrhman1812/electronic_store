@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import bgImageLight from "../../assets/Images/hotdeal.png";
-import bgImageDark from "../../assets/Images/hotdeal_dark.png";
-import { useTheme } from "../../context/ThemeProvider";
+import bgImageLight from "../../../assets/Images/hotdeal.png";
+import bgImageDark from "../../../assets/Images/hotdeal_dark.png";
+import { useTheme } from "../../../context/ThemeProvider";
 
 const OfferSection = () => {
   const { isDark } = useTheme();

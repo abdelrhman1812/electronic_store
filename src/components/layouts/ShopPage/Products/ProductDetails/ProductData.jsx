@@ -1,6 +1,6 @@
 import { BiCart, BiHeart } from "react-icons/bi";
-import IsLoading from "../../shared/IsLoading/IsLoading";
-import StarRating from "./StarRating";
+import StarRating from "../../../../common/StarRating";
+import IsLoading from "../../../../shared/IsLoading/IsLoading";
 
 const ProductData = ({ product, loading }) => {
   return (

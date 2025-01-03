@@ -1,4 +1,4 @@
-import StarRating from "./StarRating";
+import StarRating from "../../../../../common/StarRating";
 
 const SingleReview = ({ review, rate }) => {
   console.log(review);

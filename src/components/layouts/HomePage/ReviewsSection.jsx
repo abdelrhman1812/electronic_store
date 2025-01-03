@@ -4,9 +4,9 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "../../assets/style/reviews.css";
-import { getReviews } from "../../services/Apis/reviewsApi/reviewsApi";
-import StarRating from "./Products/StarRating";
+import "../../../assets/style/reviews.css";
+import { getReviews } from "../../../services/Apis/reviewsApi/reviewsApi";
+import StarRating from "../../common/StarRating";
 
 const ReviewsSection = () => {
   const [reviews, setReviews] = useState([]);

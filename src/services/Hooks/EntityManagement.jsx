@@ -1,7 +1,7 @@
 import { useEffect } from "react";
-import { useEntityManagement } from "../services/Hooks/useEntityManagement";
-import BtnAddEntity from "./layouts/Admin/BtnAddEntity";
-import SharedForm from "./layouts/Admin/SharedForm";
+import BtnAddEntity from "../../components/layouts/Admin/BtnAddEntity";
+import SharedForm from "../../components/layouts/Admin/SharedForm";
+import { useEntityManagement } from "./useEntityManagement";
 
 const EntityManagement = ({ type, apis, ListComponent }) => {
   const {

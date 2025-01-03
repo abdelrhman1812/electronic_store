@@ -1,4 +1,4 @@
-import SingleProduct from "../../components/layouts/Products/SingleProduct";
+import SingleProduct from "../../components/layouts/ShopPage/Products/ProductDetails/SingleProduct";
 import Empty from "../../components/shared/Empty/Empty";
 import ErrorMsg from "../../components/shared/ErrorMsg/ErrorMsg";
 import IsLoading from "../../components/shared/IsLoading/IsLoading";

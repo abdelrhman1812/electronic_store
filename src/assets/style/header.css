@@ -1,4 +1,4 @@
-/* ========== Header ========== */
+/* ========================== Header ========================== */
 
 header {
   background-color: var(--bg-header);
@@ -55,7 +55,7 @@ header {
   display: none !important;
 }
 
-/* ========== Navigation ========== */
+/* ========================== Navigation ========================== */
 .main-nav {
   background: var(--background);
   border-top: 3px solid rgba(0, 136, 255, 0.25);
@@ -95,7 +95,7 @@ svg.close {
   display: none;
 }
 
-/* ============= Top Nav ============= */
+/* ========================== Start Top Nav ========================== */
 .top-nav {
   border-bottom: 1px solid rgba(248, 248, 248, 0.21);
 }
@@ -130,6 +130,8 @@ svg.close {
   transition: opacity 0.3s ease;
 }
 
+/* ========================== End Top Nav ========================== */
+
 /* Search Input */
 
 .css-13cymwt-control {
@@ -148,7 +150,7 @@ svg.close {
 
 .css-1xc3v61-indicatorContainer {
   background-color: var(--primary);
-  width: 80px;
+  width: 60px;
   min-height: 56px !important;
   display: flex;
   align-items: center;
@@ -191,8 +193,8 @@ svg.close {
     position: fixed;
     left: 0;
     top: 0;
-    background: var(--bg-header);
-    opacity: 0.9;
+    background: var(--background);
+    opacity: 1;
     height: 100vh;
     min-width: 300px;
     z-index: 99999999999;
@@ -203,17 +205,18 @@ svg.close {
 
   .main-nav .ul-main-nav {
     flex-direction: column;
+    gap: 30px;
     width: 100%;
     padding: 60px 5px;
   }
 
   .main-nav .ul-main-nav > li > a {
-    padding: 13px 0;
-    color: #fff;
+    padding: 0 0 13px 0;
+    color: var(--text-dark);
     display: flex;
     gap: 10px;
     align-items: center;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid var(--border-color-light);
   }
 
   .main-nav .ul-main-nav > li > a:hover::after,

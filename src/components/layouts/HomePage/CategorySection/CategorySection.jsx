@@ -1,5 +1,5 @@
 import Slider from "react-slick";
-import IsLoading from "../../shared/IsLoading/IsLoading";
+import IsLoading from "../../../shared/IsLoading/IsLoading";
 import SingleCategory from "./SingleCategory";
 
 const CategorySection = ({ categories, isLoading }) => {

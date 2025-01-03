@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { BiEdit, BiTrash } from "react-icons/bi";
+import StarRating from "../../../common/StarRating";
 import IsLoading from "../../../shared/IsLoading/IsLoading";
 import PageHeader from "../../../shared/PageHeader/PageHeader";
-import StarRating from "../../Products/StarRating";
 
 const ProductList = ({ handleDeleteProduct, products, loading }) => {
   // const { products } = useData();

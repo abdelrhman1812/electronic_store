@@ -1,7 +1,7 @@
 import "../../../assets/style/product.css";
 import IsLoading from "../../shared/IsLoading/IsLoading";
 import SectionTitle from "../../shared/SectionTitle/SectionTitle";
-import SingleProduct from "./SingleProduct";
+import SingleProduct from "../ShopPage/Products/ProductDetails/SingleProduct";
 
 const BestSellerProducts = ({ products, isLoading }) => {
   return (

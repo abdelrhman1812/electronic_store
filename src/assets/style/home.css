@@ -154,13 +154,19 @@
   background-color: var(--secondary);
 }
 
+@media (max-width: 767px) {
+  .hero {
+    border-radius: 0;
+  }
+}
+
 @media (max-width: 467px) {
   .hero .hero-data {
     padding: 30px 10px 10px 10px;
   }
 
   .hero .hero-data h2 {
-    font-size: 22px;
+    font-size: 24px;
   }
   .hero .hero-data button {
     padding: 10px;

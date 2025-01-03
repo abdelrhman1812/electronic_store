@@ -1,8 +1,8 @@
 import debounce from "lodash.debounce";
 import { useCallback, useEffect, useState } from "react";
 import Select from "react-select";
-import { searchProducts } from "../../../services/Apis/productApi/productApi";
-import ProductOption from "../../layouts/Products/ProductOption";
+import { searchProducts } from "../../../../../../services/Apis/productApi/ProductApi";
+import ProductOption from "./ProductOption";
 
 const SearchInput = () => {
   // Store Value of search input || Get last search from local storage
@@ -83,7 +83,7 @@ const SearchInput = () => {
 
   return (
     <div className="col-md-6 d-flex justify-content-center align-items-center position-relative z-3">
-      <div className="header-search">
+      <div className="header-search w-md-75">
         <Select
           options={options}
           onInputChange={handleInputChange}
@@ -91,7 +91,7 @@ const SearchInput = () => {
           onMenuOpen={handleMenuOpen}
           isClearable
           isLoading={loading}
-          placeholder="Search products..."
+          placeholder="Search ..."
           components={{ Option: ProductOption }}
           value={options.find((option) => option.label === query) || null}
         />

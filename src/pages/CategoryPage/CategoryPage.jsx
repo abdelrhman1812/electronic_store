@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "../../assets/style/category.css";
-import SingleProduct from "../../components/layouts/Products/SingleProduct";
+import SingleProduct from "../../components/layouts/ShopPage/Products/ProductDetails/SingleProduct";
 import IsLoading from "../../components/shared/IsLoading/IsLoading";
 import PageHeader from "../../components/shared/PageHeader/PageHeader";
 import { getProductsByCategory } from "../../services/Apis/categoryApi/CategoryApi";
@@ -10,12 +10,14 @@ function CategoryPage() {
   const { category } = useParams();
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  console.log(category);
 
   const getProducts = async (category) => {
     setIsLoading(true);
     try {
       const data = await getProductsByCategory(category);
       setProducts(data);
+      console.log("Fetched products:", data);
     } catch (error) {
       console.error("Error fetching products:", error);
     } finally {

@@ -1,6 +1,6 @@
 import IsLoading from "../../../shared/IsLoading/IsLoading";
 import PageHeader from "../../../shared/PageHeader/PageHeader";
-import SingleBrand from "../../SingleBrand";
+import SingleBrand from "../../BrandPage/SingleBrand";
 
 const BrandList = ({ entities, isLoading, handleDelete, handleUpdate }) => {
   return (

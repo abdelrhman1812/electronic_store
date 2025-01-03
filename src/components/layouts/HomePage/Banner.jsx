@@ -1,7 +1,7 @@
 import Aos from "aos";
 import { useEffect } from "react";
-import banner1 from "../../assets/Images/Banner/h2_b4.jpg";
-import banner2 from "../../assets/Images/Banner/h2_b5.jpg";
+import banner1 from "../../../assets/Images/Banner/h2_b4.jpg";
+import banner2 from "../../../assets/Images/Banner/h2_b5.jpg";
 const Banner = () => {
   useEffect(() => {
     Aos.init({});

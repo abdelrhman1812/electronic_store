@@ -46,7 +46,7 @@ const TopNav = () => {
           </div>
           <div className="col-md-6 d-flex justify-content-end gap-3 position-relative">
             <DarkModeToggle />
-            <p className="my-0 d-flex justify-content-end ">
+            <button className="my-0 d-flex justify-content-end bg-transparent border-0 text-light ">
               {userProfile?.user?.name || "Guest"}
               <BiSolidUserDetail
                 onClick={handleMenuToggle}
@@ -54,7 +54,7 @@ const TopNav = () => {
                 size={22}
                 style={{ cursor: "pointer" }}
               />
-            </p>
+            </button>
 
             {isMenuVisible && (
               <MenuNav

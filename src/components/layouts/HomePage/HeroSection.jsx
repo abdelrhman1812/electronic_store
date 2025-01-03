@@ -1,9 +1,9 @@
 import { FaArrowRight } from "react-icons/fa";
 import Slider from "react-slick";
 
-import slide_1 from "../../assets/Images/Hero/slide1-1.png";
-import slide_2 from "../../assets/Images/Hero/slide2-1.png";
-import slide_3 from "../../assets/Images/Hero/slide3-1.png";
+import slide_1 from "../../../assets/Images/Hero/slide1-1.png";
+import slide_2 from "../../../assets/Images/Hero/slide2-1.png";
+import slide_3 from "../../../assets/Images/Hero/slide3-1.png";
 
 const HeroSection = () => {
   const settings = {

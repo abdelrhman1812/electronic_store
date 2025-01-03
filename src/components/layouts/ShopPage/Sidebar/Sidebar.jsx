@@ -1,9 +1,8 @@
 import { useFormik } from "formik";
 import { BiMessageSquareX } from "react-icons/bi";
-import bgImageLight from "../../../assets/Images/bg4-light.jpg";
-import bgImageDark from "../../../assets/Images/Hero/bg-1.jpg";
-import { useTheme } from "../../../context/ThemeProvider";
-import useData from "../../../services/Hooks/useData";
+import bgImageDark from "../../../../assets/Images/Hero/bg-1.jpg";
+import { useTheme } from "../../../../context/ThemeProvider";
+import useData from "../../../../services/Hooks/useData";
 import CheckboxItem from "./CheckboxItem";
 import PriceFilter from "./PriceFilter";
 
@@ -91,7 +90,7 @@ const Sidebar = ({
     <aside
       className={`col-lg-3 p-3 h-100 ${!showSidBar ? "show-sidebar" : ""}`}
       style={{
-        backgroundImage: `url(${isDark ? bgImageDark : bgImageLight})`,
+        backgroundImage: `url(${isDark ? bgImageDark : ""})`,
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
       }}

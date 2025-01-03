@@ -1,6 +1,6 @@
 import { BiEdit, BiTrash } from "react-icons/bi";
 import { Link } from "react-router-dom";
-import { useUserContext } from "../../context/UserContext";
+import { useUserContext } from "../../../context/UserContext";
 
 const SingleBrand = ({ brand, handleDelete, handleUpdateBrand }) => {
   const { userProfile } = useUserContext();

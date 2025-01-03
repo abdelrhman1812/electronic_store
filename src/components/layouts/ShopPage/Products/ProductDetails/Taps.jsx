@@ -1,4 +1,4 @@
-import "../../../assets/style/product.css";
+import "../../../../../assets/style/product.css";
 
 const Tabs = ({ activeTab, setActiveTab }) => {
   return (

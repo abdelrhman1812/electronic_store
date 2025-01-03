@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import { FaRegTrashAlt } from "react-icons/fa";
-import CartItem from "../../components/layouts/CartItem";
-import OrderSummary from "../../components/layouts/OrderSummary";
+import CartItem from "../../components/layouts/CartPage/CartItem";
+import OrderSummary from "../../components/layouts/CartPage/OrderSummary";
 import Empty from "../../components/shared/Empty/Empty";
 import ErrorMsg from "../../components/shared/ErrorMsg/ErrorMsg";
 import IsLoading from "../../components/shared/IsLoading/IsLoading";
