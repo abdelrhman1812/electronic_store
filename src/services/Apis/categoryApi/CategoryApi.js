@@ -8,7 +8,6 @@ const getCategories = async () => {
 
 const getProductsByCategory = async (slug) => {
   const data = await getProducts();
-
   return data.products?.filter((product) => product?.category?.slug === slug);
 };
 

@@ -1,13 +1,13 @@
 import SingleReview from "../../Products/ProductDetails/ProductReview//SingleReview";
 import AddReviews from "../../Products/ProductDetails/ProductReview/AddReviews";
 
-const TabContent = ({ activeTab, product, refreshProduct }) => {
+const TabContent = ({ activeTab, product, updateProductReviews }) => {
   return (
     <div className="tab-content  " id="product-tabContent">
       {activeTab === "description" && (
-        <div className="tab-pane active" id="description" role="tabpanel">
+        <div className="tab-pane active px-3" id="description" role="tabpanel">
           <h2>{product?.title}</h2>
-          <p>{product?.description}</p>
+          <p className="m-0 ">{product?.description}</p>
         </div>
       )}
       {activeTab === "reviews" && (
@@ -23,7 +23,7 @@ const TabContent = ({ activeTab, product, refreshProduct }) => {
 
             <AddReviews
               productId={product?._id}
-              refreshProduct={refreshProduct}
+              updateProductReviews={updateProductReviews}
             />
           </div>
         </div>

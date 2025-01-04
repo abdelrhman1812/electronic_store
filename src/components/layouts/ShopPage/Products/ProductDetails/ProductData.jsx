@@ -1,4 +1,5 @@
-import { BiCart, BiHeart } from "react-icons/bi";
+import { BiCart } from "react-icons/bi";
+import { FaHeart } from "react-icons/fa";
 import useProductAction from "../../../../../services/Hooks/ProductAction";
 import StarRating from "../../../../common/StarRating";
 import IsLoading from "../../../../shared/IsLoading/IsLoading";
@@ -41,9 +42,9 @@ const ProductData = ({ product, loading }) => {
       </button>
 
       {/* Add/Delete from wishlist button */}
-      <BiHeart
+      <FaHeart
         size={30}
-        className={`icon-wishlist ${inWishlist ? "bg-danger" : ""}`}
+        className={` ${inWishlist ? " text-danger" : "text-primary"}`}
         onClick={() =>
           inWishlist
             ? handleDeleteFromWishList(product?._id)

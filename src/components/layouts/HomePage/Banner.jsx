@@ -21,7 +21,11 @@ const Banner = () => {
               className="banner-item position-relative"
               data-aos="flip-right"
             >
-              <img src={banner2} className="w-100 rounded-3" alt="" />
+              <img
+                src={banner2}
+                className="w-100 rounded-3"
+                alt="electronics"
+              />
             </div>
           </div>
         </div>

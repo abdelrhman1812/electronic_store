@@ -4,8 +4,9 @@ import { useCartContext } from "../../../context/CartContext";
 import { useWishListContext } from "../../../context/WishlistContext";
 import SearchInput from "../../layouts/ShopPage/Products/ProductSearch/SearchInput/SearchInput";
 import Logo from "../Logo/Logo";
+import NavBar from "./NavBar";
 
-const MainHeader = ({ toggle }) => {
+const MainHeader = ({ toggle, setShowNav, showNav }) => {
   const { cartLength } = useCartContext();
   const { wishListLength } = useWishListContext();
 
@@ -13,11 +14,16 @@ const MainHeader = ({ toggle }) => {
     <section className="main-header">
       <div className="container-xl px-3 py-3">
         <div className="row">
+          {/* Logo */}
           <Logo />
+          {/* Navbar */}
+          <div className="col-md-4">
+            <NavBar showNav={showNav} toggle={toggle} />
+          </div>
 
-          <SearchInput />
-
-          <div className="col-md-3 header-bottom d-flex justify-content-center align-items-center">
+          {/* Search Input & Icons ==> Cart & Wishlist */}
+          <div className="col-md-6  header-bottom d-flex justify-content-between  align-items-center">
+            <SearchInput />
             <div className="header-icons  d-flex justify-content-center align-items-center gap-3 ">
               <Link
                 to={"/"}

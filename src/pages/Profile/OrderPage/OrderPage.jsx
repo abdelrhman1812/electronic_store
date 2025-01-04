@@ -21,7 +21,6 @@ const OrderPage = () => {
       setOrders(data?.orders || []);
     } catch (error) {
       setError("Failed to fetch orders. Please try again later.");
-      console.error("Error fetching orders:", error);
     } finally {
       setLoading(false);
     }
@@ -30,16 +29,6 @@ const OrderPage = () => {
   useEffect(() => {
     getOrders();
   }, []);
-  // const removeOrder = async (id) => {
-  //   try {
-  //     await deleteOrder(id);
-  //     notify("success", "Order deleted");
-  //     getOrders(); // Refresh orders after deletion
-  //   } catch (error) {
-  //     notify("error", "Failed to delete the order. Please try again.");
-  //     console.error("Error deleting order:", error);
-  //   }
-  // };
 
   return (
     <div className="order-page">
@@ -59,10 +48,6 @@ const OrderPage = () => {
             orders.map((order, index) => (
               <div key={order._id} className="order position-relative p-2 mb-5">
                 <small className="d-block text-center">Order {index + 1}</small>
-                {/* <CiTrash
-                  onClick={() => removeOrder(order._id)}
-                  className="delete-icon"
-                /> */}
 
                 <div className="row">
                   {order?.orderItems.map((item) => (

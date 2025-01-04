@@ -4,7 +4,7 @@ import logo from "../../../assets/Images/logo.png";
 const Logo = () => {
   return (
     <>
-      <div className="col-md-3 d-flex justify-content-center align-items-center">
+      <div className="col-md-2 d-flex justify-content-center align-items-center">
         <div className="header-logo">
           <Link to={"/"} className="logo">
             <img src={logo} alt="Electro" />

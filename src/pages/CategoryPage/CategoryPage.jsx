@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 import { useParams } from "react-router-dom";
 import "../../assets/style/category.css";
 import SingleProduct from "../../components/layouts/ShopPage/Products/ProductDetails/SingleProduct";
@@ -10,16 +11,15 @@ function CategoryPage() {
   const { category } = useParams();
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  console.log(category);
+  const [, setError] = useState(null);
 
   const getProducts = async (category) => {
     setIsLoading(true);
     try {
       const data = await getProductsByCategory(category);
       setProducts(data);
-      console.log("Fetched products:", data);
     } catch (error) {
-      console.error("Error fetching products:", error);
+      setError(error);
     } finally {
       setIsLoading(false);
     }
@@ -30,20 +30,25 @@ function CategoryPage() {
   }, [category]);
 
   return (
-    <section className="category-page">
-      <PageHeader title={category} />
-      <div className="container-xl py-5">
-        <div className="row g-4">
-          {isLoading && <IsLoading />}
+    <>
+      <Helmet>
+        <title>{category}</title>
+      </Helmet>
+      <section className="category-page">
+        <PageHeader title={category} />
+        <div className="container-xl py-5">
+          <div className="row g-4">
+            {isLoading && <IsLoading />}
 
-          {products?.slice(0, 8).map((product) => (
-            <div key={product._id} className="col-sm-6 col-md-4 col-lg-3">
-              <SingleProduct product={product} />
-            </div>
-          ))}
+            {products?.slice(0, 8).map((product) => (
+              <div key={product._id} className="col-sm-6 col-md-4 col-lg-3">
+                <SingleProduct product={product} />
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }
 

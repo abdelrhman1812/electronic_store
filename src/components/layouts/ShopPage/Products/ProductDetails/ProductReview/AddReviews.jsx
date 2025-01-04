@@ -5,24 +5,24 @@ import notify from "../../../../../../lib/notify";
 import { addReviews } from "../../../../../../services/Apis/reviewsApi/reviewsApi";
 import StarRating from "../../../../../common/StarRating";
 
-const AddReviews = ({ productId, refreshProduct }) => {
+const AddReviews = ({ productId, updateProductReviews }) => {
   const handelAddReviews = async (values) => {
     try {
-      const data = await addReviews(values, productId);
-      console.log(data);
-      refreshProduct();
+      const response = await addReviews(values, productId);
+
+      updateProductReviews();
       notify("success", "Reviews added successfully");
+      formik.resetForm();
     } catch (error) {
-      if (error.response?.data?.message == "Your are already reviewed") {
+      if (error.response?.data?.message === "Your are already reviewed") {
+        notify("error", error.response?.data?.message);
+      } else {
         notify("error", error.response?.data?.message);
       }
-      notify("error", error.response?.data?.message);
     }
-    formik.resetForm();
   };
 
-  /* ========== Validation ========== */
-  let validationSchema = useMemo(() => {
+  const validationSchema = useMemo(() => {
     return Yup.object({
       comment: Yup.string()
         .required("Comment is required")
@@ -33,8 +33,7 @@ const AddReviews = ({ productId, refreshProduct }) => {
     });
   }, []);
 
-  /* ========== Formik Configuration ========== */
-  let formik = useFormik({
+  const formik = useFormik({
     initialValues: {
       comment: "",
       rate: 0,

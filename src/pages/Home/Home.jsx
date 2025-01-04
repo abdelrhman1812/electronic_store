@@ -17,7 +17,7 @@ const Home = () => {
   }, []);
 
   return (
-    <section className="home overflow-hidden">
+    <main className="home overflow-hidden">
       <HeroSection />
       <CategorySection categories={categories} isLoading={isLoading} />
       <Banner />
@@ -25,7 +25,7 @@ const Home = () => {
       <OfferSection />
       <BestSellerProducts products={products} isLoading={isLoading} />
       <ReviewsSection />
-    </section>
+    </main>
   );
 };
 

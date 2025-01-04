@@ -14,6 +14,7 @@ const SearchInput = () => {
   // This Options that is shown in the dropdown
   const [options, setOptions] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [, setError] = useState(null);
 
   const fetchProducts = useCallback(
     debounce(async (searchQuery) => {
@@ -33,9 +34,8 @@ const SearchInput = () => {
           image: product?.imageCover?.secure_url,
         }));
         setOptions(productOptions);
-        console.log("Fetched product options:", productOptions);
       } catch (error) {
-        console.error("Error searching products:", error);
+        setError(error);
       } finally {
         setLoading(false);
       }
@@ -57,7 +57,7 @@ const SearchInput = () => {
   useEffect(() => {
     if (query) {
       localStorage.setItem("lastSearch", query);
-      console.log("Saved last search to localStorage:", query);
+      // console.log("Saved last search to localStorage:", query);
     }
   }, [query]);
 
@@ -82,20 +82,19 @@ const SearchInput = () => {
   };
 
   return (
-    <div className="col-md-6 d-flex justify-content-center align-items-center position-relative z-3">
-      <div className="header-search w-md-75">
-        <Select
-          options={options}
-          onInputChange={handleInputChange}
-          // onChange={handleChange}
-          onMenuOpen={handleMenuOpen}
-          isClearable
-          isLoading={loading}
-          placeholder="Search ..."
-          components={{ Option: ProductOption }}
-          value={options.find((option) => option.label === query) || null}
-        />
-      </div>
+    <div className="d-flex w-100 justify-content-center  align-items-center position-relative z-3">
+      <Select
+        options={options}
+        onInputChange={handleInputChange}
+        // onChange={handleChange}
+        className="w-75"
+        onMenuOpen={handleMenuOpen}
+        isClearable
+        isLoading={loading}
+        placeholder="Search ..."
+        components={{ Option: ProductOption }}
+        value={options.find((option) => option.label === query) || null}
+      />
     </div>
   );
 };

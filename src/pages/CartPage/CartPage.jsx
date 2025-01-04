@@ -1,4 +1,5 @@
 import { useCallback } from "react";
+import { Helmet } from "react-helmet";
 import { FaRegTrashAlt } from "react-icons/fa";
 import CartItem from "../../components/layouts/CartPage/CartItem";
 import OrderSummary from "../../components/layouts/CartPage/OrderSummary";
@@ -45,43 +46,49 @@ const CartPage = () => {
   }, [clearUserCart]);
 
   return (
-    <section className="cart-page">
-      <PageHeader title="Cart" />
-      <div className="container-xl py-5 cart">
-        {isLoading ? (
-          <div className="row m-0">
-            <IsLoading count={4} columns={1} height={100} />
-          </div>
-        ) : cart.length === 0 ? (
-          <Empty title="Your cart is empty" description="Start shopping" />
-        ) : (
-          <div className="row g-4 p-3">
-            <div className="col-lg-8 items p-3">
-              {cart.map((product) => (
-                <CartItem
-                  key={product.productId._id}
-                  product={product}
-                  handleUpdateQuantity={handleUpdateQuantity}
-                  handleDeleteItem={handleDeleteItem}
-                  isLoading={isLoading}
-                />
-              ))}
+    <>
+      <Helmet>
+        <title>Cart</title>
+      </Helmet>
 
-              {/* Clear cart */}
-              <button
-                onClick={handleClearUserCart}
-                className="clear border-0 mt-3 d-block mx-auto fw-bold d-flex align-items-center justify-content-center"
-                disabled={isLoading}
-              >
-                <span>Clear Cart</span>
-                <FaRegTrashAlt className="text-light" size={16} />
-              </button>
+      <main className="cart-page">
+        <PageHeader title="Cart" />
+        <div className="container-xl py-5 cart">
+          {isLoading ? (
+            <div className="row m-0">
+              <IsLoading count={4} columns={1} height={100} />
             </div>
-            <OrderSummary cart={cart} totalPrice={totalPrice} />
-          </div>
-        )}
-      </div>
-    </section>
+          ) : cart.length === 0 ? (
+            <Empty title="Your cart is empty" description="Start shopping" />
+          ) : (
+            <div className="row g-4 p-3">
+              <div className="col-lg-8 items p-3">
+                {cart.map((product) => (
+                  <CartItem
+                    key={product.productId._id}
+                    product={product}
+                    handleUpdateQuantity={handleUpdateQuantity}
+                    handleDeleteItem={handleDeleteItem}
+                    isLoading={isLoading}
+                  />
+                ))}
+
+                {/* Clear cart */}
+                <button
+                  onClick={handleClearUserCart}
+                  className="clear border-0 mt-3 d-block mx-auto fw-bold d-flex align-items-center justify-content-center"
+                  disabled={isLoading}
+                >
+                  <span>Clear Cart</span>
+                  <FaRegTrashAlt className="text-light" size={16} />
+                </button>
+              </div>
+              <OrderSummary cart={cart} totalPrice={totalPrice} />
+            </div>
+          )}
+        </div>
+      </main>
+    </>
   );
 };
 

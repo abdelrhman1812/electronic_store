@@ -3,7 +3,7 @@ import "../../../../../assets/style/product.css";
 import TabContent from "./TabContent";
 import Tabs from "./Taps";
 
-const ProductTabs = ({ product, refreshProduct }) => {
+const ProductTabs = ({ product, updateProductReviews }) => {
   const [activeTab, setActiveTab] = useState("description");
 
   return (
@@ -12,7 +12,7 @@ const ProductTabs = ({ product, refreshProduct }) => {
       <TabContent
         activeTab={activeTab}
         product={product}
-        refreshProduct={refreshProduct}
+        updateProductReviews={updateProductReviews}
       />
     </div>
   );

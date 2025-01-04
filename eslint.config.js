@@ -34,6 +34,7 @@ export default [
         { allowConstantExport: true },
       ],
       "react/prop-types": "off",
+      " no-useless-catch": "error",
     },
   },
 ];

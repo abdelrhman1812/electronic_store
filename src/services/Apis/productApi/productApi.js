@@ -5,7 +5,6 @@ const getProducts = async () => {
     const response = await clientApi.get("/products");
     return response?.data;
   } catch (error) {
-    console.error("Error fetching products:", error);
     throw error;
   }
 };
@@ -15,7 +14,6 @@ const getProductSpecific = async (productId) => {
     const response = await clientApi.get(`/products/${productId}`);
     return response?.data;
   } catch (error) {
-    console.error(`Error fetching product with ID ${productId}:`, error);
     throw error;
   }
 };
@@ -23,7 +21,6 @@ const getProductSpecific = async (productId) => {
 const getRelatedProducts = async (name, excludedProductName) => {
   try {
     const data = await getProducts();
-    console.log(excludedProductName);
     const relatedProducts = data.products?.filter(
       (product) =>
         product?.category?.name === name &&
@@ -32,7 +29,6 @@ const getRelatedProducts = async (name, excludedProductName) => {
 
     return relatedProducts;
   } catch (error) {
-    console.error(`Error fetching products :`, error);
     throw error;
   }
 };
@@ -42,7 +38,6 @@ const searchProducts = async (title) => {
     const response = await clientApi.get(`/products?search=${title}`);
     return response?.data;
   } catch (error) {
-    console.error("Error fetching products:", error);
     throw error;
   }
 };

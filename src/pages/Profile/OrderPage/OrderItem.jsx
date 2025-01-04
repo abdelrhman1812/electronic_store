@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./../../../assets/style/order.css";
 
 const OrderItem = ({ orderItem }) => {
@@ -12,7 +13,9 @@ const OrderItem = ({ orderItem }) => {
           />
         </figure>
         <div className="order-info">
-          <h5>{orderItem?.productId?.title}</h5>
+          <Link to={`/product/${orderItem?.productId?._id}`}>
+            <h5>{orderItem?.productId?.title}</h5>
+          </Link>
           <h6 className="fw-bold">${orderItem?.price} </h6>
           <span className="position-absolute bottom-0 end-0 p-1  text-center text-white">
             {orderItem.quantity} Piece

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -10,13 +11,15 @@ import StarRating from "../../common/StarRating";
 
 const ReviewsSection = () => {
   const [reviews, setReviews] = useState([]);
+  const [, setErrors] = useState(null);
 
   const handleReview = async () => {
     try {
       const { data } = await getReviews();
       setReviews(data.reviews || []);
+      setErrors(null);
     } catch (error) {
-      console.error("Failed to fetch reviews:", error);
+      setErrors(error);
     }
   };
 
@@ -53,7 +56,7 @@ const ReviewsSection = () => {
           >
             {reviews.map((review, index) => (
               <SwiperSlide key={index}>
-                <div className="review-card text-center p-4 shadow-sm">
+                <div className="review-card text-center p-4 ">
                   <img
                     src={
                       review?.createdBy?.profile?.secure_url ||
@@ -66,9 +69,17 @@ const ReviewsSection = () => {
                     <h6 className="review-name fw-bold mb-1">
                       {review?.createdBy?.name || "Anonymous"}
                     </h6>
-                    <p className="review-comment text-muted mb-3">
+                    <p className="review-comment mb-3">
                       {review?.comment || "No comment provided."}
                     </p>
+                    <Link
+                      title="View Product"
+                      to={`/product/${review?.productId?._id}`}
+                    >
+                      <span className="review-product">
+                        {review.productId.title}
+                      </span>
+                    </Link>
                   </div>
                   <div className="review-rating">
                     <StarRating rate={review?.rate || 0} maxStars={5} />

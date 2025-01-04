@@ -24,8 +24,6 @@ const Register = () => {
   const [error, setError] = useState(null);
   const { isDark } = useTheme();
 
-  // const eye = useRef(null);
-
   const registerSubmit = async (values) => {
     setIsLoading(true);
     try {

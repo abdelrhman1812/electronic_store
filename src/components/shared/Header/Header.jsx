@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import "../../../assets/style/header.css";
 import MainHeader from "./MainHeader";
-import NavBar from "./NavBar";
 import TopNav from "./TopNav";
 const Header = () => {
   const [showNav, setShowNav] = useState(false);
@@ -30,8 +29,8 @@ const Header = () => {
   return (
     <header className={` ${!fixedHeader ? " " : ""}`}>
       <TopNav />
-      <MainHeader setShowNav={setShowNav} toggle={toggle} />
-      <NavBar showNav={showNav} toggle={toggle} />
+      <MainHeader showNav={showNav} setShowNav={setShowNav} toggle={toggle} />
+      {/* <NavBar showNav={showNav} toggle={toggle} /> */}
     </header>
   );
 };
