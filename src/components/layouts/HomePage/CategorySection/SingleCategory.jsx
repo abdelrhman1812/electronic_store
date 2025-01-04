@@ -8,7 +8,7 @@ const SingleCategory = ({ category }) => {
   }, []);
 
   return (
-    <div className="category  " data-aos="fade-up">
+    <div className="category" data-aos="fade-up">
       <figure>
         <img
           src={category?.image.secure_url}
@@ -17,7 +17,7 @@ const SingleCategory = ({ category }) => {
         />
         <Link
           to={`/category/${category.slug}`}
-          className="mx-auto d-block text-center position-relative"
+          className="mx-auto mt-2 d-block text-center position-relative"
         >
           {category.name}
         </Link>

@@ -9,10 +9,10 @@ const ImagesSpecificProduct = ({ product, loading }) => {
           {loading ? (
             <IsLoading count={1} columns={3} width={75} />
           ) : (
-            <figure>
+            <figure className="p-1">
               <img
                 src={product?.imageCover?.secure_url}
-                className="w-75 d-block mx-auto rounded-2"
+                className="w-75 d-block mx-auto rounded-2 shadow-sm"
                 alt={product?.title}
                 loading="lazy"
               />

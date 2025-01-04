@@ -1,24 +1,17 @@
 import SingleProduct from "../../components/layouts/ShopPage/Products/ProductDetails/SingleProduct";
 import Empty from "../../components/shared/Empty/Empty";
-import ErrorMsg from "../../components/shared/ErrorMsg/ErrorMsg";
 import IsLoading from "../../components/shared/IsLoading/IsLoading";
 import PageHeader from "../../components/shared/PageHeader/PageHeader";
 import { useWishListContext } from "../../context/WishlistContext";
 
 const WishListPage = () => {
-  const { wishList, isLoading, isErrors } = useWishListContext();
+  const { wishList, isLoading } = useWishListContext();
 
   const renderLoading = () => (
     <div className="container-xl">
       <div className="row mx-0 mt-3 g-3">
         <IsLoading count={4} columns={3} />
       </div>
-    </div>
-  );
-
-  const renderError = () => (
-    <div className="error-message text-center">
-      <ErrorMsg error=" Must be login and There was an error loading your wish list. Please try again later " />
     </div>
   );
 
@@ -43,8 +36,6 @@ const WishListPage = () => {
       <PageHeader title="WishList" />
       {isLoading
         ? renderLoading()
-        : isErrors
-        ? renderError()
         : wishList.length === 0
         ? renderEmptyState()
         : renderWishList()}

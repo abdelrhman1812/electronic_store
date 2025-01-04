@@ -7,7 +7,7 @@ const BestSellerProducts = ({ products, isLoading }) => {
   return (
     <section className="bestSeller-products p-section">
       <div className="container-xl">
-        <SectionTitle title={"BestSeller Products"} />
+        <SectionTitle title={"BestSeller Products"} path={"/shop"} />
         <div className="row g-4">
           {isLoading && <IsLoading columns={4} count={4} />}
           {products?.slice(8).map((product) => {

@@ -1,63 +1,21 @@
 import Aos from "aos";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useEffect } from "react";
 import { BiShowAlt } from "react-icons/bi";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { HiOutlineShoppingCart } from "react-icons/hi2";
 import { Link } from "react-router-dom";
-import { useCartContext } from "../../../../../context/CartContext";
-import { useWishListContext } from "../../../../../context/WishlistContext";
-import { checkAuthToken } from "../../../../../lib/cookies";
-import notify from "../../../../../lib/notify";
+import useProductAction from "../../../../../services/Hooks/ProductAction";
 import StarRating from "../../../../common/StarRating";
 
 const SingleProduct = ({ product }) => {
-  const { addProductToCart } = useCartContext();
-  const { addProductToWishList, deleteProductFromWishlist, wishList } =
-    useWishListContext();
-
-  const isAuthenticated = useMemo(() => checkAuthToken(), []);
-  const isInWishlist = useMemo(
-    () => wishList?.some((item) => item._id === product._id),
-    [wishList, product._id]
-  );
-  const [inWishlist, setInWishlist] = useState(isInWishlist);
-
-  const notifyAuth = useCallback((type, message) => {
-    notify(type, message);
-  }, []);
-
-  // Function to add product to cart
-  const handleAddToCart = useCallback(() => {
-    if (!isAuthenticated)
-      return notifyAuth("error", "You need to be logged in");
-
-    addProductToCart(product._id);
-    notifyAuth("success", "Success! Product added to cart");
-  }, [addProductToCart, product._id, isAuthenticated, notifyAuth]);
-
-  // Function to add product to wishlist
-  const handleAddToWishList = useCallback(() => {
-    if (!isAuthenticated)
-      return notifyAuth("error", "You need to be logged in");
-
-    addProductToWishList(product._id);
-    setInWishlist(true);
-    notifyAuth("success", "Success! Product added to wishlist");
-  }, [addProductToWishList, product._id, isAuthenticated, notifyAuth]);
-
-  // Function to delete product from wishlist
-  const handleDeleteFromWishList = useCallback(() => {
-    if (!isAuthenticated)
-      return notifyAuth("error", "You need to be logged in");
-
-    deleteProductFromWishlist(product._id);
-    setInWishlist(false);
-    notifyAuth("success", "Product removed from wishlist");
-  }, [deleteProductFromWishlist, product._id, isAuthenticated, notifyAuth]);
-
+  const {
+    handleAddToWishList,
+    handleDeleteFromWishList,
+    handleAddToCart,
+    inWishlist,
+  } = useProductAction(product);
   useEffect(() => {
     Aos.init({});
-    return () => Aos.refresh();
   }, []);
 
   return (
@@ -102,7 +60,10 @@ const SingleProduct = ({ product }) => {
       </div>
 
       <div className="over-lay position-absolute top-0 start-0 end-0 bottom-0 d-flex justify-content-center align-items-center">
-        <button onClick={handleAddToCart} className="border-0">
+        <button
+          onClick={() => handleAddToCart(product?._id)}
+          className="border-0"
+        >
           <HiOutlineShoppingCart size={20} className="me-1 mb-1 text-white" />
           Add To Cart
         </button>
@@ -111,11 +72,14 @@ const SingleProduct = ({ product }) => {
             {inWishlist ? (
               <FaHeart
                 size={27}
-                onClick={handleDeleteFromWishList}
+                onClick={() => handleDeleteFromWishList(product?._id)}
                 className="text-danger"
               />
             ) : (
-              <FaRegHeart size={27} onClick={handleAddToWishList} />
+              <FaRegHeart
+                size={27}
+                onClick={() => handleAddToWishList(product?._id)}
+              />
             )}
           </li>
           <li className="mb-2">

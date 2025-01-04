@@ -33,6 +33,7 @@ const ReviewsSection = () => {
           </section>
 
           <Swiper
+            className="p-2"
             modules={[Pagination, Navigation]}
             spaceBetween={30}
             slidesPerView={1}

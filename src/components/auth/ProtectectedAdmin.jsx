@@ -4,10 +4,9 @@ import getAuthToken from "../../lib/cookies";
 
 const ProtectectedAdmin = ({ children }) => {
   const token = getAuthToken();
-  const decoded = jwtDecode(token);
-  console.log(decoded);
+  const decoded = token ? jwtDecode(token) : {};
 
-  if (decoded.role === "admin") {
+  if (decoded && decoded.role === "admin") {
     return <>{children}</>;
   } else {
     return <Navigate to={"/login"} replace />;

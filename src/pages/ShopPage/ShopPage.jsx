@@ -1,10 +1,9 @@
 import { useCallback, useEffect, useState } from "react";
-import ReactPaginate from "react-paginate";
+import ReactResponsivePagination from "react-responsive-pagination";
 import "../../assets/style/shop.css";
 import ProductNotFound from "../../components/layouts/ShopPage/ProductNotFound";
 import SingleProduct from "../../components/layouts/ShopPage/Products/ProductDetails/SingleProduct";
 import Sidebar from "../../components/layouts/ShopPage/Sidebar/Sidebar";
-import TapFilter from "../../components/layouts/ShopPage/TapFilter";
 import IsLoading from "../../components/shared/IsLoading/IsLoading";
 import PageHeader from "../../components/shared/PageHeader/PageHeader";
 import { getProducts } from "../../services/Apis/shopApi/ShopApi";
@@ -20,8 +19,14 @@ const ShopPage = () => {
     category: [],
     brand: [],
   });
-  const [currentPage, setCurrentPage] = useState(0);
-  const productsPerPage = 9; // عدد المنتجات لكل صفحة
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 6;
+  const totalPages = Math.ceil(products.length / itemsPerPage);
+
+  const currentProducts = products.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage // (0,3) (3,6) (6,9) ....
+  );
 
   // Fetch all products
   const fetchProducts = useCallback(async () => {
@@ -74,16 +79,6 @@ const ShopPage = () => {
     setSidBar(!showSidBar);
   };
 
-  // Pagination logic
-  const handlePageClick = (event) => {
-    setCurrentPage(event.selected);
-    window.scrollTo(0, 0); // Scroll to top when page changes
-  };
-
-  const offset = currentPage * productsPerPage;
-  const currentProducts = products.slice(offset, offset + productsPerPage);
-  const pageCount = Math.ceil(products.length / productsPerPage);
-
   return (
     <section className="shop-page">
       <PageHeader title="Shop" />
@@ -97,7 +92,7 @@ const ShopPage = () => {
           />
 
           <div className="col-lg-9">
-            <TapFilter showSidBarHandler={showSidBarHandler} />
+            {/* <TapFilter showSidBarHandler={showSidBarHandler} /> */}
             <div className="row g-3">
               {isLoading && <IsLoading columns={3} count={12} />}
               {!isLoading && currentProducts.length === 0 ? (
@@ -111,20 +106,15 @@ const ShopPage = () => {
               )}
             </div>
 
-            {/* React Paginate */}
+            {/* React Responsive Pagination */}
             {!isLoading && products.length > 0 && (
-              <ReactPaginate
-                previousLabel={"Previous"}
-                nextLabel={"Next"}
-                breakLabel={"..."}
-                breakClassName={"break-me"}
-                pageCount={pageCount}
-                marginPagesDisplayed={2}
-                pageRangeDisplayed={3}
-                onPageChange={handlePageClick}
-                containerClassName={"pagination"}
-                activeClassName={"active"}
-              />
+              <div className="py-5">
+                <ReactResponsivePagination
+                  current={currentPage}
+                  total={totalPages}
+                  onPageChange={setCurrentPage}
+                />
+              </div>
             )}
           </div>
         </div>

@@ -81,3 +81,20 @@ input[type="checkbox"] {
     transition: all 0.3s ease;
   }
 }
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+  padding: 0;
+}
+
+.pagination .active {
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+}
+
+.pagination .break-me {
+  padding: 0 10px;
+}
