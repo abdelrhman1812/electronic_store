@@ -172,4 +172,12 @@
     padding: 10px;
     width: 100%;
   }
+
+  .hot-deal .hot-deal-countdown > li {
+    width: 70px;
+    height: 70px;
+  }
+  .hot-deal .hot-deal-countdown span {
+    font-size: 8px;
+  }
 }

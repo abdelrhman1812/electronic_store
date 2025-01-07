@@ -1,4 +1,5 @@
-import { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
+import { BiMenu } from "react-icons/bi";
 import ReactResponsivePagination from "react-responsive-pagination";
 import "../../assets/style/shop.css";
 import ProductNotFound from "../../components/layouts/ShopPage/ProductNotFound";
@@ -9,7 +10,7 @@ import PageHeader from "../../components/shared/PageHeader/PageHeader";
 import { getProducts } from "../../services/Apis/shopApi/ShopApi";
 
 const ShopPage = () => {
-  const [showSidBar, setSidBar] = useState(false);
+  const [showSidebar, setShowSidebar] = useState(false);
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [allProducts, setAllProducts] = useState([]);
@@ -21,23 +22,17 @@ const ShopPage = () => {
   });
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
-  const totalPages = Math.ceil(products.length / itemsPerPage);
 
-  const currentProducts = products.slice(
-    (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage // (0,3) (3,6) (6,9) ....
-  );
-
-  // Fetch all products
+  // Fetch products
   const fetchProducts = useCallback(async () => {
     try {
       setIsLoading(true);
       const data = await getProducts();
       setAllProducts(data?.products || []);
       setFilters({ minPrice: 0, maxPrice: 2000, category: [], brand: [] });
-      setIsLoading(false);
     } catch (error) {
       console.error("Error fetching products: ", error);
+    } finally {
       setIsLoading(false);
     }
   }, []);
@@ -62,22 +57,27 @@ const ShopPage = () => {
     [allProducts]
   );
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-
-    if (allProducts.length > 0) {
-      filterProducts(filters);
-    }
-  }, [filters, allProducts, filterProducts]);
-
+  // Effects for filtering
   useEffect(() => {
     window.scrollTo(0, 0);
     fetchProducts();
   }, [fetchProducts]);
 
-  const showSidBarHandler = () => {
-    setSidBar(!showSidBar);
-  };
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    if (allProducts.length > 0) {
+      filterProducts(filters);
+    }
+  }, [filters, allProducts, filterProducts]);
+
+  // Pagination
+  const totalPages = Math.ceil(products.length / itemsPerPage);
+  const currentProducts = products.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+
+  const toggleSidebar = () => setShowSidebar(!showSidebar);
 
   return (
     <section className="shop-page">
@@ -87,12 +87,20 @@ const ShopPage = () => {
           <Sidebar
             getAllProducts={setFilters}
             setIsLoading={setIsLoading}
-            showSidBarHandler={showSidBarHandler}
-            showSidBar={showSidBar}
+            showSidebar={showSidebar}
+            toggleSidebar={toggleSidebar}
           />
 
           <div className="col-lg-9">
-            {/* <TapFilter showSidBarHandler={showSidBarHandler} /> */}
+            <div className="d-flex align-items-center justify-content-end my-3 py-2 px-1">
+              <button
+                className="d-flex align-items-center border-0 d-block d-lg-none rounded-1"
+                onClick={toggleSidebar}
+              >
+                <BiMenu className="text-primary" size={35} />
+              </button>
+            </div>
+
             <div className="row g-3">
               {isLoading && <IsLoading columns={3} count={12} />}
               {!isLoading && currentProducts.length === 0 ? (
@@ -106,7 +114,6 @@ const ShopPage = () => {
               )}
             </div>
 
-            {/* React Responsive Pagination */}
             {!isLoading && products.length > 0 && (
               <div className="py-5">
                 <ReactResponsivePagination

@@ -1,8 +1,11 @@
+/* ================= Shop Page ================  */
+/* aside */
 .shop-page aside {
   border-radius: 30px;
   box-shadow: var(--shadow);
   background-color: var(--background);
   transition: all 0.3s ease;
+  padding-bottom: 100px !important;
 }
 
 .shop-page aside h5 {
@@ -65,22 +68,8 @@ input[type="checkbox"] {
 .tap-filter svg {
   color: var(--primary);
 }
-@media (max-width: 992px) {
-  .shop-page aside {
-    position: fixed;
-    z-index: 1;
-    max-width: 300px;
-    top: 0;
-    border-radius: 0;
-    min-height: 100vh;
-    overflow: scroll;
-    z-index: 3;
-  }
-  .show-sidebar {
-    transform: translateX(-100%);
-    transition: all 0.3s ease;
-  }
-}
+
+/* pagination */
 
 .pagination {
   display: flex;
@@ -97,4 +86,22 @@ input[type="checkbox"] {
 
 .pagination .break-me {
   padding: 0 10px;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .shop-page aside {
+    position: fixed;
+    z-index: 1;
+    max-width: 300px;
+    top: 0;
+    border-radius: 0;
+    min-height: 100vh;
+    overflow: scroll;
+    z-index: 3;
+  }
+  .show-sidebar {
+    transform: translateX(-100%);
+    transition: all 0.3s ease;
+  }
 }

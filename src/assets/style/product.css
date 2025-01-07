@@ -13,8 +13,6 @@
   transition: all 0.3s ease;
 }
 
-/* Price */
-
 .single-product .price > * {
   font-size: 24px;
   line-height: 29.5px;
@@ -87,7 +85,7 @@
   color: var(--primary);
 }
 
-/* ============== product-details ============== */
+/* ======================================================== product-details ======================================================== */
 
 .product-details .images img {
   width: 80px;
@@ -158,7 +156,7 @@
   color: var(--text-muted-light);
 }
 
-/* ============== nav-tabs product details ==============  */
+/* ============================ nav-tabs product details ============================  */
 .nav-tabs .nav-link {
   color: var(--text-muted-light);
   background-color: var(--card-foreground);
@@ -187,6 +185,10 @@
   margin-top: 40px !important;
 }
 
+.tab-content .content figure {
+  width: 100px;
+}
+
 .tab-content .reviews .content,
 .add-reviews {
   width: 80%;
@@ -198,21 +200,12 @@
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.tab-content img {
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  border: 1px solid var(--border-color-light);
-}
-
 .tab-content .reviews svg {
   cursor: pointer;
 }
 
 .tab-content h2,
 .tab-content h6 {
-  margin-bottom: 20px;
   font-weight: 700;
   font-size: 18px;
   color: var(--primary);
@@ -230,6 +223,8 @@
   line-height: 2;
   margin-left: 20px;
 }
+
+/* ============================== add-reviews ============================= */
 
 .add-reviews textarea {
   width: 60%;
@@ -266,31 +261,13 @@
   color: var(--text-muted-light);
 }
 
-@media screen and (max-width: 991px) {
-  .tab-content .reviews .content,
-  .add-reviews {
-    width: 100%;
-    padding: 10px;
-  }
-
-  .tab-content img {
-    top: 0;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-  .tab-content h6 {
-    margin-top: 20px;
-  }
-}
-
 .img-preview {
   width: 60px;
   height: 60px;
   border-radius: 6px;
 }
 
-/* ============== product-list dashboard ============== */
+/* ============================ product-list dashboard ============================ */
 
 /* product-list */
 
@@ -346,7 +323,7 @@
   cursor: pointer;
 }
 
-/* ============== product-form ============== */
+/* ============================ product-form ============================ */
 
 .overlay-form-product {
   z-index: 1000;
@@ -396,6 +373,19 @@
   cursor: pointer;
   top: 20px;
   right: 20px;
+}
+
+/* Responsive */
+@media screen and (max-width: 991px) {
+  .tab-content .reviews .content,
+  .add-reviews {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .tab-content h6 {
+    margin-top: 20px;
+  }
 }
 
 @media screen and (max-width: 767px) {

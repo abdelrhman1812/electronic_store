@@ -1,5 +1,6 @@
 import { useFormik } from "formik";
-import { BiMessageSquareX } from "react-icons/bi";
+import React from "react";
+import { IoIosClose } from "react-icons/io";
 import bgImageDark from "../../../../assets/Images/Hero/bg-1.jpg";
 import { useTheme } from "../../../../context/ThemeProvider";
 import useData from "../../../../services/Hooks/useData";
@@ -8,32 +9,14 @@ import PriceFilter from "./PriceFilter";
 
 const Sidebar = ({
   getAllProducts,
-  showSidBar,
+  showSidebar,
   setIsLoading,
-  showSidBarHandler,
+  toggleSidebar,
 }) => {
   const { isDark } = useTheme();
-
   const { brands, categories, isLoading: dataLoading } = useData();
 
-  // catch Value
-  const getValues = async (values) => {
-    setIsLoading(true);
-    try {
-      await getAllProducts(values);
-
-      const mediaQuery = window.matchMedia("(max-width: 991px)");
-      if (mediaQuery.matches) {
-        showSidBarHandler();
-      }
-    } catch (error) {
-      console.error("Error applying filter: ", error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  // Initial Values
+  // Formik initial values
   const formik = useFormik({
     initialValues: {
       minPrice: 0,
@@ -41,36 +24,36 @@ const Sidebar = ({
       category: [],
       brand: [],
     },
-    onSubmit: getValues,
+    onSubmit: async (values) => {
+      setIsLoading(true);
+      try {
+        await getAllProducts(values);
+        if (window.matchMedia("(max-width: 991px)").matches) {
+          toggleSidebar();
+        }
+      } catch (error) {
+        console.error("Error applying filter: ", error);
+      } finally {
+        setIsLoading(false);
+      }
+    },
   });
 
-  const handleCategoryChange = (e) => {
+  // Handle change data
+  const handleCheckboxChange = (type) => (e) => {
     const { value, checked } = e.target;
-    const category = formik.values.category;
+    const currentValues = formik.values[type];
     if (checked) {
-      formik.setFieldValue("category", [...category, value]);
+      formik.setFieldValue(type, [...currentValues, value]);
     } else {
       formik.setFieldValue(
-        "category",
-        category.filter((item) => item !== value)
+        type,
+        currentValues.filter((item) => item !== value)
       );
     }
   };
 
-  const handleBrandChange = (e) => {
-    const { value, checked } = e.target;
-    const brand = formik.values.brand;
-    if (checked) {
-      formik.setFieldValue("brand", [...brand, value]);
-    } else {
-      formik.setFieldValue(
-        "brand",
-        brand.filter((item) => item !== value)
-      );
-    }
-  };
-
-  // clear filters
+  // Clear filter
   const clearFilter = async () => {
     const resetValues = {
       minPrice: 0,
@@ -80,31 +63,28 @@ const Sidebar = ({
     };
     formik.resetForm({ values: resetValues });
     await getAllProducts(resetValues);
-    const mediaQuery = window.matchMedia("(max-width: 991px)");
-    if (mediaQuery.matches) {
-      showSidBarHandler();
+    if (window.matchMedia("(max-width: 991px)").matches) {
+      toggleSidebar();
     }
   };
 
   return (
     <aside
-      className={`col-lg-3 p-3 h-100 ${!showSidBar ? "show-sidebar" : ""}`}
+      className={`col-lg-3 p-3 h-100 ${!showSidebar ? "show-sidebar" : ""}`}
       style={{
         backgroundImage: `url(${isDark ? bgImageDark : ""})`,
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
       }}
     >
-      {/* Icon */}
-      <BiMessageSquareX
+      <IoIosClose
         size={30}
-        onClick={showSidBarHandler}
-        className=" text-danger ms-auto d-block d-lg-none"
+        onClick={toggleSidebar}
+        className="text-danger ms-auto d-block d-lg-none"
       />
 
       <h5>Filters</h5>
       <form onSubmit={formik.handleSubmit}>
-        {/* Category Filter */}
         <div className="filter-category">
           <h6>Category</h6>
           <CheckboxItem
@@ -112,11 +92,10 @@ const Sidebar = ({
             items={categories}
             isLoading={dataLoading}
             type="category"
-            handleCheckboxChange={handleCategoryChange}
+            handleCheckboxChange={handleCheckboxChange("category")}
           />
         </div>
 
-        {/* Brand Filter */}
         <div className="filter-brand mb-4">
           <h6>Brand</h6>
           <CheckboxItem
@@ -124,14 +103,12 @@ const Sidebar = ({
             selectedValues={formik.values.brand}
             isLoading={dataLoading}
             type="brand"
-            handleCheckboxChange={handleBrandChange}
+            handleCheckboxChange={handleCheckboxChange("brand")}
           />
         </div>
 
-        {/* Price Filter */}
         <PriceFilter formik={formik} />
 
-        {/* Apply and Clear Buttons */}
         <button
           disabled={!(formik.isValid && formik.dirty)}
           type="submit"

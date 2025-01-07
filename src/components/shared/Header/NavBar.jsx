@@ -11,7 +11,7 @@ const NavBar = ({ showNav, toggle }) => {
   return (
     <>
       <nav
-        className={`main-nav d-flex justify-content-md-center   py-4 ${
+        className={`main-nav d-flex justify-content-md-center py-4 ${
           showNav ? "show-nav" : ""
         } `}
       >

@@ -171,8 +171,16 @@ input {
   .newsletter-section {
     padding: 10px;
   }
+  .newsletter-section h2 {
+    font-size: 24px;
+  }
   .newsletter-section button {
     width: 40%;
+  }
+  @media (max-width: 467px) {
+    .section-title a {
+      display: none;
+    }
   }
 }
 

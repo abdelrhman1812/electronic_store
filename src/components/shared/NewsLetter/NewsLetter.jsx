@@ -13,11 +13,7 @@ const NewsLetter = () => {
 
         <div className="col-md-8 d-flex  align-items-center">
           <div className="input-group justify-content-center ">
-            <input
-              type="email"
-              className=""
-              placeholder="Enter your email address"
-            />
+            <input type="email" className="" placeholder="Enter your email " />
             <button>Subscribe </button>
           </div>
         </div>
