@@ -1,6 +1,6 @@
 import { BiEdit, BiTrash } from "react-icons/bi";
-import IsLoading from "../../../shared/IsLoading/IsLoading";
-import PageHeader from "../../../shared/PageHeader/PageHeader";
+import IsLoading from "../../../../components/shared/IsLoading/IsLoading";
+import PageHeader from "../../../../components/shared/PageHeader/PageHeader";
 
 const CategoryList = ({ entities, handleUpdate, handleDelete, isLoading }) => {
   return (

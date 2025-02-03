@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { BiAlignRight } from "react-icons/bi";
 import { Outlet } from "react-router-dom";
-import Sidebar from "../OrderPage/Sidebar";
+import SideBarProfile from "../../../components/layouts/ProfileUser/SideBarProfile";
 
 const LayoutProfile = () => {
   const [showSidBar, setShowSidBar] = useState(false);
@@ -20,7 +20,10 @@ const LayoutProfile = () => {
         <div className="row g-3">
           {/* SideBer */}
           <div className="col-md-3">
-            <Sidebar showSidBar={showSidBar} toggleSidebar={toggleSidebar} />
+            <SideBarProfile
+              showSidBar={showSidBar}
+              toggleSidebar={toggleSidebar}
+            />
           </div>
           {/* Main content */}
           <div className="col-md-9">

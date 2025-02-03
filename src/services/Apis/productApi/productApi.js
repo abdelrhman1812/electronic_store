@@ -1,45 +1,28 @@
 import clientApi from "../../clientApi";
 
 const getProducts = async () => {
-  try {
-    const response = await clientApi.get("/products");
-    return response?.data;
-  } catch (error) {
-    throw error;
-  }
+  const response = await clientApi.get("/products");
+  return response?.data;
 };
 
 const getProductSpecific = async (productId) => {
-  try {
-    const response = await clientApi.get(`/products/${productId}`);
-    return response?.data;
-  } catch (error) {
-    throw error;
-  }
+  const response = await clientApi.get(`/products/${productId}`);
+  return response?.data;
 };
 
 const getRelatedProducts = async (name, excludedProductName) => {
-  try {
-    const data = await getProducts();
-    const relatedProducts = data.products?.filter(
-      (product) =>
-        product?.category?.name === name &&
-        product?.title !== excludedProductName
-    );
+  const data = await getProducts();
+  const relatedProducts = data.products?.filter(
+    (product) =>
+      product?.category?.name === name && product?.title !== excludedProductName
+  );
 
-    return relatedProducts;
-  } catch (error) {
-    throw error;
-  }
+  return relatedProducts;
 };
 
 const searchProducts = async (title) => {
-  try {
-    const response = await clientApi.get(`/products?search=${title}`);
-    return response?.data;
-  } catch (error) {
-    throw error;
-  }
+  const response = await clientApi.get(`/products?search=${title}`);
+  return response?.data;
 };
 
 const addProduct = async (values) => {

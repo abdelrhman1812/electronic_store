@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import "./../../../assets/style/order.css";
+import "../../../../assets/style/order.css";
 
 const OrderItem = ({ orderItem }) => {
   return (

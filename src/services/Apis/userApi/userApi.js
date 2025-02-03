@@ -32,8 +32,8 @@ const getUserAccount = async () => {
   return response?.data;
 };
 export {
-  UpdateImageProfile,
   changePassword,
   getUserAccount,
+  UpdateImageProfile,
   updateUserAccount,
 };

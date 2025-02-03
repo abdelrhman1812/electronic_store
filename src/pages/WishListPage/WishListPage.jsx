@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import SingleProduct from "../../components/layouts/ShopPage/Products/ProductDetails/SingleProduct";
 import Empty from "../../components/shared/Empty/Empty";
 import IsLoading from "../../components/shared/IsLoading/IsLoading";
@@ -32,14 +33,19 @@ const WishListPage = () => {
   );
 
   return (
-    <section className="wishlist overflow-hidden">
-      <PageHeader title="WishList" />
-      {isLoading
-        ? renderLoading()
-        : wishList.length === 0
-        ? renderEmptyState()
-        : renderWishList()}
-    </section>
+    <>
+      <Helmet>
+        <title>WishList</title>
+      </Helmet>
+      <section className="wishlist overflow-hidden">
+        <PageHeader title="WishList" />
+        {isLoading
+          ? renderLoading()
+          : wishList.length === 0
+          ? renderEmptyState()
+          : renderWishList()}
+      </section>
+    </>
   );
 };
 

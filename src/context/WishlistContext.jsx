@@ -40,7 +40,7 @@ export const WishListProvider = ({ children }) => {
 
   /* Function to delete product from wishlist */
   const deleteProductFromWishlist = async (productId) => {
-    setIsLoading(true);
+    // setIsLoading(true);
     setIsError(null);
     try {
       const data = await deleteFromWishlist(productId);

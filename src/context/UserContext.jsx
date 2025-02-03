@@ -22,10 +22,8 @@ export const UserProvider = ({ children }) => {
     try {
       const data = await getUserProfile();
       setUserProfile(data);
-      // console.log("User profile fetched successfully:", data);
     } catch (error) {
       setIsError(error);
-      // console.error("Error fetching user profile:", error);
     } finally {
       setIsLoading(false);
     }

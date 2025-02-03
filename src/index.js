@@ -6,6 +6,7 @@ import CategoryManagement from "./components/layouts/Admin/CategoryManagement/Ca
 import MainAdmin from "./components/layouts/Admin/MainAdmin";
 import OrdersManagement from "./components/layouts/Admin/OrdersManagement/OrdersManagement";
 import ProductManagement from "./components/layouts/Admin/ProductManagement/ProductManagement";
+import OrderPageUser from "./components/layouts/ProfileUser/OrderPage/OrderPage";
 import AdminLayout from "./pages/Admin/AdminLayout/AdminLayout";
 import BrandPage from "./pages/BrandPage/BrandPage";
 import CartPage from "./pages/CartPage/CartPage";
@@ -17,16 +18,13 @@ import Login from "./pages/Login/Login";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import ProductDetails from "./pages/ProductDetails/ProductDetails";
 import AccountPage from "./pages/Profile/AccountPage/AccountPage";
-import AddressPage from "./pages/Profile/AddressPage/AddressPage";
 import LayoutProfile from "./pages/Profile/LayoutProfile/LayoutProfile";
-import OrderPage from "./pages/Profile/OrderPage/OrderPage";
 import Register from "./pages/Register/Register";
 import ShopPage from "./pages/ShopPage/ShopPage";
 import WishListPage from "./pages/WishListPage/WishListPage";
 
 export {
   AccountPage,
-  AddressPage,
   AdminLayout,
   BrandManagement,
   BrandPage,
@@ -41,7 +39,7 @@ export {
   Login,
   MainAdmin,
   NotFoundPage,
-  OrderPage,
+  OrderPageUser,
   OrdersManagement,
   ProductDetails,
   ProductManagement,

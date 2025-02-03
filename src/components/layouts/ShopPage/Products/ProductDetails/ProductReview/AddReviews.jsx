@@ -1,6 +1,7 @@
 import { useFormik } from "formik";
 import { useMemo } from "react";
 import * as Yup from "yup";
+import { checkAuthToken } from "../../../../../../lib/cookies";
 import notify from "../../../../../../lib/notify";
 import { addReviews } from "../../../../../../services/Apis/reviewsApi/reviewsApi";
 import StarRating from "../../../../../common/StarRating";
@@ -8,7 +9,9 @@ import StarRating from "../../../../../common/StarRating";
 const AddReviews = ({ productId, updateProductReviews }) => {
   const handelAddReviews = async (values) => {
     try {
-      const response = await addReviews(values, productId);
+      await addReviews(values, productId);
+
+      if (checkAuthToken()) return "You MUST be logged in";
 
       updateProductReviews();
       notify("success", "Reviews added successfully");
@@ -17,6 +20,11 @@ const AddReviews = ({ productId, updateProductReviews }) => {
       if (error.response?.data?.message === "Your are already reviewed") {
         notify("error", error.response?.data?.message);
       } else {
+        if (!checkAuthToken()) {
+          notify("error", "You Must be logged in");
+          return false;
+        }
+
         notify("error", error.response?.data?.message);
       }
     }

@@ -32,8 +32,9 @@ const ProductDetails = () => {
       );
 
       setRelatedProduct(relatedProductData || []);
+      // eslint-disable-next-line no-unused-vars
     } catch (error) {
-      console.error("Failed to fetch product details:", error);
+      // console.error("Failed to fetch product details:", error);
     } finally {
       setLoading(false);
     }
@@ -52,7 +53,6 @@ const ProductDetails = () => {
 
   const updateProductReviews = async () => {
     const data = await getProductSpecific(id);
-    console.log(data);
     setProduct(data?.product || {});
   };
 

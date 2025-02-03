@@ -11,7 +11,6 @@ const AdminLayout = () => {
 
   const toggleMenu = () => {
     setMenuActive(!menuActive);
-    console.log(menuActive);
   };
 
   return (

@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { Helmet } from "react-helmet";
-import { FaRegTrashAlt } from "react-icons/fa";
+import { FaTrash } from "react-icons/fa";
 import CartItem from "../../components/layouts/CartPage/CartItem";
 import OrderSummary from "../../components/layouts/CartPage/OrderSummary";
 import Empty from "../../components/shared/Empty/Empty";
@@ -80,7 +80,7 @@ const CartPage = () => {
                   disabled={isLoading}
                 >
                   <span>Clear Cart</span>
-                  <FaRegTrashAlt className="text-light" size={16} />
+                  <FaTrash className="text-light" size={16} />
                 </button>
               </div>
               <OrderSummary cart={cart} totalPrice={totalPrice} />

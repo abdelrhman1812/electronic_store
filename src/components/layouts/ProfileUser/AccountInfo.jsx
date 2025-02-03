@@ -1,4 +1,3 @@
-// AccountInfo.js
 import { useState } from "react";
 import { useUserContext } from "../../../context/UserContext";
 import ChangePassword from "./ChangePassword ";

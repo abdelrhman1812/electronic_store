@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
-import Empty from "../../../components/shared/Empty/Empty";
-import ErrorMsg from "../../../components/shared/ErrorMsg/ErrorMsg";
-import IsLoading from "../../../components/shared/IsLoading/IsLoading";
-import { getUserOrders } from "../../../services/Apis/checkout/checkout";
-import "./../../../assets/style/order.css";
+import "../../../../assets/style/order.css";
+import { getUserOrders } from "../../../../services/Apis/checkout/checkout";
+import Empty from "../../../shared/Empty/Empty";
+import ErrorMsg from "../../../shared/ErrorMsg/ErrorMsg";
+import IsLoading from "../../../shared/IsLoading/IsLoading";
 import OrderAddress from "./OrderAddress";
 import OrderItem from "./OrderItem";
 import OrderSummary from "./OrderSummary";
 
-const OrderPage = () => {
+const OrderPageUser = () => {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null); // Error state
@@ -70,4 +70,4 @@ const OrderPage = () => {
   );
 };
 
-export default OrderPage;
+export default OrderPageUser;

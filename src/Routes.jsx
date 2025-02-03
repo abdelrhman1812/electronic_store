@@ -1,6 +1,5 @@
 import {
   AccountPage,
-  AddressPage,
   AdminLayout,
   BrandManagement,
   BrandPage,
@@ -15,7 +14,7 @@ import {
   Login,
   MainAdmin,
   NotFoundPage,
-  OrderPage,
+  OrderPageUser,
   OrdersManagement,
   ProductDetails,
   ProductManagement,
@@ -65,9 +64,8 @@ const Routes = () => {
           path: "profile",
           element: <LayoutProfile />,
           children: [
-            { index: true, element: <OrderPage /> },
-            { path: "order", element: <OrderPage /> },
-            { path: "address", element: <AddressPage /> },
+            { index: true, element: <OrderPageUser /> },
+            { path: "order", element: <OrderPageUser /> },
             { path: "account", element: <AccountPage /> },
           ],
         },

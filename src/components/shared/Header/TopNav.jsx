@@ -10,7 +10,6 @@ import MenuNav from "../MenuNav/MenuNav";
 
 const TopNav = () => {
   const [isMenuVisible, setIsMenuVisible] = useState(false);
-
   const navigate = useNavigate();
   const { userProfile, setUserProfile } = useUserContext();
   const { getUserCart } = useCartContext();

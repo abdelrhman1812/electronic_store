@@ -9,7 +9,7 @@ import PageHeader from "../../components/shared/PageHeader/PageHeader";
 import {
   getProductSpecific,
   getRelatedProducts,
-} from "../../services/Apis/productApi/ProductApi";
+} from "../../services/Apis/productApi/productApi";
 
 export {
   getProductSpecific,

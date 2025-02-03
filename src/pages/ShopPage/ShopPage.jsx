@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { BiMenu } from "react-icons/bi";
 import ReactResponsivePagination from "react-responsive-pagination";
 import "../../assets/style/shop.css";
@@ -30,8 +30,9 @@ const ShopPage = () => {
       const data = await getProducts();
       setAllProducts(data?.products || []);
       setFilters({ minPrice: 0, maxPrice: 2000, category: [], brand: [] });
+      // eslint-disable-next-line no-unused-vars
     } catch (error) {
-      console.error("Error fetching products: ", error);
+      // console.error("Error fetching products: ", error);
     } finally {
       setIsLoading(false);
     }

@@ -39,7 +39,6 @@ export const CartProvider = ({ children }) => {
       await getUserCart(); // Refresh cart after adding
     } catch (error) {
       setIsError(error.response?.data?.message || "Failed to add product.");
-      // console.error("Error adding product:", error);
     } finally {
       setIsLoading(false);
     }
@@ -59,7 +58,6 @@ export const CartProvider = ({ children }) => {
       return data;
     } catch (error) {
       setIsError(error.response?.data?.message || "Failed to update cart.");
-      // console.error("Error updating cart:", error);
     } finally {
       setIsLoading(false);
     }
@@ -80,7 +78,6 @@ export const CartProvider = ({ children }) => {
       return data;
     } catch (error) {
       setIsError(error.response?.data?.message || "Failed to update cart.");
-      // console.error("Error updating cart:", error);
     } finally {
       setIsLoading(false);
     }
@@ -102,7 +99,6 @@ export const CartProvider = ({ children }) => {
       setIsError(error.response?.data?.message || "Failed to fetch cart.");
       setCart([]);
       setCartLength(0);
-      // console.error("Error fetching cart:", error);
     } finally {
       setIsLoading(false);
     }
@@ -123,7 +119,6 @@ export const CartProvider = ({ children }) => {
       return data;
     } catch (error) {
       setIsError(error.response?.data?.message || "Failed to update cart.");
-      // console.error("Error updating cart:", error);
     } finally {
       setIsLoading(false);
     }
