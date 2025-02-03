@@ -1,13 +1,11 @@
 import { createHashRouter, redirect, RouterProvider } from "react-router-dom";
 import ProtectectedAdmin from "./components/auth/ProtectectedAdmin";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
-import BrandManagement from "./components/layouts/Admin/BrandManagement/BrandManagement";
 import CategoryManagement from "./components/layouts/Admin/CategoryManagement/CategoryManagement";
 import MainAdmin from "./components/layouts/Admin/MainAdmin";
 import OrdersManagement from "./components/layouts/Admin/OrdersManagement/OrdersManagement";
-import ProductManagement from "./components/layouts/Admin/ProductManagement/ProductManagement";
 import OrderPageUser from "./components/layouts/ProfileUser/OrderPage/OrderPage";
-import AdminLayout from "./pages/Admin/AdminLayout/AdminLayout";
+import AdminLayout from "./pages/Admin/AdminLayout";
 import BrandPage from "./pages/BrandPage/BrandPage";
 import CartPage from "./pages/CartPage/CartPage";
 import CategoryPage from "./pages/CategoryPage/CategoryPage";
@@ -26,7 +24,6 @@ import WishListPage from "./pages/WishListPage/WishListPage";
 export {
   AccountPage,
   AdminLayout,
-  BrandManagement,
   BrandPage,
   CartPage,
   CategoryManagement,
@@ -42,7 +39,6 @@ export {
   OrderPageUser,
   OrdersManagement,
   ProductDetails,
-  ProductManagement,
   ProtectectedAdmin,
   ProtectedRoute,
   redirect,

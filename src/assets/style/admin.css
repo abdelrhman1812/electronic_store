@@ -1,35 +1,28 @@
-/* Side Nav */
+/* ========== Admin Aside ========== */
 .admin aside {
-  background-color: var(--bg-header);
+  background-color: var(--white);
   min-width: 290px;
   box-shadow: var(--shadow);
-  min-height: 100%;
-  position: fixed;
+  min-height: 100vh;
+  position: static;
   padding-right: 20px;
   z-index: 3;
 }
 
-.admin .content {
-  margin-left: 280px;
-}
-
+/* ========== Admin Aside Menu ========== */
 .admin aside ul button {
   padding: 8px 15px 8px 25px;
   border-top-right-radius: 30px;
   border-bottom-right-radius: 30px;
   font-size: 20px;
+  color: var(--text-dark);
+  font-weight: bold !important;
+  transition: all 0.3s ease;
 }
-.admin aside ul button::before {
-  content: "";
-  position: absolute;
-  transform: translateY(50%);
-  top: 13px;
-  left: 10px;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: transparent;
-  border: 1px solid #ccc;
+
+.icon-link-sidebar {
+  fill: var(--primary) !important;
+  transition: all 0.3s ease;
 }
 
 .admin aside ul .section-toggle ul li a {
@@ -42,7 +35,7 @@
   border: none;
   text-align: start;
   position: relative;
-  color: #fff;
+  transition: all 0.3s ease;
 }
 
 .admin aside ul .section-toggle ul li a::before {
@@ -58,16 +51,22 @@
   border: 1px solid #ccc;
 }
 
-.admin aside ul .section-toggle ul li a.active {
-  background-color: #e5e5eb;
-  color: var(--primary);
+/* .admin aside ul .section-toggle ul li a.active {
+  background-color: rgba(0, 123, 255, 0.5);
+  color: #fff;
+  display: block;
+} */
+
+.admin aside ul button:hover {
+  background-color: rgba(0, 123, 255, 0.4) !important;
+  color: #fff;
+  transition: all 0.3s ease;
+  letter-spacing: 1px;
 }
 
-.admin aside ul button:hover,
-.admin aside ul .section-toggle ul li a:hover {
-  box-shadow: var(--shadow);
+.admin aside ul button:hover .icon-link-sidebar {
+  fill: #fff !important;
 }
-
 .admin aside ul .dashboard-link {
   padding: 8px 0 8px 24px !important;
 }
@@ -86,13 +85,18 @@
   max-height: 500px;
   transition: max-height 0.3s ease-in;
 }
-
+.admin .content {
+  flex-grow: 1;
+}
 /* ========== Admin Top Nav ========== */
 .admin-top-nav {
-  background-color: var(--bg-header);
+  background-color: var(--bg-white);
   border-bottom: 1px solid var(--border-color-light);
   padding: 10px 20px;
-  box-shadow: var(--shadow);
+}
+
+.admin-top-nav h5 {
+  color: var(--text-dark);
 }
 
 .admin-top-nav img {
@@ -106,9 +110,27 @@
   color: var(--primary);
 }
 
+/* ========== Dynamic Table ========== */
+.dynamic_table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.dynamic_table th,
+.dynamic_table td {
+  padding: 12px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.dynamic_table img {
+  object-fit: cover;
+  border-radius: 8px;
+}
+
 /* ========== Main ========== */
 
-.sales .sales-item {
+/* .sales .sales-item {
   border-radius: 20px;
   color: var(--text-dark);
   box-shadow: var(--shadow);
@@ -120,10 +142,10 @@
   color: #fff;
   transition: all 0.3s ease;
   background-color: var(--primary);
-}
+} */
 
 /* ================== Order Details List ============== */
-
+/* 
 .details-orders-customers {
   position: relative;
   width: 100%;
@@ -176,10 +198,10 @@
 
 .details-orders-customers .recentOrders table tr td:nth-child(3) {
   text-align: center;
-}
+} */
 
 /* Order Status */
-.status.delivered {
+/* .status.delivered {
   background: #8de02c;
 }
 .status.pending,
@@ -197,10 +219,10 @@
 }
 .status.inProgress {
   background: #1795ce;
-}
+} */
 
 /*  ========= Recent Customers ========= */
-
+/* 
 .recentCustomers .imgBx {
   width: 40px;
   height: 40px;
@@ -259,7 +281,7 @@ aside.open {
   .status.inProgress {
     white-space: nowrap;
   }
-}
+} */
 
 /* ================== Management ============== */
 
@@ -359,6 +381,7 @@ aside.open {
 }
 
 /* Form */
+/* 
 .overlay-form {
   z-index: 9999;
   background-color: rgba(0, 0, 0, 0.5);
@@ -443,4 +466,4 @@ aside.open {
   height: 50px;
   object-fit: cover;
   border-radius: 10px;
-}
+} */

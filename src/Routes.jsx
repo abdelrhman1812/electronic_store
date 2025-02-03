@@ -1,7 +1,6 @@
 import {
   AccountPage,
   AdminLayout,
-  BrandManagement,
   BrandPage,
   CartPage,
   CategoryManagement,
@@ -17,7 +16,6 @@ import {
   OrderPageUser,
   OrdersManagement,
   ProductDetails,
-  ProductManagement,
   ProtectectedAdmin,
   ProtectedRoute,
   redirect,
@@ -26,6 +24,10 @@ import {
   ShopPage,
   WishListPage,
 } from "./index.js";
+import BrandManagement from "./pages/Admin/Brands/BrandManagement.jsx";
+import AddProduct from "./pages/Admin/Products/AddProduct.jsx";
+import ProductList from "./pages/Admin/Products/ProductList.jsx";
+import ProductsLayout from "./pages/Admin/Products/ProductsLayout.jsx";
 
 const Routes = () => {
   const routers = createHashRouter([
@@ -81,8 +83,16 @@ const Routes = () => {
       ),
       children: [
         { index: true, element: <MainAdmin /> },
-        { path: "productList", element: <ProductManagement /> },
-        { path: "brandList", element: <BrandManagement /> },
+        {
+          path: "products",
+          element: <ProductsLayout />,
+          children: [
+            { index: true, element: <ProductList /> },
+            { path: "add", element: <AddProduct /> },
+          ],
+        },
+
+        { path: "brands", element: <BrandManagement /> },
         { path: "categoryList", element: <CategoryManagement /> },
         { path: "ordersList", element: <OrdersManagement /> },
       ],

@@ -3,8 +3,8 @@ import {
   deleteBrand,
   getBrands,
   updateBrand,
-} from "../../../../services/Apis/brandApi/brandApi";
-import EntityManagement from "../../../../services/Hooks/EntityManagement";
+} from "../../../services/Apis/brandApi/brandApi";
+import EntityManagement from "../../../services/Hooks/admin/EntityManagement";
 import BrandList from "./BrandList";
 
 const BrandManagement = () => {

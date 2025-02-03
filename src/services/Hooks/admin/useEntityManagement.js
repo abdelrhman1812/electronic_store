@@ -1,7 +1,7 @@
 import { useFormik } from "formik";
 import { useState } from "react";
 import * as Yup from "yup";
-import notify from "../../lib/notify";
+import notify from "../../../lib/notify";
 
 const validationSchema = Yup.object({
   name: Yup.string()

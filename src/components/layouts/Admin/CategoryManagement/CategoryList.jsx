@@ -1,8 +1,18 @@
-import { BiEdit, BiTrash } from "react-icons/bi";
-import IsLoading from "../../../../components/shared/IsLoading/IsLoading";
-import PageHeader from "../../../../components/shared/PageHeader/PageHeader";
+import IsLoading from "../../../shared/IsLoading/IsLoading";
+import PageHeader from "../../../shared/PageHeader/PageHeader";
+import DynamicTable from "../DynamicTable";
 
 const CategoryList = ({ entities, handleUpdate, handleDelete, isLoading }) => {
+  const header = [
+    {
+      key: "name",
+      name: "name",
+    },
+    {
+      key: "image",
+      name: "Image",
+    },
+  ];
   return (
     <>
       <section className="category-list ">
@@ -13,6 +23,13 @@ const CategoryList = ({ entities, handleUpdate, handleDelete, isLoading }) => {
               <IsLoading />
             ) : (
               <>
+                <DynamicTable
+                  header={header}
+                  data={entities}
+                  onDelete={handleDelete}
+                  onUpdate={handleUpdate}
+                />
+                {/* 
                 {entities?.map((category) => (
                   <div className="col-sm-6 col-lg-3" key={category._id}>
                     <div className="item pb-2">
@@ -40,7 +57,7 @@ const CategoryList = ({ entities, handleUpdate, handleDelete, isLoading }) => {
                       </div>
                     </div>
                   </div>
-                ))}
+                ))} */}
               </>
             )}
           </div>

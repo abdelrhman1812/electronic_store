@@ -4,7 +4,7 @@ import {
   getCategories,
   updateCategory,
 } from "../../../../services/Apis/categoryApi/CategoryApi";
-import EntityManagement from "../../../../services/Hooks/EntityManagement";
+import EntityManagement from "../../../../services/Hooks/admin/EntityManagement";
 import CategoryList from "./CategoryList";
 
 const CategoryManagement = () => {

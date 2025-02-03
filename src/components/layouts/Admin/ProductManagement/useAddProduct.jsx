@@ -1,5 +1,6 @@
 import { useFormik } from "formik";
 import { useCallback, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import notify from "../../../../lib/notify";
 import {
@@ -10,12 +11,7 @@ import {
 const useAddProduct = () => {
   const [loading, setLoading] = useState({ fetch: false, submit: false });
   const [products, setProducts] = useState([]);
-
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleModal = () => {
-    setIsOpen(!isOpen);
-  };
+  const navigate = useNavigate();
 
   // Fetch products
   const fetchProducts = useCallback(async () => {
@@ -59,8 +55,8 @@ const useAddProduct = () => {
       if (data.success && data.product) {
         notify("success", "Product added successfully");
         formik.resetForm();
-        toggleModal();
         setProducts((prev) => [...prev, data.product]);
+        navigate("/admin/products");
       } else {
         notify("error", "Failed to add product. Please try again.");
       }
@@ -136,8 +132,6 @@ const useAddProduct = () => {
     products,
     fetchProducts,
     handleDeleteProduct,
-    toggleModal,
-    isOpen,
   };
 };
 

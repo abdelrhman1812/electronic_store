@@ -1,199 +1,131 @@
-import { useState } from "react";
-import { BiChevronDown, BiChevronRight, BiX } from "react-icons/bi";
-import { Link, NavLink } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import Logo from "../../../assets/Images/logo.png";
+import { useTheme } from "../../../context/ThemeProvider";
+import {
+  FcCurrencyExchange,
+  FcShop,
+  FcOrgUnit,
+  FcMms,
+  FcNext,
+  FcExpand,
+} from "react-icons/fc";
 
-const AdminSidBar = ({ menuActive, toggleMenu }) => {
+const SidebarSection = ({
+  title,
+  icon,
+  links,
+  section,
+  openSection,
+  toggleSection,
+}) => (
+  <div className="section-toggle">
+    <button
+      style={
+        openSection === section
+          ? { backgroundColor: "rgba(0, 123, 255, 0.5)", color: "white" }
+          : undefined
+      }
+      className="w-100 mb-2 border-0 position-relative  d-flex justify-content-between"
+      onClick={() => toggleSection(section)}
+    >
+      <span>
+        {icon} {title}
+      </span>
+      <span>{openSection === section ? <FcExpand /> : <FcNext />}</span>
+    </button>
+    <ul className={`submenu ${openSection === section ? "open" : ""}`}>
+      {links.map(({ to, label }) => (
+        <li key={to}>
+          <NavLink
+            end
+            to={to}
+            className={({ isActive, isPending }) =>
+              isActive ? "active" : isPending ? "pending" : ""
+            }
+          >
+            {label}
+          </NavLink>
+        </li>
+      ))}
+    </ul>
+  </div>
+);
+
+const AdminSidebar = () => {
   const [openSection, setOpenSection] = useState(null);
+  let location = useLocation();
+
+  const { isDark } = useTheme();
+
+  useEffect(() => {
+    setOpenSection(location.pathname.split("/")[2]);
+  }, [location]);
 
   const toggleSection = (section) => {
-    setOpenSection(openSection === section ? null : section);
+    setOpenSection((prev) => (prev === section ? null : section));
   };
 
   return (
-    <aside className={`navigation-admin ${menuActive ? "open" : ""}`}>
-      <figure className="py-3 ps-2 d-flex justify-content-between align-items-center">
-        <Link to={"/"}>
-          <img src={Logo} className="w-100 d-block mx-auto" alt="Electro" />
+    <aside className="navigation-admin">
+      <figure className="py-3 ps-2 d-flex justify-content-center align-items-center">
+        <Link to="/">
+          <img
+            style={!isDark ? { filter: "invert(1)" } : {}}
+            src={Logo}
+            className="w-100 d-block mx-auto"
+            alt="Electro"
+          />
         </Link>
-        <BiX
-          size={35}
-          className="text-white cursor-pointer m d-block d-md-none"
-          onClick={() => menuActive && toggleMenu(toggleMenu)}
-        />
       </figure>
       <ul>
-        <div className="section-toggle">
-          <ul>
-            <li>
-              <NavLink
-                to="/admin"
-                end
-                className={({ isActive }) =>
-                  isActive ? "active dashboard-link" : "dashboard-link "
-                }
-              >
-                Dashboard
-              </NavLink>
-            </li>
-          </ul>
-        </div>
-
-        {/* Products Section */}
-        <div className="section-toggle">
-          <button
-            className=" w-100 mb-2 border-0 position-relative bg-transparent text-white  d-flex justify-content-between"
-            onClick={() => toggleSection("products")}
-          >
-            Products
-            <span>
-              {openSection === "products" ? (
-                <BiChevronDown />
-              ) : (
-                <BiChevronRight />
-              )}
-            </span>
-          </button>
-          <ul className={`submenu ${openSection === "products" ? "open" : ""}`}>
-            <li>
-              <NavLink
-                to="productList"
-                className={({ isActive }) => (isActive ? "active" : "")}
-              >
-                Product List
-              </NavLink>
-            </li>
-          </ul>
-        </div>
-
-        {/* Categories Section */}
-        <div className="section-toggle">
-          <button
-            className=" w-100 mb-2 border-0 position-relative bg-transparent text-white  d-flex justify-content-between"
-            onClick={() => toggleSection("categories")}
-          >
-            Categories
-            <span>
-              {openSection === "categories" ? (
-                <BiChevronDown />
-              ) : (
-                <BiChevronRight />
-              )}
-            </span>
-          </button>
-          <ul
-            className={`submenu ${openSection === "categories" ? "open" : ""}`}
-          >
-            <li>
-              <NavLink
-                to="categoryList"
-                className={({ isActive }) => (isActive ? "active" : "")}
-              >
-                Category List
-              </NavLink>
-            </li>
-          </ul>
-        </div>
-
-        {/* Brands Section */}
-        <div className="section-toggle">
-          <button
-            onClick={() => toggleSection("brands")}
-            className=" w-100 mb-2 border-0 position-relative bg-transparent text-white  d-flex justify-content-between"
-          >
-            Brands
-            <span>
-              {openSection === "brands" ? (
-                <BiChevronDown />
-              ) : (
-                <BiChevronRight />
-              )}
-            </span>
-          </button>
-          <ul className={`submenu ${openSection === "brands" ? "open" : ""}`}>
-            <li>
-              <NavLink
-                to="brandList"
-                className={({ isActive }) => (isActive ? "active" : "")}
-              >
-                Brands List
-              </NavLink>
-            </li>
-          </ul>
-        </div>
-
-        {/* Order Section */}
-        <div className="section-toggle">
-          <button
-            onClick={() => toggleSection("order")}
-            className=" w-100 mb-2 border-0 position-relative bg-transparent text-white  d-flex justify-content-between"
-          >
-            Order
-            <span>
-              {openSection === "order" ? <BiChevronDown /> : <BiChevronRight />}
-            </span>
-          </button>
-          <ul className={`submenu ${openSection === "order" ? "open" : ""}`}>
-            <li>
-              <NavLink
-                to="ordersList"
-                className={({ isActive }) => (isActive ? "active" : "")}
-              >
-                Order List
-              </NavLink>
-            </li>
-          </ul>
-        </div>
-
-        {/* Customer Section */}
-        {/* <div className="section-toggle">
-          <button
-            onClick={() => toggleSection("customer")}
-            className=" w-100 mb-2 border-0 position-relative bg-transparent text-white  d-flex justify-content-between"
-          >
-            Customer
-            <span>
-              {openSection === "customer" ? (
-                <BiChevronDown />
-              ) : (
-                <BiChevronRight />
-              )}
-            </span>
-          </button>
-          <ul className={`submenu ${openSection === "customer" ? "open" : ""}`}>
-            <li>
-              <NavLink
-                to="/"
-                className={({ isActive }) => (isActive ? "active" : "")}
-              >
-                All Customers
-              </NavLink>
-            </li>
-          </ul>
-        </div> */}
-
-        {/* Review Section */}
-        {/* <div className="section-toggle">
-          <button
-            onClick={() => toggleSection("review")}
-            className=" w-100 mb-2 border-0 position-relative bg-transparent text-white  d-flex justify-content-between"
-          >
-            Management Reviews
-            <span>
-              {openSection === "review" ? (
-                <BiChevronDown />
-              ) : (
-                <BiChevronRight />
-              )}
-            </span>
-          </button>
-          <ul
-            className={`submenu ${openSection === "review" ? "open" : ""}`}
-          ></ul>
-        </div> */}
+        <SidebarSection
+          title="Products"
+          icon={<FcShop className="me-2 icon-link-sidebar" />}
+          section="products"
+          openSection={openSection}
+          toggleSection={toggleSection}
+          links={[
+            { to: "products", label: "Product List" },
+            { to: "products/add", label: "Add Product" },
+          ]}
+        />
+        <SidebarSection
+          title="Categories"
+          icon={<FcOrgUnit className="me-2 icon-link-sidebar" />}
+          section="categories"
+          openSection={openSection}
+          toggleSection={toggleSection}
+          links={[
+            { to: "categories", label: "Category List" },
+            { to: "categories/add", label: "Add Category" },
+          ]}
+        />
+        <SidebarSection
+          title="Brands"
+          icon={<FcMms className="me-2 icon-link-sidebar" />}
+          section="brands"
+          openSection={openSection}
+          toggleSection={toggleSection}
+          links={[
+            { to: "Brands", label: "Brand List" },
+            { to: "Brands/add", label: "Add Brand" },
+          ]}
+        />
+        <SidebarSection
+          title="Orders"
+          icon={<FcCurrencyExchange className="me-2 icon-link-sidebar" />}
+          section="orders"
+          openSection={openSection}
+          toggleSection={toggleSection}
+          links={[
+            { to: "Orders", label: "order List" },
+            { to: "Orders/add", label: "Add order" },
+          ]}
+        />
       </ul>
     </aside>
   );
 };
 
-export default AdminSidBar;
+export default AdminSidebar;
