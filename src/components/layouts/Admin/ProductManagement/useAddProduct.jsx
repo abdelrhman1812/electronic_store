@@ -7,7 +7,8 @@ import {
   addProduct,
   deleteProduct,
   getProducts,
-} from "../../../../services/Apis/productApi/ProductApi";
+} from "../../../../services/Apis/productApi/productApi";
+
 const useAddProduct = () => {
   const [loading, setLoading] = useState({ fetch: false, submit: false });
   const [products, setProducts] = useState([]);
@@ -19,7 +20,6 @@ const useAddProduct = () => {
     try {
       const data = await getProducts();
       setProducts(data?.products || []);
-      console.log("Fetched products:", data);
     } catch (error) {
       console.error("Error fetching products:", error);
       notify("error", "Failed to fetch products. Please try again.");

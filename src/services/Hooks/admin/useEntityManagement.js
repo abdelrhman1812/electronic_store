@@ -1,5 +1,6 @@
 import { useFormik } from "formik";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import notify from "../../../lib/notify";
 
@@ -11,6 +12,7 @@ const validationSchema = Yup.object({
   image: Yup.mixed().required("Image is required"),
 });
 
+// make hook take endpoint and type
 export const useEntityManagement = (
   entityType,
   { fetchEntities, addEntity, updateEntity, deleteEntity }
@@ -20,20 +22,7 @@ export const useEntityManagement = (
   const [entities, setEntities] = useState([]);
   const [currentEntityId, setCurrentEntityId] = useState(null);
   const [error, setError] = useState(null);
-
-  const toggleForm = () =>
-    setIsOpen((prev) => {
-      if (prev) {
-        setCurrentEntityId(null);
-      }
-      formik.setValues({ name: "", image: null });
-      return !prev;
-    });
-  const closeForm = () => {
-    setIsOpen(false);
-    setCurrentEntityId(null);
-  };
-
+  const navigate = useNavigate();
   const fetch = async () => {
     setLoading((prev) => ({ ...prev, fetch: true }));
     try {
@@ -63,6 +52,7 @@ export const useEntityManagement = (
         formik.resetForm();
         setIsOpen(false);
         setEntities((prev) => [...prev, data[entityType]]);
+        navigate("/admin/brands");
       }
     } catch (error) {
       console.error(`Error adding ${entityType}:`, error);
@@ -77,7 +67,6 @@ export const useEntityManagement = (
 
   const handleUpdate = (entity) => {
     setCurrentEntityId(entity);
-    setIsOpen(true);
     // formik.setFieldValue("name", entity?.name);
     formik.setValues({
       name: entity?.name || "",
@@ -105,7 +94,6 @@ export const useEntityManagement = (
           )
         );
         formik.resetForm();
-        closeForm();
       }
     } catch (error) {
       console.error(`Error updating ${entityType}:`, error);
@@ -147,8 +135,7 @@ export const useEntityManagement = (
     entities,
     currentEntityId,
     formik,
-    toggleForm,
-    closeForm,
+
     handleUpdate,
     handleDelete,
     fetch,

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import StarRating from "../../../components/common/StarRating";
 import DynamicTable from "../../../components/layouts/Admin/DynamicTable";
 import useAddProduct from "../../../components/layouts/Admin/ProductManagement/useAddProduct";
@@ -5,7 +6,12 @@ import PageHeader from "../../../components/shared/PageHeader/PageHeader";
 
 const ProductList = () => {
   const { products, handleDeleteProduct } = useAddProduct();
+  // Pagination
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const [limit, setLimit] = useState(5);
+
+  const itemsPerPage = 5;
   const header = [
     {
       key: "title",
@@ -24,6 +30,10 @@ const ProductList = () => {
       key: "imageCover",
       name: "image",
     },
+    {
+      key: "images",
+      name: "Images",
+    },
   ];
 
   const handleDelete = (id) => {
@@ -35,27 +45,17 @@ const ProductList = () => {
       <PageHeader title="Product" />
 
       <div className="container-xl my-5">
-        <DynamicTable onDelete={handleDelete} header={header} data={products} />
+        <DynamicTable
+          onDelete={handleDelete}
+          header={header}
+          data={products}
+          limitPerPage={limit}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+          itemsPerPage={itemsPerPage}
+          setLimit={setLimit}
+        />
       </div>
-
-      {/* {selectedProduct && (
-        <div className="overlay" onClick={handleCloseOverlay}>
-          <div className="overlay-content" onClick={(e) => e.stopPropagation()}>
-            <button className="close-btn" onClick={handleCloseOverlay}>
-              X
-            </button>
-            <h3>{selectedProduct.title}</h3>
-            <img
-              src={selectedProduct.imageCover.secure_url}
-              alt={selectedProduct.title}
-              className="overlay-image"
-            />
-            <p>{selectedProduct.description}</p>
-            <p>Price: ${selectedProduct.price}</p>
-            <StarRating rate={selectedProduct?.rateNum} maxStars={5} />
-          </div>
-        </div>
-      )} */}
     </div>
   );
 };

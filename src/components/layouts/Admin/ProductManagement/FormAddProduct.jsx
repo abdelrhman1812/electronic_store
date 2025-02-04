@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import useData from "../../../../services/Hooks/useData";
 import useAddProduct from "./useAddProduct";
+import { FaTrash } from "react-icons/fa";
 const FormAddProduct = () => {
   const [imageCoverPreview, setImageCoverPreview] = useState(null);
   const [imagesPreview, setImagesPreview] = useState([]);
   const { categories, brands } = useData();
   const { loading, formik } = useAddProduct();
+  const fileInput = useRef(null);
 
   // Handlers for image previews
   const handleImageCoverPreview = (event) => {
@@ -23,6 +25,23 @@ const FormAddProduct = () => {
   };
 
   const isHexadecimal = (str) => /^[0-9a-fA-F]{24}$/.test(str);
+
+  const handleRemoveImage = (i) => {
+    if (!fileInput.current || !fileInput.current.files) return;
+
+    /* Convert to DataTransfer object to remove file */
+    const dataTransfer = new DataTransfer();
+    Array.from(fileInput.current.files)
+      .filter((_, index) => index !== i)
+      .forEach((file) => dataTransfer.items.add(file));
+
+    /* Remove image preview */
+    setImagesPreview((prev) => prev.filter((_, index) => index !== i));
+
+    /* Replace files */
+    fileInput.current.files = dataTransfer.files;
+    console.log(fileInput.current.files);
+  };
 
   return (
     <form className="position-relative" onSubmit={formik.handleSubmit}>
@@ -199,6 +218,7 @@ const FormAddProduct = () => {
         </label>
         <input
           id="images"
+          ref={fileInput}
           name="images"
           type="file"
           className="form-control"
@@ -207,18 +227,25 @@ const FormAddProduct = () => {
         />
         <div className="d-flex gap-2 mt-2">
           {imagesPreview.map((src, index) => (
-            <img
-              key={index}
-              src={src}
-              alt={`Image ${index + 1}`}
-              className="img-preview"
-              style={{
-                width: "100px",
-                height: "100px",
-                objectFit: "cover",
-                border: "1px solid #ccc",
-              }}
-            />
+            <>
+              <img
+                key={index}
+                src={src}
+                alt={`Image ${index + 1}`}
+                className="img-preview"
+                style={{
+                  width: "100px",
+                  height: "100px",
+                  objectFit: "cover",
+                  border: "1px solid #ccc",
+                }}
+              />
+
+              <FaTrash
+                onClick={() => handleRemoveImage(index)}
+                className="text-danger"
+              />
+            </>
           ))}
         </div>
       </div>

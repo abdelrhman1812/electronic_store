@@ -1,15 +1,15 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import {
+  FcCurrencyExchange,
+  FcExpand,
+  FcMms,
+  FcNext,
+  FcOrgUnit,
+  FcShop,
+} from "react-icons/fc";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import Logo from "../../../assets/Images/logo.png";
 import { useTheme } from "../../../context/ThemeProvider";
-import {
-  FcCurrencyExchange,
-  FcShop,
-  FcOrgUnit,
-  FcMms,
-  FcNext,
-  FcExpand,
-} from "react-icons/fc";
 
 const SidebarSection = ({
   title,

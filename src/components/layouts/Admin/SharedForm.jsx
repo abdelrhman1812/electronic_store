@@ -26,6 +26,7 @@ const SharedForm = ({
               type: blob.type,
             }
           );
+          formik.setFieldValue("name", currentEntityId.name);
           formik.setFieldValue("image", file);
         })
         .catch((err) => console.error("Error loading image:", err));
@@ -42,7 +43,7 @@ const SharedForm = ({
   };
 
   return (
-    <div className="overlay-form position-fixed top-0 left-0 end-0 start-0 bottom-0 d-flex justify-content-center align-items-center">
+    <div className=" position-fixed top-0 start-0 w-100 h-100 d-flex justify-content-center align-items-center">
       <div className="form-container position-relative">
         <AiOutlineClose onClick={onClose} className="close-icon" />
         <h3>{currentEntityId ? `Update ${type}` : `Add New ${type}`}</h3>
