@@ -1,33 +1,32 @@
 import SharedForm from "../../../components/layouts/Admin/SharedForm";
 import PageHeader from "../../../components/shared/PageHeader/PageHeader";
 import {
-  addBrand,
-  deleteBrand,
-  getBrands,
-  updateBrand,
-} from "../../../services/Apis/brandApi/brandApi";
+  addCategory,
+  deleteCategory,
+  getCategories,
+  updateCategory,
+} from "../../../services/Apis/categoryApi/CategoryApi";
 import { useEntityManagement } from "../../../services/Hooks/admin/useEntityManagement";
 
-const FormAddBrand = () => {
+const FormAddCategory = () => {
   const { loading, currentEntityId, formik, error } = useEntityManagement(
-    "brand",
+    "category",
     {
-      fetchEntities: getBrands,
-      addEntity: addBrand,
-      updateEntity: updateBrand,
-      deleteEntity: deleteBrand,
+      fetchEntities: getCategories,
+      addEntity: addCategory,
+      updateEntity: updateCategory,
+      deleteEntity: deleteCategory,
     }
   );
 
   return (
     <>
-      <PageHeader title="Add Brand" />
-
+      <PageHeader title="Add Category" />
       <SharedForm
         error={error}
         formik={formik}
         loading={loading.submit}
-        type={"brand"}
+        type={"category"}
         onSubmit={formik.handleSubmit}
         currentEntityId={currentEntityId}
       />
@@ -35,4 +34,4 @@ const FormAddBrand = () => {
   );
 };
 
-export default FormAddBrand;
+export default FormAddCategory;

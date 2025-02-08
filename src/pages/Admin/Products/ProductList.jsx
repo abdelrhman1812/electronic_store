@@ -5,13 +5,15 @@ import useAddProduct from "../../../components/layouts/Admin/ProductManagement/u
 import PageHeader from "../../../components/shared/PageHeader/PageHeader";
 
 const ProductList = () => {
-  const { products, handleDeleteProduct } = useAddProduct();
-  // Pagination
+  const { products, handleDeleteProduct, loading } = useAddProduct();
 
+  // Pagination
   const [currentPage, setCurrentPage] = useState(1);
   const [limit, setLimit] = useState(5);
 
   const itemsPerPage = 5;
+
+  // Table
   const header = [
     {
       key: "title",
@@ -54,6 +56,7 @@ const ProductList = () => {
           setCurrentPage={setCurrentPage}
           itemsPerPage={itemsPerPage}
           setLimit={setLimit}
+          loading={loading.fetch}
         />
       </div>
     </div>

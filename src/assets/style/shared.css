@@ -357,3 +357,44 @@ input {
 .Toastify__progress-bar--success {
   background-color: var(--primary);
 }
+
+/* =================== input =================== */
+.btn_form_dashboard {
+  padding: 7px 14px;
+  border: none;
+  width: 150px;
+  color: #fff;
+  background-color: var(--primary);
+  border-radius: 5px;
+}
+
+input,
+select {
+  background-color: var(--card-foreground);
+  border: 1px solid #ced4da;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: 0.3s ease-in-out;
+  width: 100%;
+  display: block;
+}
+
+input::placeholder {
+  color: var(--text-dark);
+}
+
+select {
+  color: var(--text-dark);
+}
+
+input:focus {
+  background-color: var(--card-background);
+}
+
+input[type="text"]:focus,
+input[type="file"]:focus {
+  border-color: #007bff;
+  box-shadow: none !important;
+  outline: none;
+}

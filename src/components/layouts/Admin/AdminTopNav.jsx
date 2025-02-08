@@ -8,22 +8,17 @@ const AdminTopNav = ({ toggleMenu }) => {
 
   return (
     <section className="admin-top-nav ">
-      <div className="container-xxl d-flex  gap-5 justify-content-end align-items-center">
-        <div className="icons">
-          <BiMenu
-            className="d-block d-lg-none"
-            size={22}
-            onClick={toggleMenu}
-          />
-
-          {isDark ? (
-            <BiMoon size={22} onClick={() => setIsDark(!isDark)} />
-          ) : (
-            <BiSun size={22} onClick={() => setIsDark(!isDark)} />
-          )}
-        </div>
+      <div className="container-xxl d-flex  gap-5 justify-content-md-end justify-content-between align-items-center">
+        <BiMenu className="d-block d-md-none" size={22} onClick={toggleMenu} />
 
         <div className="d-flex align-items-center gap-3">
+          <div className="icons">
+            {isDark ? (
+              <BiMoon size={22} onClick={() => setIsDark(!isDark)} />
+            ) : (
+              <BiSun size={22} onClick={() => setIsDark(!isDark)} />
+            )}
+          </div>
           <h5 className="m-0 ">{userProfile?.user?.name}</h5>
           <img
             src={

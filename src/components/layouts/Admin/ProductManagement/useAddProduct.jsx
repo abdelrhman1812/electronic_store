@@ -20,6 +20,7 @@ const useAddProduct = () => {
     try {
       const data = await getProducts();
       setProducts(data?.products || []);
+      setLoading((prev) => ({ ...prev, fetch: false }));
     } catch (error) {
       console.error("Error fetching products:", error);
       notify("error", "Failed to fetch products. Please try again.");
@@ -50,7 +51,6 @@ const useAddProduct = () => {
       });
 
       const { data } = await addProduct(formData);
-      console.log("Added product response:", data);
 
       if (data.success && data.product) {
         notify("success", "Product added successfully");
@@ -97,9 +97,13 @@ const useAddProduct = () => {
       .max(60, "Title must not exceed 60 characters")
       .trim()
       .required("Title is required"),
-    description: Yup.string().trim().required("Description is required"),
+    description: Yup.string()
+      .min(2, "Description must be at least 2 characters long")
+      .trim()
+      .required("Description is required"),
     price: Yup.number()
       .required("Price is required")
+
       .min(0, "Price must be at least 0"),
     stock: Yup.number()
       .required("Stock is required")

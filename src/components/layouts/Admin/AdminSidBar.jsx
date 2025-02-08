@@ -52,7 +52,7 @@ const SidebarSection = ({
   </div>
 );
 
-const AdminSidebar = () => {
+const AdminSidebar = ({ menuActive, setMenuActive }) => {
   const [openSection, setOpenSection] = useState(null);
   let location = useLocation();
 
@@ -66,8 +66,28 @@ const AdminSidebar = () => {
     setOpenSection((prev) => (prev === section ? null : section));
   };
 
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setMenuActive(false);
+      } else if (window.innerWidth >= 768) {
+        setMenuActive(true);
+      }
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, [setMenuActive]);
+
   return (
-    <aside className="navigation-admin">
+    <aside
+      className="navigation-admin rounded-2"
+      style={{
+        display: menuActive ? "block" : "none",
+        // position: menuActive ? "fixed" : "relative",
+      }}
+    >
       <figure className="py-3 ps-2 d-flex justify-content-center align-items-center">
         <Link to="/">
           <img
@@ -78,6 +98,7 @@ const AdminSidebar = () => {
           />
         </Link>
       </figure>
+
       <ul>
         <SidebarSection
           title="Products"
@@ -108,8 +129,8 @@ const AdminSidebar = () => {
           openSection={openSection}
           toggleSection={toggleSection}
           links={[
-            { to: "Brands", label: "Brand List" },
-            { to: "Brands/add", label: "Add Brand" },
+            { to: "brands", label: "Brand List" },
+            { to: "brands/add", label: "Add Brand" },
           ]}
         />
         <SidebarSection

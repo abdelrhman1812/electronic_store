@@ -9,15 +9,20 @@ const AdminLayout = () => {
 
   const toggleMenu = () => {
     setMenuActive(!menuActive);
+    console.log("toggleMenu", menuActive);
   };
 
   return (
     <>
-      <AdminTopNav toggleMenu={toggleMenu} />
-      <div className=" admin d-flex">
-        <AdminSidBar menuActive={menuActive} toggleMenu={toggleMenu} />
+      <div className="admin d-flex px-3 py-3">
+        <AdminSidBar
+          menuActive={menuActive}
+          setMenuActive={setMenuActive}
+          toggleMenu={toggleMenu}
+        />
         <section className="content">
-          <main>
+          <main className="p-3">
+            <AdminTopNav toggleMenu={toggleMenu} />
             <Outlet />
           </main>
         </section>

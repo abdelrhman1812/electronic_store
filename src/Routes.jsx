@@ -1,9 +1,9 @@
+import { WindowSizeProvider } from "./context/WindowSizeContext.jsx";
 import {
   AccountPage,
   AdminLayout,
   BrandPage,
   CartPage,
-  CategoryManagement,
   CategoryPage,
   CheckoutCashPage,
   createHashRouter,
@@ -28,6 +28,10 @@ import BrandList from "./pages/Admin/Brands/BrandList.jsx";
 import BrandsLayout from "./pages/Admin/Brands/BrandsLayout.jsx";
 import FormAddBrand from "./pages/Admin/Brands/FormAddBrand.jsx";
 import UpdateBrand from "./pages/Admin/Brands/updateBrand.jsx";
+import CategoryLayout from "./pages/Admin/Categories/CategoryLayout.jsx";
+import CategoryList from "./pages/Admin/Categories/CategoryList.jsx";
+import FormAddCategory from "./pages/Admin/Categories/FormAddCategory.jsx";
+import UpdateCategory from "./pages/Admin/Categories/UpdateCategory.jsx";
 import AddProduct from "./pages/Admin/Products/AddProduct.jsx";
 import ProductList from "./pages/Admin/Products/ProductList.jsx";
 import ProductsLayout from "./pages/Admin/Products/ProductsLayout.jsx";
@@ -81,7 +85,9 @@ const Routes = () => {
       path: "admin",
       element: (
         <ProtectectedAdmin>
-          <AdminLayout />
+          <WindowSizeProvider>
+            <AdminLayout />
+          </WindowSizeProvider>
         </ProtectectedAdmin>
       ),
       children: [
@@ -104,8 +110,15 @@ const Routes = () => {
             { path: ":id", element: <UpdateBrand /> },
           ],
         },
-        // { path: "addBrand", element: <FormAddBrand /> },
-        { path: "categoryList", element: <CategoryManagement /> },
+        {
+          path: "categories",
+          element: <CategoryLayout />,
+          children: [
+            { index: true, element: <CategoryList /> },
+            { path: "add", element: <FormAddCategory /> },
+            { path: ":id", element: <UpdateCategory /> },
+          ],
+        },
         { path: "ordersList", element: <OrdersManagement /> },
       ],
     },

@@ -1,30 +1,22 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { BiLoaderCircle } from "react-icons/bi";
 
-const SharedForm = ({
-  error,
-  formik,
-  loading,
-  type,
-  onClose,
-  currentEntityId,
-}) => {
+const SharedForm = ({ error, formik, loading, type, currentEntityId }) => {
   const [imagePreview, setImagePreview] = useState(null);
+  const [dragOver, setDragOver] = useState(false);
+  const fileInputRef = useRef(null);
 
   useEffect(() => {
     if (currentEntityId?.image?.secure_url) {
       setImagePreview(currentEntityId.image.secure_url);
-      // Create a new File object from the image URL
       fetch(currentEntityId.image.secure_url)
         .then((res) => res.blob())
         .then((blob) => {
           const file = new File(
             [blob],
             currentEntityId.image.secure_url.split("/").pop(),
-            {
-              type: blob.type,
-            }
+            { type: blob.type }
           );
           formik.setFieldValue("name", currentEntityId.name);
           formik.setFieldValue("image", file);
@@ -33,24 +25,41 @@ const SharedForm = ({
     }
   }, [currentEntityId]);
 
-  /* Handle image change */
-  const handleImageChange = (e) => {
-    const file = e.currentTarget.files[0];
+  /* Handle image selection */
+  const handleImageChange = (file) => {
     if (file) {
       formik.setFieldValue("image", file);
       setImagePreview(URL.createObjectURL(file));
     }
   };
 
-  return (
-    <div className=" position-fixed top-0 start-0 w-100 h-100 d-flex justify-content-center align-items-center">
-      <div className="form-container position-relative">
-        <AiOutlineClose onClick={onClose} className="close-icon" />
-        <h3>{currentEntityId ? `Update ${type}` : `Add New ${type}`}</h3>
-        {error && <span className="text-danger">{error}</span>}
-        {/* Form */}
+  /* Handle drag & drop */
+  const handleDrop = (e) => {
+    e.preventDefault();
+    setDragOver(false);
+    const file = e.dataTransfer.files[0];
+    handleImageChange(file);
+  };
 
-        <form onSubmit={formik.handleSubmit} className="form">
+  /* Handle click to open file input */
+  const handleClick = () => {
+    fileInputRef.current.click();
+  };
+
+  /* Handle image removal */
+  const removeImage = () => {
+    setImagePreview(null);
+    formik.setFieldValue("image", null);
+    fileInputRef.current.value = null;
+  };
+
+  return (
+    <section className="shared_form dashboard_form my-5 container-xxl  ">
+      <div className="form-container position-relative">
+        {/* <h3>{currentEntityId ? `Update ${type}` : `Add New ${type}`}</h3> */}
+        {error && <span className="text-danger">{error}</span>}
+
+        <form onSubmit={formik.handleSubmit} className="form ">
           {/* Name */}
           <div className="form-group">
             <label htmlFor="name">{`${type} Name`}</label>
@@ -58,52 +67,55 @@ const SharedForm = ({
               id="name"
               name="name"
               type="text"
+              placeholder="Enter category name"
               onBlur={formik.handleBlur}
               onChange={formik.handleChange}
               value={formik.values.name}
-              className={` ${
+              className={
                 formik.touched.name && formik.errors.name ? "is-invalid" : ""
-              }`}
+              }
             />
             {formik.touched.name && formik.errors.name && (
               <span className="invalid-feedback">{formik.errors.name}</span>
             )}
           </div>
 
-          {/* Image */}
+          {/* Image Upload with Drag & Drop */}
           <div className="form-group">
-            <label htmlFor="image">Image</label>
-            {imagePreview && (
-              <div className="image-preview p-1 mb-2">
-                <img
-                  src={imagePreview}
-                  alt="Preview"
-                  className="preview-img"
-                  style={{ maxWidth: "200px", height: "auto" }}
-                />
-              </div>
-            )}
-            <div className="input-group">
+            <label>Image</label>
+            <div
+              className={`drop-zone ${dragOver ? "drag-over" : ""}`}
+              onDragOver={(e) => {
+                e.preventDefault();
+                setDragOver(true);
+              }}
+              onDragLeave={() => setDragOver(false)}
+              onDrop={handleDrop}
+              onClick={handleClick}
+            >
+              {imagePreview ? (
+                <div className="image-preview-container">
+                  <img
+                    src={imagePreview}
+                    alt="Preview"
+                    className="preview-img"
+                  />
+                  <AiOutlineClose onClick={removeImage} />
+                </div>
+              ) : (
+                <p>
+                  Drag & drop an image or click to select <AiOutlineClose />
+                </p>
+              )}
               <input
                 id="image"
                 name="image"
                 type="file"
-                onChange={handleImageChange}
-                className={` ${
-                  formik.touched.image && formik.errors.image
-                    ? "is-invalid"
-                    : ""
-                }`}
+                ref={fileInputRef}
+                onChange={(e) => handleImageChange(e.target.files[0])}
+                className="file-input"
+                hidden
               />
-              {currentEntityId?.image?.secure_url && (
-                <input
-                  type="text"
-                  readOnly
-                  value={currentEntityId.image.secure_url}
-                  className=" d-none"
-                  style={{ flex: "1" }}
-                />
-              )}
             </div>
             {formik.touched.image && formik.errors.image && (
               <span className="invalid-feedback">{formik.errors.image}</span>
@@ -113,7 +125,7 @@ const SharedForm = ({
           <button
             disabled={loading || !(formik.isValid && formik.dirty)}
             type="submit"
-            className="btn btn-primary mt-3"
+            className=" mt-3"
           >
             {loading ? (
               <BiLoaderCircle className="animate-spin" />
@@ -123,7 +135,7 @@ const SharedForm = ({
           </button>
         </form>
       </div>
-    </div>
+    </section>
   );
 };
 

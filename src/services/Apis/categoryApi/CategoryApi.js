@@ -1,5 +1,5 @@
 import clientApi from "../../clientApi";
-import { getProducts } from "../productApi/ProductApi";
+import { getProducts } from "../productApi/productApi";
 
 const getCategories = async () => {
   const response = await clientApi.get("/categories");
@@ -9,6 +9,10 @@ const getCategories = async () => {
 const getProductsByCategory = async (slug) => {
   const data = await getProducts();
   return data.products?.filter((product) => product?.category?.slug === slug);
+};
+const deleteSingleCategory = async (categoryId) => {
+  const response = await clientApi.get(`/categories/${categoryId}`);
+  return response;
 };
 
 const addCategory = async (values) => {
@@ -29,6 +33,7 @@ const updateCategory = async (categoryId, values) => {
 export {
   addCategory,
   deleteCategory,
+  deleteSingleCategory,
   getCategories,
   getProductsByCategory,
   updateCategory,

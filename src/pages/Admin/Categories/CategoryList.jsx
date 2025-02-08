@@ -1,27 +1,32 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import DynamicTable from "../../../components/layouts/Admin/DynamicTable";
+import PageHeader from "../../../components/shared/PageHeader/PageHeader";
 import {
-  addBrand,
-  deleteBrand,
-  getBrands,
-  updateBrand,
-} from "../../../services/Apis/brandApi/brandApi";
+  addCategory,
+  deleteCategory,
+  getCategories,
+  updateCategory,
+} from "../../../services/Apis/categoryApi/CategoryApi";
 import { useEntityManagement } from "../../../services/Hooks/admin/useEntityManagement";
-import { PageHeader } from "../../ProductDetails";
 
-const BrandList = () => {
+const CategoryList = () => {
+  // Pagination
   const [currentPage, setCurrentPage] = useState(1);
   const [limit, setLimit] = useState(5);
 
   const itemsPerPage = 5;
-  const { loading, entities, fetch } = useEntityManagement("brand", {
-    fetchEntities: getBrands,
-    addEntity: addBrand,
-    updateEntity: updateBrand,
-    deleteEntity: deleteBrand,
+
+  // hook for curds categories
+  const { loading, entities, fetch } = useEntityManagement("category", {
+    fetchEntities: getCategories,
+    addEntity: addCategory,
+    updateEntity: updateCategory,
+    deleteEntity: deleteCategory,
   });
   const navigate = useNavigate();
+
+  // Table
   const header = [
     {
       key: "name",
@@ -37,14 +42,12 @@ const BrandList = () => {
     fetch();
   }, []);
   const handleUpdate = (item) => {
-    console.log(item);
-    updateBrand(item);
-    navigate(`/admin/brands/${item._id}`, { replace: true });
+    navigate(`/admin/categories/${item._id}`, { replace: true });
   };
 
   return (
     <>
-      <PageHeader title="Brands" />
+      <PageHeader title="Categories" />
 
       <div className="container-xl py-5">
         <div className="row g-3">
@@ -65,4 +68,4 @@ const BrandList = () => {
   );
 };
 
-export default BrandList;
+export default CategoryList;

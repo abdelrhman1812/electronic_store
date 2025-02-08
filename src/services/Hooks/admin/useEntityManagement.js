@@ -52,7 +52,9 @@ export const useEntityManagement = (
         formik.resetForm();
         setIsOpen(false);
         setEntities((prev) => [...prev, data[entityType]]);
-        navigate("/admin/brands");
+        const path =
+          entityType === "category" ? "/admin/categories" : "/admin/brands";
+        navigate(path);
       }
     } catch (error) {
       console.error(`Error adding ${entityType}:`, error);

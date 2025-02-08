@@ -7,6 +7,7 @@
   position: static;
   padding-right: 20px;
   z-index: 3;
+  transition: all 0.3s ease;
 }
 
 /* ========== Admin Aside Menu ========== */
@@ -18,6 +19,7 @@
   color: var(--text-dark);
   font-weight: bold !important;
   transition: all 0.3s ease;
+  background-color: transparent;
 }
 
 .icon-link-sidebar {
@@ -51,12 +53,6 @@
   border: 1px solid #ccc;
 }
 
-/* .admin aside ul .section-toggle ul li a.active {
-  background-color: rgba(0, 123, 255, 0.5);
-  color: #fff;
-  display: block;
-} */
-
 .admin aside ul button:hover {
   background-color: rgba(0, 123, 255, 0.4) !important;
   color: #fff;
@@ -86,13 +82,15 @@
   transition: max-height 0.3s ease-in;
 }
 .admin .content {
-  flex-grow: 1;
+  width: 100%;
 }
 /* ========== Admin Top Nav ========== */
 .admin-top-nav {
-  background-color: var(--bg-white);
-  border-bottom: 1px solid var(--border-color-light);
+  /* background-color: var(--bg-white); */
+  /* border-bottom: 1px solid var(--border-color-light); */
   padding: 10px 20px;
+  box-shadow: var(--shadow);
+  border-radius: 8px;
 }
 
 .admin-top-nav h5 {
@@ -126,6 +124,82 @@
 .dynamic_table img {
   object-fit: cover;
   border-radius: 8px;
+}
+
+/* ========== Shared Form ========== */
+
+.dashboard_form h3 {
+  color: var(--primary);
+  margin: 15px 0;
+}
+
+.dashboard_form label {
+  margin-bottom: 15px;
+  color: var(--text-dark);
+  font-weight: 600;
+}
+
+.shared_form {
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.dashboard_form .form-group {
+  margin-bottom: 15px;
+}
+
+.shared_form .form-group input[type="text"],
+.shared_form .form-group input[type="file"] {
+  width: 100%;
+  display: block;
+}
+
+.input-group input[type="file"] {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 40px;
+  cursor: pointer;
+}
+
+.shared_form button {
+  width: 150px;
+  display: flex;
+  border: none;
+  padding: 10px;
+  background-color: var(--primary);
+  color: #fff;
+  border-radius: 8px;
+  justify-content: center;
+  align-items: center;
+}
+
+.drop-zone {
+  width: 100%;
+
+  padding: 20px;
+  border: 2px dashed #ced4da;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 10px;
+}
+
+.drop-zone p {
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-muted-light);
+  transition: all 0.3s ease;
+}
+
+.file-input {
+  display: none;
+}
+
+.preview-img {
+  max-width: 100px;
+  border-radius: 10px;
 }
 
 /* ========== Main ========== */
