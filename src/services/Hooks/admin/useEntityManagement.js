@@ -23,6 +23,8 @@ export const useEntityManagement = (
   const [currentEntityId, setCurrentEntityId] = useState(null);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+
+  /* ========== Fetch Entities ========== */
   const fetch = async () => {
     setLoading((prev) => ({ ...prev, fetch: true }));
     try {
@@ -69,7 +71,6 @@ export const useEntityManagement = (
 
   const handleUpdate = (entity) => {
     setCurrentEntityId(entity);
-    // formik.setFieldValue("name", entity?.name);
     formik.setValues({
       name: entity?.name || "",
       image: null,
@@ -95,6 +96,9 @@ export const useEntityManagement = (
             entity._id === currentEntityId._id ? data[entityType] : entity
           )
         );
+        const path =
+          entityType === "category" ? "/admin/categories" : "/admin/brands";
+        navigate(path);
         formik.resetForm();
       }
     } catch (error) {

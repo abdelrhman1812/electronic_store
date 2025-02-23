@@ -2,21 +2,14 @@ import SharedForm from "../../../components/layouts/Admin/SharedForm";
 import PageHeader from "../../../components/shared/PageHeader/PageHeader";
 import {
   addCategory,
-  deleteCategory,
   getCategories,
-  updateCategory,
 } from "../../../services/Apis/categoryApi/CategoryApi";
 import { useEntityManagement } from "../../../services/Hooks/admin/useEntityManagement";
 
 const FormAddCategory = () => {
   const { loading, currentEntityId, formik, error } = useEntityManagement(
     "category",
-    {
-      fetchEntities: getCategories,
-      addEntity: addCategory,
-      updateEntity: updateCategory,
-      deleteEntity: deleteCategory,
-    }
+    { fetchEntities: getCategories, addEntity: addCategory }
   );
 
   return (

@@ -1,16 +1,84 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FaTrash } from "react-icons/fa";
+import { useParams } from "react-router-dom"; 
+import { getProductSpecific } from "../../../../pages/ProductDetails";
 import useData from "../../../../services/Hooks/useData";
 import useAddProduct from "./useAddProduct";
 
 const FormAddProduct = () => {
-  const { formik, loading } = useAddProduct();
+  const { formik, loading, setCurrentProductId } = useAddProduct();
   const { categories, brands } = useData();
   const fileInput = useRef(null);
+  const { id } = useParams();
+
   const [imageCoverPreview, setImageCoverPreview] = useState(null);
   const [imagesPreview, setImagesPreview] = useState([]);
 
-  /* Handle image selection */
+  useEffect(() => {
+    if (id) {
+      const fetchProduct = async () => {
+        try {
+          const { product } = await getProductSpecific(id);
+          if (product) {
+            setCurrentProductId(product._id);
+            formik.setValues({
+              title: product.title || "",
+              description: product.description || "",
+              price: product.price || "",
+              stock: product.stock || "",
+              category: product.category?._id || "",
+              brand: product.brand?._id || "",
+              images: product.images || [],
+            });
+
+            if (Array.isArray(product.images) && product.images.length > 0) {
+              Promise.all(
+                product.images.map(async (img) => {
+                  const imgUrl =
+                    typeof img === "string" ? img : img?.secure_url;
+                  if (!imgUrl) return null;
+
+                  const response = await fetch(imgUrl);
+                  const blob = await response.blob();
+                  return new File([blob], imgUrl.split("/").pop(), {
+                    type: blob.type,
+                  });
+                })
+              )
+                .then((files) => {
+                  const validFiles = files.filter((file) => file !== null);
+                  setImagesPreview(
+                    validFiles.map((file) => URL.createObjectURL(file))
+                  ); 
+                  formik.setFieldValue("images", validFiles); 
+                })
+                .catch((err) => console.error("Error loading images:", err));
+            }
+
+            if (product.imageCover?.secure_url) {
+              fetch(product.imageCover.secure_url)
+                .then((res) => res.blob())
+                .then((blob) => {
+                  const file = new File(
+                    [blob],
+                    product.imageCover.secure_url.split("/").pop(),
+                    { type: blob.type }
+                  );
+                  setImageCoverPreview(URL.createObjectURL(file));
+                })
+                .catch((err) =>
+                  console.error("Error loading imageCover:", err)
+                );
+            }
+          }
+        } catch (error) {
+          console.error(error);
+        }
+      };
+      fetchProduct();
+    }
+  }, [id]);
+
   const handleFilePreview = (event, setPreview, fieldName) => {
     const files = Array.from(event.currentTarget.files);
     if (!files.length) return;
@@ -20,20 +88,12 @@ const FormAddProduct = () => {
     formik.setFieldValue(fieldName, files.length > 1 ? files : files[0]);
   };
 
-  /* Handle image previews */
   const handleRemoveImage = (index) => {
-    if (!fileInput.current?.files) return;
-
-    const dataTransfer = new DataTransfer();
-    Array.from(fileInput.current.files)
-      .filter((_, i) => i !== index)
-      .forEach((file) => dataTransfer.items.add(file));
-
-    setImagesPreview((prev) => prev.filter((_, i) => i !== index));
-    fileInput.current.files = dataTransfer.files;
+    const updatedImages = formik.values.images.filter((_, i) => i !== index);
+    setImagesPreview(updatedImages);
+    formik.setFieldValue("images", updatedImages);
   };
 
-  /* Render input field */
   const renderInputField = (id, label, type = "text") => (
     <div className="form-group flex-grow-1">
       <label className="my-3" htmlFor={id}>
@@ -45,7 +105,7 @@ const FormAddProduct = () => {
         type={type}
         placeholder={`Enter product ${label.toLowerCase()}`}
         onChange={formik.handleChange}
-        value={formik.values[id]}
+        value={formik.values[id] || ""}
         onBlur={formik.handleBlur}
       />
       {formik.errors[id] && formik.touched[id] && (
@@ -84,7 +144,7 @@ const FormAddProduct = () => {
               id={id}
               name={id}
               onChange={formik.handleChange}
-              value={formik.values[id]}
+              value={formik.values[id] || ""}
               onBlur={formik.handleBlur}
             >
               <option value="">Select a {label.toLowerCase()}</option>
@@ -165,7 +225,7 @@ const FormAddProduct = () => {
         type="submit"
         className="btn_form_dashboard"
       >
-        {loading.submit ? "Loading..." : "Add"}
+        {loading.submit ? "Loading..." : id ? "Update" : "Add"}
       </button>
     </form>
   );

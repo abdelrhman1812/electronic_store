@@ -35,6 +35,11 @@ const deleteProduct = async (productId) => {
   return response;
 };
 
+const updateProduct = async (productId, values) => {
+  const response = await clientApi.put(`/products/${productId}`, values);
+  return response;
+};
+
 export {
   addProduct,
   deleteProduct,
@@ -42,4 +47,5 @@ export {
   getProductSpecific,
   getRelatedProducts,
   searchProducts,
+  updateProduct,
 };

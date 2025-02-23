@@ -2,27 +2,26 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import SharedForm from "../../../components/layouts/Admin/SharedForm";
 import {
-  addCategory,
-  deleteCategory,
-  deleteSingleCategory,
   getCategories,
+  getSingleCategory,
   updateCategory,
 } from "../../../services/Apis/categoryApi/CategoryApi";
 import { useEntityManagement } from "../../../services/Hooks/admin/useEntityManagement";
 
 const UpdateCategory = () => {
+  const { loading, formik, error, handleUpdate } = useEntityManagement(
+    "category",
+    { fetchEntities: getCategories, updateEntity: updateCategory }
+  );
+
   const { id } = useParams();
   const [category, setCategory] = useState(null);
-  const { loading, formik, error } = useEntityManagement("category", {
-    fetchEntities: getCategories,
-    addEntity: addCategory,
-    updateEntity: updateCategory,
-    deleteEntity: deleteCategory,
-  });
 
+  /* ========= Get Single Category =========*/
   const getCategory = async () => {
-    const date = await deleteSingleCategory(id);
+    const date = await getSingleCategory(id);
     setCategory(date.category);
+    handleUpdate(date?.category);
   };
 
   useEffect(() => {

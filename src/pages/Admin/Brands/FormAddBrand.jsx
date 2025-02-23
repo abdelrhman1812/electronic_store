@@ -1,22 +1,12 @@
 import SharedForm from "../../../components/layouts/Admin/SharedForm";
 import PageHeader from "../../../components/shared/PageHeader/PageHeader";
-import {
-  addBrand,
-  deleteBrand,
-  getBrands,
-  updateBrand,
-} from "../../../services/Apis/brandApi/brandApi";
+import { addBrand, getBrands } from "../../../services/Apis/brandApi/brandApi";
 import { useEntityManagement } from "../../../services/Hooks/admin/useEntityManagement";
 
 const FormAddBrand = () => {
   const { loading, currentEntityId, formik, error } = useEntityManagement(
     "brand",
-    {
-      fetchEntities: getBrands,
-      addEntity: addBrand,
-      updateEntity: updateBrand,
-      deleteEntity: deleteBrand,
-    }
+    { fetchEntities: getBrands, addEntity: addBrand }
   );
 
   return (

@@ -54,12 +54,12 @@ const SharedForm = ({ error, formik, loading, type, currentEntityId }) => {
   };
 
   return (
-    <section className="shared_form dashboard_form my-5 container-xxl  ">
+    <section className="shared_form dashboard_form  my-5">
       <div className="form-container position-relative">
         {/* <h3>{currentEntityId ? `Update ${type}` : `Add New ${type}`}</h3> */}
         {error && <span className="text-danger">{error}</span>}
 
-        <form onSubmit={formik.handleSubmit} className="form ">
+        <form onSubmit={formik.handleSubmit} className="form container-xxl">
           {/* Name */}
           <div className="form-group">
             <label htmlFor="name">{`${type} Name`}</label>
@@ -83,6 +83,12 @@ const SharedForm = ({ error, formik, loading, type, currentEntityId }) => {
           {/* Image Upload with Drag & Drop */}
           <div className="form-group">
             <label>Image</label>
+            {formik.values.image && (
+              <AiOutlineClose
+                className="remove_img_icon text-danger border mx-3"
+                onClick={removeImage}
+              />
+            )}
             <div
               className={`drop-zone ${dragOver ? "drag-over" : ""}`}
               onDragOver={(e) => {
@@ -100,7 +106,6 @@ const SharedForm = ({ error, formik, loading, type, currentEntityId }) => {
                     alt="Preview"
                     className="preview-img"
                   />
-                  <AiOutlineClose onClick={removeImage} />
                 </div>
               ) : (
                 <p>

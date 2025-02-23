@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import StarRating from "../../../components/common/StarRating";
 import DynamicTable from "../../../components/layouts/Admin/DynamicTable";
 import useAddProduct from "../../../components/layouts/Admin/ProductManagement/useAddProduct";
@@ -12,6 +13,8 @@ const ProductList = () => {
   const [limit, setLimit] = useState(5);
 
   const itemsPerPage = 5;
+
+  const navigate = useNavigate();
 
   // Table
   const header = [
@@ -42,6 +45,11 @@ const ProductList = () => {
     handleDeleteProduct(id);
   };
 
+  const handleUpdateSingleProduct = useCallback(
+    (item) => navigate(`/admin/products/${item._id}`, { replace: true }),
+    [navigate]
+  );
+
   return (
     <div className="product-list position-relative">
       <PageHeader title="Product" />
@@ -57,6 +65,7 @@ const ProductList = () => {
           itemsPerPage={itemsPerPage}
           setLimit={setLimit}
           loading={loading.fetch}
+          onUpdate={handleUpdateSingleProduct}
         />
       </div>
     </div>

@@ -10,6 +10,11 @@ const getProductsByCategory = async (slug) => {
   const data = await getProducts();
   return data.products?.filter((product) => product?.category?.slug === slug);
 };
+
+const getSingleCategory = async (id) => {
+  const response = await clientApi.get(`/categories/${id}`);
+  return response?.data;
+};
 const deleteSingleCategory = async (categoryId) => {
   const response = await clientApi.get(`/categories/${categoryId}`);
   return response;
@@ -36,5 +41,6 @@ export {
   deleteSingleCategory,
   getCategories,
   getProductsByCategory,
+  getSingleCategory,
   updateCategory,
 };

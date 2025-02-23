@@ -35,6 +35,7 @@ import UpdateCategory from "./pages/Admin/Categories/UpdateCategory.jsx";
 import AddProduct from "./pages/Admin/Products/AddProduct.jsx";
 import ProductList from "./pages/Admin/Products/ProductList.jsx";
 import ProductsLayout from "./pages/Admin/Products/ProductsLayout.jsx";
+import UpdateProduct from "./pages/Admin/Products/updateProduct.jsx";
 
 const Routes = () => {
   const routers = createHashRouter([
@@ -98,6 +99,7 @@ const Routes = () => {
           children: [
             { index: true, element: <ProductList /> },
             { path: "add", element: <AddProduct /> },
+            { path: ":id", element: <UpdateProduct /> },
           ],
         },
 
