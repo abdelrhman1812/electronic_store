@@ -14,7 +14,7 @@ const OfferSection = () => {
   });
 
   const calculateCountdown = useCallback(() => {
-    const targetDate = new Date("Apr 1, 2025").getTime();
+    const targetDate = new Date("Jun 1, 2025").getTime();
     const now = new Date().getTime();
     let difference = targetDate - now;
 
