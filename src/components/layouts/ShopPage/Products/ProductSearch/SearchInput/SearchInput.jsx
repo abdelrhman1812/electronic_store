@@ -1,7 +1,7 @@
 import debounce from "lodash.debounce";
 import { useCallback, useEffect, useState } from "react";
 import Select from "react-select";
-import { searchProducts } from "../../../../../../services/Apis/productApi/ProductApi";
+import { searchProducts } from "../../../../../../services/Apis/productApi/productApi";
 import ProductOption from "./ProductOption";
 
 const SearchInput = () => {

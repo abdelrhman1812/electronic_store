@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getBrands } from "../Apis/brandApi/brandApi";
 import { getCategories } from "../Apis/categoryApi/CategoryApi";
-import { getProducts } from "../Apis/productApi/ProductApi";
+import { getProducts } from "../Apis/productApi/productApi";
 
 const useData = () => {
   const [products, setProducts] = useState([]);

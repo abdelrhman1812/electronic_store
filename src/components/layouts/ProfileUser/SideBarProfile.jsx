@@ -3,7 +3,7 @@ import { BiMessageSquareX } from "react-icons/bi";
 import ImageUploader from "../../../components/layouts/ProfileUser/ImageUploader";
 import { useUserContext } from "../../../context/UserContext";
 import "./../../../assets/style/profile.css";
-import SideBarLinks from "./sideBarLinks";
+import SideBarLinks from "./SideBarLinks";
 
 const SideBarProfile = ({ showSidBar, toggleSidebar }) => {
   const { userProfile } = useUserContext();

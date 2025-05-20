@@ -27,7 +27,7 @@ import {
 import BrandList from "./pages/Admin/Brands/BrandList.jsx";
 import BrandsLayout from "./pages/Admin/Brands/BrandsLayout.jsx";
 import FormAddBrand from "./pages/Admin/Brands/FormAddBrand.jsx";
-import UpdateBrand from "./pages/Admin/Brands/updateBrand.jsx";
+// import UpdateBrand from "./pages/Admin/Brands/updateBrand.jsx";
 import CategoryLayout from "./pages/Admin/Categories/CategoryLayout.jsx";
 import CategoryList from "./pages/Admin/Categories/CategoryList.jsx";
 import FormAddCategory from "./pages/Admin/Categories/FormAddCategory.jsx";
@@ -35,7 +35,7 @@ import UpdateCategory from "./pages/Admin/Categories/UpdateCategory.jsx";
 import AddProduct from "./pages/Admin/Products/AddProduct.jsx";
 import ProductList from "./pages/Admin/Products/ProductList.jsx";
 import ProductsLayout from "./pages/Admin/Products/ProductsLayout.jsx";
-import UpdateProduct from "./pages/Admin/Products/updateProduct.jsx";
+import UpdateProduct from "./pages/Admin/Products/UpdateProduct";
 
 const Routes = () => {
   const routers = createHashRouter([
@@ -109,7 +109,7 @@ const Routes = () => {
           children: [
             { index: true, element: <BrandList /> },
             { path: "add", element: <FormAddBrand /> },
-            { path: ":id", element: <UpdateBrand /> },
+            // { path: ":id", element: <UpdateBrand /> },
           ],
         },
         {
