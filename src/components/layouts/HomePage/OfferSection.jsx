@@ -14,7 +14,7 @@ const OfferSection = () => {
   });
 
   const calculateCountdown = useCallback(() => {
-    const targetDate = new Date("Aug 29, 2025").getTime();
+    const targetDate = new Date("Aug 20, 2026").getTime();
     const now = new Date().getTime();
     let difference = targetDate - now;
 
@@ -25,7 +25,7 @@ const OfferSection = () => {
 
     const days = Math.floor(difference / (1000 * 60 * 60 * 24));
     const hours = Math.floor(
-      (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
     );
     const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((difference % (1000 * 60)) / 1000);
