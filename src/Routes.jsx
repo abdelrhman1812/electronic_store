@@ -6,6 +6,7 @@ import {
   CartPage,
   CategoryPage,
   CheckoutCashPage,
+  ContactUs,
   createHashRouter,
   Home,
   Layout,
@@ -27,7 +28,7 @@ import {
 import BrandList from "./pages/Admin/Brands/BrandList.jsx";
 import BrandsLayout from "./pages/Admin/Brands/BrandsLayout.jsx";
 import FormAddBrand from "./pages/Admin/Brands/FormAddBrand.jsx";
-// import UpdateBrand from "./pages/Admin/Brands/updateBrand.jsx";
+import UpdateBrand from "./pages/Admin/Brands/UpdateBrand.jsx";
 import CategoryLayout from "./pages/Admin/Categories/CategoryLayout.jsx";
 import CategoryList from "./pages/Admin/Categories/CategoryList.jsx";
 import FormAddCategory from "./pages/Admin/Categories/FormAddCategory.jsx";
@@ -52,6 +53,7 @@ const Routes = () => {
         { path: "category/:category", element: <CategoryPage /> },
         { path: "wishlist", element: <WishListPage /> },
         { path: "checkout-cash", element: <CheckoutCashPage /> },
+        { path: "contact", element: <ContactUs /> },
         { path: "product/:id", element: <ProductDetails /> },
         {
           path: "register",
@@ -109,7 +111,7 @@ const Routes = () => {
           children: [
             { index: true, element: <BrandList /> },
             { path: "add", element: <FormAddBrand /> },
-            // { path: ":id", element: <UpdateBrand /> },
+            { path: ":id", element: <UpdateBrand /> },
           ],
         },
         {

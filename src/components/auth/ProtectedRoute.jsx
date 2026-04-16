@@ -5,7 +5,6 @@ import getAuthToken from "../../lib/cookies";
 const ProtectedRoute = ({ children }) => {
   const token = getAuthToken();
   const decoded = token ? jwtDecode(token) : {};
-  console.log(decoded);
   if (token && decoded.role !== "admin") {
     return <Navigate to={"/"} />;
   }

@@ -42,7 +42,9 @@
 
 /* Over-lay */
 .single-product .over-lay {
-  transition: all 0.3s ease, z-index 0.3s ease;
+  transition:
+    all 0.3s ease,
+    z-index 0.3s ease;
 }
 
 .single-product .over-lay button {
@@ -52,7 +54,9 @@
   color: #fff;
   background-color: var(--primary);
   opacity: 0;
-  transition: all 0.3s ease, opacity 0.3s ease;
+  transition:
+    all 0.3s ease,
+    opacity 0.3s ease;
 }
 
 .single-product .over-lay button:hover {
@@ -162,7 +166,9 @@
   background-color: var(--card-foreground);
   border: 1px solid var(--border-color);
   margin: 0 5px;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
   border-bottom: 0;
 }
 
@@ -197,7 +203,9 @@
   border: 1px solid var(--border-color-light);
   border-radius: 12px;
   position: relative;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .tab-content .reviews svg {

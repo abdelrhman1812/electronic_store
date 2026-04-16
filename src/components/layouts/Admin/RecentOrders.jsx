@@ -28,10 +28,10 @@ const RecentOrders = () => {
   }, [getOrders]);
 
   return (
-    <div className="recentOrders d-grid p-3">
-      <div className="cardHeader d-flex justify-content-between align-items-start">
+    <div className="recentOrders d-grid">
+      <div className="cardHeader d-flex justify-content-between align-items-center mb-3">
         <h2>Recent Orders</h2>
-        <Link to="/admin/orders" className="btn">
+        <Link to="/admin/ordersList" className="btn">
           View All
         </Link>
       </div>
@@ -41,42 +41,44 @@ const RecentOrders = () => {
       ) : error ? (
         <ErrorMsg error={error} />
       ) : orders.length === 0 ? (
-        <span className=" h-25 d-block text-center ">
-          No recent orders found
-        </span>
+        <div className="text-center py-5">
+          <span className="text-muted">No recent orders found</span>
+        </div>
       ) : (
-        <table>
-          <thead>
-            <tr>
-              <td>Name</td>
-              <td>Price</td>
-              <td>Payment</td>
-              <td>Status</td>
-            </tr>
-          </thead>
-          <tbody>
-            {orders.map((order) =>
-              order.orderItems.map((item) => (
-                <tr key={item._id}>
-                  <td>{item?.productId?.title || "Unnamed Product"}</td>
-                  <td>
-                    {item?.price ? `$${item.price}` : "Price Unavailable"}
-                  </td>
-                  <td>{order.paymentStatus || "Payment Info Missing"}</td>
-                  <td>
-                    <span
-                      className={`status ${
-                        order.isDelivered ? "delivered" : "pending"
-                      } p-1 text-white rounded`}
-                    >
-                      {order.isDelivered ? "Delivered" : "Pending"}
-                    </span>
-                  </td>
-                </tr>
-              ))
-            )}
-          </tbody>
-        </table>
+        <div className="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <td>Product</td>
+                <td>Price</td>
+                <td>Payment</td>
+                <td className="text-end">Status</td>
+              </tr>
+            </thead>
+            <tbody>
+              {orders.map((order) =>
+                order.orderItems.map((item) => (
+                  <tr key={item._id}>
+                    <td className="fw-medium">{item?.productId?.title || "Unnamed Product"}</td>
+                    <td className="text-muted">
+                      {item?.price ? `$${item.price}` : "Price Unavailable"}
+                    </td>
+                    <td>{order.paymentStatus || "N/A"}</td>
+                    <td className="text-end">
+                      <span
+                        className={`status ${
+                          order.isDelivered ? "delivered" : "pending"
+                        }`}
+                      >
+                        {order.isDelivered ? "Delivered" : "Pending"}
+                      </span>
+                    </td>
+                  </tr>
+                ))
+              )}
+            </tbody>
+          </table>
+        </div>
       )}
     </div>
   );

@@ -24,7 +24,6 @@ const UpdateUserForm = ({ setIsUpdate, isUpdate }) => {
 
     try {
       const data = await updateUserAccount(updatedValues);
-      console.log(data);
       if (data?.success) {
         notify("success", "Success User updated");
         getUser();
@@ -34,7 +33,7 @@ const UpdateUserForm = ({ setIsUpdate, isUpdate }) => {
     } catch (error) {
       setError(
         "There was an error updating your data. Please try again.",
-        error
+        error,
       );
     } finally {
       setLoading(false);
@@ -55,7 +54,7 @@ const UpdateUserForm = ({ setIsUpdate, isUpdate }) => {
       email: Yup.string().email("Invalid email address"),
       address: Yup.string().max(
         100,
-        "Address should not exceed 100 characters"
+        "Address should not exceed 100 characters",
       ),
       phone: Yup.string()
         .matches(/^[0-9]+$/, "Phone must be only digits")

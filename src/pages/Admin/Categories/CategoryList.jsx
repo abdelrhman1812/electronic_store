@@ -18,7 +18,7 @@ const CategoryList = () => {
       addEntity: addCategory,
       updateEntity: updateCategory,
       deleteEntity: deleteCategory,
-    }
+    },
   );
 
   const navigate = useNavigate();
@@ -37,7 +37,7 @@ const CategoryList = () => {
   /* ========= Update Single Category =========*/
   const handleUpdateSingleCategory = useCallback(
     (item) => navigate(`/admin/categories/${item._id}`, { replace: true }),
-    [navigate]
+    [navigate],
   );
 
   /* ========= Delete Category =========*/
@@ -45,15 +45,14 @@ const CategoryList = () => {
     async (id) => {
       await handleDelete(id);
     },
-    [handleDelete]
+    [handleDelete],
   );
 
   const handleDeleteCategories = useCallback(
     async (ids) => {
-      console.log("Deleting multiple categories:", ids);
       await Promise.all(ids.map((id) => handleDelete(id)));
     },
-    [handleDelete]
+    [handleDelete],
   );
 
   /* ========= Get All Categories =========*/

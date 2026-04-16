@@ -18,7 +18,7 @@ const BrandList = () => {
       addEntity: addBrand,
       updateEntity: updateBrand,
       deleteEntity: deleteBrand,
-    }
+    },
   );
   const navigate = useNavigate();
 
@@ -36,7 +36,7 @@ const BrandList = () => {
   /* ========= Handle Add Brand ======== */
   const handleUpdateSingleBrand = useCallback(
     (item) => navigate(`/admin/brands/${item._id}`, { replace: true }),
-    [navigate]
+    [navigate],
   );
 
   /* ========= Handle Delete Brand ======== */
@@ -44,15 +44,14 @@ const BrandList = () => {
     async (id) => {
       await handleDelete(id);
     },
-    [handleDelete]
+    [handleDelete],
   );
 
   const handleDeleteBrands = useCallback(
     async (ids) => {
-      console.log("Deleting brands:", ids);
       await Promise.all(ids.map((id) => handleDelete(id)));
     },
-    [handleDelete]
+    [handleDelete],
   );
 
   /* ========= Get All Brands ======== */

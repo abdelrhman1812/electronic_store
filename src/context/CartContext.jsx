@@ -7,7 +7,6 @@ import {
   updateCart,
 } from "../services/Apis/cartApi/cartApi";
 
-// Blueprint for auto-complete; useful when using TypeScript
 const CartContext = createContext({
   cart: [],
   cartLength: 0,
@@ -156,8 +155,6 @@ export const CartProvider = ({ children }) => {
 
 export default CartContext;
 
-// Custom hook for using CartContext
-// eslint-disable-next-line react-refresh/only-export-components
 export const useCartContext = () => {
   return useContext(CartContext);
 };

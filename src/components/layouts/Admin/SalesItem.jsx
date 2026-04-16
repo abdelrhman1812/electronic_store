@@ -1,12 +1,14 @@
 const SalesItem = ({ title, amount, icon }) => {
   return (
     <div className="col-sm-6 col-md-4">
-      <div className="sales-item p-3">
-        <div className="d-flex justify-content-between">
-          <h4>{title}</h4>
+      <div className="sales-item">
+        <div className="icon-box">
           {icon}
         </div>
-        <p>{amount}</p>
+        <div>
+          <h4>{title}</h4>
+          <p className="amount">{amount}</p>
+        </div>
       </div>
     </div>
   );

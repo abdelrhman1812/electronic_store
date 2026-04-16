@@ -3,96 +3,36 @@ import imgCustomer from "../../../assets/Images/Abdelrhman.png";
 const RecentCustomers = () => {
   return (
     <>
-      <div className="recentCustomers d-grid p-3">
-        <div className="cardHeader">
+      <div className="recentCustomers d-grid">
+        <div className="cardHeader mb-3">
           <h2>Recent Customers</h2>
         </div>
 
-        <table>
-          <tr>
-            <td width="60px">
-              <figure className="imgBx position-relative rounded-circle overflow-hidden">
-                <img
-                  src={imgCustomer}
-                  className="position-absolute top-0 w-100 h-100 object-fit-cover"
-                  alt="Abdelrhman"
-                />
-              </figure>
-            </td>
-            <td>
-              <h4>
-                David <br /> <span>Italy</span>
-              </h4>
-            </td>
-          </tr>
-          <tr>
-            <td width="60px">
-              <figure className="imgBx position-relative rounded-circle overflow-hidden">
-                <img
-                  src={imgCustomer}
-                  className="position-absolute top-0 w-100 h-100 object-fit-cover"
-                  alt="Abdelrhman"
-                />
-              </figure>
-            </td>
-            <td>
-              <h4>
-                David <br /> <span>Italy</span>
-              </h4>
-            </td>
-          </tr>
-
-          <tr>
-            <td width="60px">
-              <figure className="imgBx position-relative rounded-circle overflow-hidden">
-                <img
-                  src={imgCustomer}
-                  className="position-absolute top-0 w-100 h-100 object-fit-cover"
-                  alt="Abdelrhman"
-                />
-              </figure>
-            </td>
-            <td>
-              <h4>
-                David <br /> <span>Italy</span>
-              </h4>
-            </td>
-          </tr>
-
-          <tr>
-            <td width="60px">
-              <figure className="imgBx position-relative rounded-circle overflow-hidden">
-                <img
-                  src={imgCustomer}
-                  className="position-absolute top-0 w-100 h-100 object-fit-cover"
-                  alt="Abdelrhman"
-                />
-              </figure>
-            </td>
-            <td>
-              <h4>
-                David <br /> <span>Italy</span>
-              </h4>
-            </td>
-          </tr>
-
-          <tr>
-            <td width="60px">
-              <figure className="imgBx position-relative rounded-circle overflow-hidden">
-                <img
-                  src={imgCustomer}
-                  className="position-absolute top-0 w-100 h-100 object-fit-cover"
-                  alt="Abdelrhman"
-                />
-              </figure>
-            </td>
-            <td>
-              <h4>
-                David <br /> <span>Italy</span>
-              </h4>
-            </td>
-          </tr>
-        </table>
+        <div className="table-responsive">
+          <table>
+            <tbody>
+              {[1, 2, 3, 4, 5].map((item) => (
+                <tr key={item}>
+                  <td width="50px">
+                    <div className="profile-image-wrapper">
+                      <img
+                        src={imgCustomer}
+                        alt="Customer"
+                        style={{ width: '32px', height: '32px', borderRadius: '8px' }}
+                      />
+                    </div>
+                  </td>
+                  <td>
+                    <h4 className="m-0 fw-bold" style={{ fontSize: '0.875rem' }}>
+                      David
+                    </h4>
+                    <span className="text-muted small">Italy</span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </>
   );

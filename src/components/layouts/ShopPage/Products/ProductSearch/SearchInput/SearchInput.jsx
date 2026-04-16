@@ -40,7 +40,7 @@ const SearchInput = () => {
         setLoading(false);
       }
     }, 500),
-    []
+    [],
   );
 
   useEffect(() => {
@@ -57,7 +57,6 @@ const SearchInput = () => {
   useEffect(() => {
     if (query) {
       localStorage.setItem("lastSearch", query);
-      // console.log("Saved last search to localStorage:", query);
     }
   }, [query]);
 
@@ -69,7 +68,6 @@ const SearchInput = () => {
   // const handleChange = (selectedOption) => {
   //   const newQuery = selectedOption ? selectedOption.label : "";
   //   setQuery(newQuery);
-  //   console.log("Selected option:", selectedOption);
   // };
 
   // When menu is open, get the last search from local storage and set it as the input value

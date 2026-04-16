@@ -1,8 +1,6 @@
 import { useFormik } from "formik";
-import React from "react";
-import { IoIosClose } from "react-icons/io";
-import bgImageDark from "../../../../assets/Images/Hero/bg-1.jpg";
-import { useTheme } from "../../../../context/ThemeProvider";
+import { BiFilterAlt } from "react-icons/bi";
+import { IoIosCloseCircleOutline } from "react-icons/io";
 import useData from "../../../../services/Hooks/useData";
 import CheckboxItem from "./CheckboxItem";
 import PriceFilter from "./PriceFilter";
@@ -13,14 +11,13 @@ const Sidebar = ({
   setIsLoading,
   toggleSidebar,
 }) => {
-  const { isDark } = useTheme();
   const { brands, categories, isLoading: dataLoading } = useData();
 
   // Formik initial values
   const formik = useFormik({
     initialValues: {
       minPrice: 0,
-      maxPrice: 2000,
+      maxPrice: 100000,
       category: [],
       brand: [],
     },
@@ -48,7 +45,7 @@ const Sidebar = ({
     } else {
       formik.setFieldValue(
         type,
-        currentValues.filter((item) => item !== value)
+        currentValues.filter((item) => item !== value),
       );
     }
   };
@@ -57,7 +54,7 @@ const Sidebar = ({
   const clearFilter = async () => {
     const resetValues = {
       minPrice: 0,
-      maxPrice: 2000,
+      maxPrice: 100000,
       category: [],
       brand: [],
     };
@@ -69,23 +66,21 @@ const Sidebar = ({
   };
 
   return (
-    <aside
-      className={`col-lg-3 p-3 h-100 ${!showSidebar ? "show-sidebar" : ""}`}
-      style={{
-        backgroundImage: `url(${isDark ? bgImageDark : ""})`,
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
-      }}
-    >
-      <IoIosClose
-        size={30}
-        onClick={toggleSidebar}
-        className="text-danger ms-auto d-block d-lg-none"
-      />
+    <aside className={`col-lg-3 ${showSidebar ? "show-sidebar" : ""}`}>
+      <div className="d-flex align-items-center justify-content-between mb-2">
+        <h5>
+          <BiFilterAlt className="text-primary" />
+          Filters
+        </h5>
+        <IoIosCloseCircleOutline
+          size={28}
+          onClick={toggleSidebar}
+          className="text-muted cursor-pointer d-lg-none"
+        />
+      </div>
 
-      <h5>Filters</h5>
       <form onSubmit={formik.handleSubmit}>
-        <div className="filter-category">
+        <div className="filter-category mb-4">
           <h6>Category</h6>
           <CheckboxItem
             selectedValues={formik.values.category}
@@ -109,21 +104,18 @@ const Sidebar = ({
 
         <PriceFilter formik={formik} />
 
-        <button
-          disabled={!(formik.isValid && formik.dirty)}
-          type="submit"
-          className="btn w-100 border-0"
-        >
-          Apply Filter
-        </button>
-        <button
-          disabled={!(formik.isValid && formik.dirty)}
-          onClick={clearFilter}
-          type="button"
-          className="btn btn-danger my-2 w-100 border-0"
-        >
-          Clear
-        </button>
+        <div className="sidebar-actions d-flex flex-column gap-2 mt-4">
+          <button type="submit" className="btn btn-apply w-100">
+            Apply Filters
+          </button>
+          <button
+            onClick={clearFilter}
+            type="button"
+            className="btn btn-clear w-100 mt-1"
+          >
+            Clear All
+          </button>
+        </div>
       </form>
     </aside>
   );

@@ -12,17 +12,17 @@ const CheckboxItem = ({
       {isLoading && <IsLoading height={10} />}
 
       {items.map((item, index) => (
-        <li key={index}>
+        <li key={index} className="d-flex align-items-center gap-2 mb-2">
           <input
             type="checkbox"
-            className="me-2 input-checkbox"
+            className="input-checkbox"
             id={item.slug}
             checked={selectedValues?.includes(item.slug)}
             name={type}
             value={item.slug}
             onChange={handleCheckboxChange}
           />
-          <label htmlFor={item.slug}>{item.name}</label>
+          <label className="m-0" htmlFor={item.slug}>{item.name}</label>
         </li>
       ))}
     </ul>

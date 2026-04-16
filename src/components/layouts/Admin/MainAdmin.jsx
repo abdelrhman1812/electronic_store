@@ -4,13 +4,13 @@ import Sales from "./Sales";
 
 const MainAdmin = () => {
   return (
-    <section className="overflow-hidden  p-3">
+    <div className="dashboard-content p-2 p-md-3">
       <Sales />
-      <section className="details-orders-customers d-grid p-3">
+      <section className="details-orders-customers d-grid">
         <RecentOrders />
         <RecentCustomers />
       </section>
-    </section>
+    </div>
   );
 };
 

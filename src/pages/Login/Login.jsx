@@ -39,7 +39,6 @@ const Login = () => {
 
     try {
       const data = await login(values);
-      console.log(data.user.role);
 
       getUser();
       getUserCart();
@@ -71,7 +70,7 @@ const Login = () => {
       password: Yup.string()
         .matches(
           /^[A-Z][a-z0-9]{3,40}$/,
-          "Password must start with an uppercase letter and be more than 5 characters"
+          "Password must start with an uppercase letter and be more than 5 characters",
         )
         .required("Enter Your Password"),
     });

@@ -16,8 +16,6 @@ const useAddProduct = () => {
   const navigate = useNavigate();
   const [currentProductId, setCurrentProductId] = useState(null);
 
-  console.log(currentProductId);
-
   // Fetch products
   const fetchProducts = useCallback(async () => {
     setLoading((prev) => ({ ...prev, fetch: true }));
@@ -97,8 +95,8 @@ const useAddProduct = () => {
         formik.resetForm();
         setProducts((prev) =>
           prev.map((product) =>
-            product._id === data.product._id ? data.product : product
-          )
+            product._id === data.product._id ? data.product : product,
+          ),
         );
         navigate("/admin/products");
       } else {
@@ -117,12 +115,11 @@ const useAddProduct = () => {
     setLoading((prev) => ({ ...prev, submit: true }));
     try {
       const { data } = await deleteProduct(productId);
-      console.log("Deleted product response:", data);
 
       if (data.success) {
         notify("success", "Product deleted successfully");
         setProducts((prev) =>
-          prev.filter((product) => product.id !== productId)
+          prev.filter((product) => product._id !== productId),
         );
       } else {
         notify("error", "Failed to delete product. Please try again.");

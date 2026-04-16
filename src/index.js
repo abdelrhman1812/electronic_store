@@ -18,6 +18,7 @@ import ProductDetails from "./pages/ProductDetails/ProductDetails";
 import AccountPage from "./pages/Profile/AccountPage/AccountPage";
 import LayoutProfile from "./pages/Profile/LayoutProfile/LayoutProfile";
 import Register from "./pages/Register/Register";
+import ContactUs from "./pages/ContactUs/ContactUs";
 import ShopPage from "./pages/ShopPage/ShopPage";
 import WishListPage from "./pages/WishListPage/WishListPage";
 
@@ -29,6 +30,7 @@ export {
   CategoryManagement,
   CategoryPage,
   CheckoutCashPage,
+  ContactUs,
   createHashRouter,
   Home,
   Layout,

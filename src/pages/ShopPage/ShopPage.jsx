@@ -16,7 +16,7 @@ const ShopPage = () => {
   const [allProducts, setAllProducts] = useState([]);
   const [filters, setFilters] = useState({
     minPrice: 0,
-    maxPrice: 2000,
+    maxPrice: 100000,
     category: [],
     brand: [],
   });
@@ -28,8 +28,10 @@ const ShopPage = () => {
     try {
       setIsLoading(true);
       const data = await getProducts();
-      setAllProducts(data?.products || []);
-      setFilters({ minPrice: 0, maxPrice: 2000, category: [], brand: [] });
+      const fetchedProducts = data?.products || [];
+      setAllProducts(fetchedProducts);
+      setProducts(fetchedProducts); // Initialize products immediately
+      setFilters((prev) => ({ ...prev, minPrice: 0, maxPrice: 100000 }));
       // eslint-disable-next-line no-unused-vars
     } catch (error) {
       // console.error("Error fetching products: ", error);
@@ -44,10 +46,10 @@ const ShopPage = () => {
       const filteredProducts = allProducts.filter((product) => {
         const isInCategory =
           values.category.length === 0 ||
-          values.category.includes(product.category.slug);
+          (product.category?.slug && values.category.includes(product.category.slug));
         const isInBrand =
           values.brand.length === 0 ||
-          values.brand.includes(product.brand.name);
+          (product.brand?.slug && values.brand.includes(product.brand.slug));
         const isInPriceRange =
           product.price >= values.minPrice && product.price <= values.maxPrice;
 
@@ -55,9 +57,8 @@ const ShopPage = () => {
       });
       setProducts(filteredProducts);
     },
-    [allProducts]
+    [allProducts],
   );
-
   // Effects for filtering
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -66,16 +67,14 @@ const ShopPage = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    if (allProducts.length > 0) {
-      filterProducts(filters);
-    }
+    filterProducts(filters);
   }, [filters, allProducts, filterProducts]);
 
   // Pagination
   const totalPages = Math.ceil(products.length / itemsPerPage);
   const currentProducts = products.slice(
     (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage
+    currentPage * itemsPerPage,
   );
 
   const toggleSidebar = () => setShowSidebar(!showSidebar);
@@ -93,19 +92,28 @@ const ShopPage = () => {
           />
 
           <div className="col-lg-9">
-            <div className="d-flex align-items-center justify-content-end my-3 py-2 px-1">
-              <button
-                className="d-flex align-items-center border-0 d-block d-lg-none rounded-1"
-                onClick={toggleSidebar}
-              >
-                <BiMenu className="text-primary" size={35} />
-              </button>
+            <div className="shop-content-header d-flex align-items-center justify-content-between mb-4 pb-3 border-bottom">
+              <div className="product-count text-muted">
+                Showing <span className="text-dark fw-bold">{currentProducts.length}</span> of <span className="text-dark fw-bold">{products.length}</span> products
+              </div>
+              
+              <div className="d-flex align-items-center gap-3">
+                <button
+                  className="d-flex align-items-center gap-2 border-0 bg-primary-subtle text-primary py-2 px-3 d-lg-none rounded-pill fw-bold transition-all"
+                  onClick={toggleSidebar}
+                >
+                  <BiMenu size={24} />
+                  Filters
+                </button>
+              </div>
             </div>
 
-            <div className="row g-3">
+            <div className="row g-4">
               {isLoading && <IsLoading columns={3} count={12} />}
               {!isLoading && currentProducts.length === 0 ? (
-                <ProductNotFound />
+                <div className="col-12 mt-5">
+                  <ProductNotFound />
+                </div>
               ) : (
                 currentProducts.map((product) => (
                   <div key={product._id} className="col-md-6 col-lg-4">
@@ -115,7 +123,7 @@ const ShopPage = () => {
               )}
             </div>
 
-            {!isLoading && products.length > 0 && (
+            {!isLoading && totalPages > 1 && (
               <div className="py-5">
                 <ReactResponsivePagination
                   current={currentPage}

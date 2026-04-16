@@ -9,25 +9,28 @@ const AdminLayout = () => {
 
   const toggleMenu = () => {
     setMenuActive(!menuActive);
-    console.log("toggleMenu", menuActive);
   };
 
   return (
-    <>
-      <div className="admin d-flex px-3 py-3">
+    <div className="admin-dashboard-wrapper">
+      <div className="admin-layout d-flex min-vh-100" style={{ backgroundColor: 'var(--admin-bg-light)' }}>
         <AdminSidBar
           menuActive={menuActive}
           setMenuActive={setMenuActive}
           toggleMenu={toggleMenu}
         />
-        <section className="content">
-          <main className="p-3">
+        <div className="main-content-wrapper flex-grow-1 d-flex flex-column" style={{ minWidth: 0 }}>
+          <header className="sticky-top py-2 px-3 px-md-4" style={{ zIndex: 90 }}>
             <AdminTopNav toggleMenu={toggleMenu} />
-            <Outlet />
+          </header>
+          <main className="flex-grow-1 p-2 p-md-3">
+            <div className="container-fluid p-0">
+              <Outlet />
+            </div>
           </main>
-        </section>
+        </div>
       </div>
-    </>
+    </div>
   );
 };
 

@@ -43,7 +43,7 @@ const NavBar = ({ showNav, toggle }) => {
           </li>
 
           <li>
-            <NavLink to="/" className="active">
+            <NavLink to="/contact" className="active">
               <BiPhone size={23} />
               Contact Us
             </NavLink>

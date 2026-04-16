@@ -18,7 +18,6 @@ const ImageUploader = ({ setNewImage }) => {
         const data = await UpdateImageProfile(formData);
         if (data.success) {
           notify("success", "successfully uploaded");
-          console.log(data);
           setNewImage(data?.user?.profile?.secure_url);
         }
       } catch (error) {

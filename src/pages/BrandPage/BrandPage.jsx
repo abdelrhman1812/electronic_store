@@ -19,7 +19,7 @@ const BrandPage = () => {
             <IsLoading />
           ) : (
             <>
-              {brands?.slice(4).map((brand) => (
+              {brands?.map((brand) => (
                 <div key={brand._id} className="col-sm-6 col-md-4 col-lg-3">
                   <SingleBrand brand={brand} />
                 </div>

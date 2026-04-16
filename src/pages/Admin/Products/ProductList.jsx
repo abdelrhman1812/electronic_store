@@ -41,32 +41,43 @@ const ProductList = () => {
     },
   ];
 
-  const handleDelete = (id) => {
-    handleDeleteProduct(id);
+  const handleDelete = async (id) => {
+    await handleDeleteProduct(id);
   };
+
+  const handleDeleteMultiple = useCallback(
+    async (ids, setSelectedIds) => {
+      await Promise.all(ids.map((id) => handleDeleteProduct(id)));
+      setSelectedIds([]);
+    },
+    [handleDeleteProduct],
+  );
 
   const handleUpdateSingleProduct = useCallback(
     (item) => navigate(`/admin/products/${item._id}`, { replace: true }),
-    [navigate]
+    [navigate],
   );
 
   return (
-    <div className="product-list position-relative">
-      <PageHeader title="Product" />
+    <div className="product-list">
+      <PageHeader title="Products" />
 
-      <div className="container-xl my-5">
-        <DynamicTable
-          onDelete={handleDelete}
-          header={header}
-          data={products}
-          limitPerPage={limit}
-          currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
-          itemsPerPage={itemsPerPage}
-          setLimit={setLimit}
-          loading={loading.fetch}
-          onUpdate={handleUpdateSingleProduct}
-        />
+      <div className="container-xl py-5">
+        <div className="row g-3">
+          <DynamicTable
+            onDelete={handleDelete}
+            onMultipleDelete={handleDeleteMultiple}
+            header={header}
+            data={products}
+            limitPerPage={limit}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+            itemsPerPage={itemsPerPage}
+            setLimit={setLimit}
+            loading={loading.fetch}
+            onUpdate={handleUpdateSingleProduct}
+          />
+        </div>
       </div>
     </div>
   );

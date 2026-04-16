@@ -1,0 +1,67 @@
+/* ================= Contact us Page ================  */
+
+.contact-us .contact-info {
+  background-color: var(--foreground);
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+.contact-us .contact-form-wrapper {
+  background-color: var(--foreground);
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+[data-theme="dark"] .contact-us .contact-info,
+[data-theme="dark"] .contact-us .contact-form-wrapper {
+  background-color: #031833;
+}
+
+.contact-us .info-card {
+  background: var(--background);
+  border: 1px solid transparent;
+}
+
+.contact-us .info-card:hover {
+  background: var(--foreground);
+  border-color: var(--primary);
+  transform: translateX(5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.contact-us .form-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.contact-us .form-control {
+  background: var(--background);
+  border: 1px solid var(--border-color);
+  color: var(--text-dark);
+}
+
+.contact-us .form-control:focus {
+  background: var(--foreground);
+  border-color: var(--primary);
+  box-shadow: 0 0 0 0.25rem rgba(0, 136, 255, 0.1);
+}
+
+.contact-us .btn-primary {
+  background: var(--primary);
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.contact-us .btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px -5px var(--primary);
+}
+
+/* Response */
+@media (max-width: 991px) {
+  .contact-us .contact-info,
+  .contact-us .contact-form-wrapper {
+    padding: 30px 20px !important;
+  }
+}
