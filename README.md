@@ -35,8 +35,8 @@ It provides a complete e-commerce shopping experience with both user-facing and 
 - React.js
 - React Router
 - Axios
-- Redux Toolkit / Context API
-- Tailwind CSS / Bootstrap
+- Context API
+- Bootstrap
 - Dark Mode Support
 
 ### Backend
